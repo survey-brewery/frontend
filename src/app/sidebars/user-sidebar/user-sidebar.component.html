@@ -1,0 +1,47 @@
+<div class="container-fuild">
+    <div class="row h-100   m-0">
+        <div class="side-bar">
+            <div class="logo p-3">
+                <img class="large-logo" src="../../../assets/images/logo/logo-white.svg" alt="SurveyBrewery">
+                <img class="small-logo" src="../../../assets/images/logo/logo-small.svg" alt="SurveyBrewery">
+            </div>
+            <div class="menu">
+                <ul class="nav">
+                    <li class="nav-item" [routerLink]="['/user', { outlets: { user_Menu: ['user']}}]"> 
+                        <a class="nav-link" >Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" >Create survey</a>
+                    </li>
+                    <li class="nav-item" [routerLink]="['/user', { outlets: { user_Menu: ['fill-survey']}}]">
+                        <a class="nav-link" >Fill survey</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" >How it works?</a>
+                    </li>
+                    <li class="nav-item nav-reports">
+                        <a class="nav-link" >Reports</a>
+                        
+                        <ul class="nav-drop-down">
+                            <li>
+                                <a class="nav-link" >Settings</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" >Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"  routerLink="">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="body ">
+            <app-user-header></app-user-header>
+            <router-outlet name="user_Menu"></router-outlet>
+        </div>
+    </div>
+</div>
+
+

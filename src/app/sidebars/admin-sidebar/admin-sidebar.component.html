@@ -1,0 +1,22 @@
+<div class="container-fuild">
+    <div class="row h-100   m-0">
+        <div class="side-bar">
+            <div class="logo p-3">
+                <img src="../../../assets/images/logo/logo-white.svg" alt="SurveyBrewery">
+            </div>
+            <div class="menu">
+                <ul class="nav">
+                    <li class="nav-item" [routerLink]="['/admin', { outlets: { sub_Menu: ['admin']}}]">Dashboard</li>
+                    <li class="nav-item">Masters</li>
+                    <li class="nav-item" [routerLink]="['/admin', { outlets: { sub_Menu: ['users']}}]">Users</li>
+                    <li class="nav-item">Create survey</li>
+                    <li class="nav-item">Reports</li>
+                    <li class="nav-item" routerLink="">Logout</li>
+                </ul>
+            </div>
+        </div>
+        <div class="body ">
+            <router-outlet name="sub_Menu"></router-outlet>
+        </div>
+    </div>
+</div>
