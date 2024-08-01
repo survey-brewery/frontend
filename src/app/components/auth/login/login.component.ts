@@ -141,7 +141,7 @@ export class LoginComponent implements OnInit {
           if (res.data.category==1) {
             this.router.navigate(['/admin', { outlets: { sub_menu: ['admin']}}]);
           } else {
-          this.router.navigate(['/user'])
+          this.router.navigate(['/user', { outlets: { user_Menu: ['user']}}])
           }
           this.toastrService.clear();
           this.toastrService.success(res.message);
