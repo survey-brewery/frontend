@@ -13,6 +13,8 @@ import { AddUpdateProfessionComponent } from './masters/profession/add-update-pr
 import { QuestionTypeComponent } from './masters/question-type/question-type.component';
 import { AddUpdateQuestionsTypeComponent } from './masters/question-type/add-update-questions-type/add-update-questions-type.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { SubProfessionComponent } from './masters/sub-profession/sub-profession.component';
+import { AddUpdateSubProfessionComponent } from './masters/sub-profession/add-update-sub-profession/add-update-sub-profession.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
     ProfessionComponent,
     AddUpdateProfessionComponent,
     QuestionTypeComponent,
-    AddUpdateQuestionsTypeComponent
+    AddUpdateQuestionsTypeComponent,
+    SubProfessionComponent,
+    AddUpdateSubProfessionComponent
   ],
   imports: [
     CommonModule,
