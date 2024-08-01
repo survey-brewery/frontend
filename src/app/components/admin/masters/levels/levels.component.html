@@ -1,0 +1,42 @@
+<section>
+  <div class="container">
+    <div class="row m-0 ">
+      <div class="col-md-4 px-5 pt-5">
+        <h4 class="header"> Levels</h4>
+      </div>
+    </div>
+    <div class="row m-0 d-flex justify-content-center ">
+      <div class="col-md-10 card p-0 my-5">
+        <div class="d-flex justify-content-end table-header">
+          <button class="btn btn-dark" (click)="openDialog()">Add</button>
+        </div>
+        <div class=" table-container p-3">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col" class="text-center">Sr.no</th>
+                <th scope="col">Level</th>
+                <th scope="col" class="text-center">After Fill </th>
+                <th scope="col" class="text-center">After Create </th>
+                <th scope="col" class="text-center">Edit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of allLevelsList;let i=index">
+                <th scope="row" class="text-center">{{i+1}}</th>
+                <td>{{item.level}}</td>
+                <td class="text-center">{{item.points_after_fill}}</td>
+                <td class="text-center">{{item.points_after_create}}</td>
+                <td class="text-center"><img src="../../../../../assets/edit.svg" alt="" (click)="openDialog(item)">
+                </td>
+              </tr>
+              <tr *ngIf="allLevelsList.length==0">
+                <td colspan="10" class="text-danger fw-bold text-center">No Data Available</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,5 +1,61 @@
-<div class="container p-5">
+<!-- <div class="container p-5">
     <p>login works!</p>
-<button class="btn btn-primary" [routerLink]="['/admin', { outlets: { sub_Menu: ['admin']}}]">Admin</button> <br> <br>
+<button class="btn btn-primary" [routerLink]="['/admin', { outlets: { sub_menu: ['admin']}}]">Admin</button> <br> <br>
 <button class="btn btn-primary" [routerLink]="['/user', { outlets: { user_Menu: ['user']}}]">User</button>
+</div> -->
+<div class="container-fluid login-backgroud">
+  <div class="row justify-content-center p-5" >
+      <div class="col-10 card d-flex">
+        <div class="row ">
+          <div class="col-sm-12 col-md-6 col-lg-6 ">
+            <div class="container">
+              <a class="navbar-brand" routerLink="">
+                <img src="../../../../assets/Logo.svg" width="190px" alt="surveyBrewery" class="py-4 mx-5">
+              </a>
+            </div>
+      
+            <img class="sign-box-img img-fluid" src="../../../../assets/animation-rocket.gif" alt="surveyBrewery">
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-6 bg-warn pt-5">
+            <div class="sign-box d-flex justify-content-center text-center pt-5">
+              <form class="col-sm-12 col-md-7 col-lg-7" [formGroup]="loginForm">
+                <h5 class="my-3">Log In</h5>
+                <p>
+                  <input type="email" placeholder="Email" formControlName="email_id" class="form-control"
+                    [ngClass]="{'is-invalid': control['email_id'].invalid && (control['email_id'].dirty || control['email_id'].touched)}" />
+                  <span *ngIf="control['email_id'].invalid && (control['email_id'].dirty || control['email_id'].touched)">
+                    <span *ngIf="control['email_id'].errors?.['required']"
+                      class="text-danger p-2 w-100 d-flex justify-content-start">Email is required.</span>
+                    <span *ngIf="control['email_id'].errors?.['email']"
+                      class="text-danger p-2 w-100 d-flex justify-content-start">Invalid email format.</span></span>
+                </p>
+                <p><input type="password" id="pwd" name="pwd" placeholder="Password" formControlName="password"
+                    class="form-control"
+                    [ngClass]="{'is-invalid': control['password'].invalid && (control['password'].dirty || control['password'].touched)}"><span
+                    *ngIf="control['password'].invalid &&(control['password'].dirty || control['password'].touched)"
+                    class="text-danger p-2 w-100 d-flex justify-content-start">Password is required.</span></p>
+      
+                <p class="mt-5 fw-normal" style="color: #262728;">Don’t have an account ?<a routerLink="/pri-sign-up"
+                    class="fw-semibold text-black text-decoration-none"> Sign up</a> </p>
+                <button class="btn-register" (click)="onSubmit()">Login</button>
+                <h6><span>OR</span></h6>
+                <div class="row" style="display: flex; justify-content: center; margin-top: 16px">
+                  <!-- <div class="btn btn-white rounded mr-2" id="buttonDiv" >
+                      <img class="" height="20" width="20" src="../../../assets/image/google-icon.svg" alt="" />
+                      Continue with Google
+                    </div> -->
+                  <!-- <div id="buttonDiv">34534</div> -->
+                  <div id="buttonDiv">
+                  </div>
+      
+      
+      
+      
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>

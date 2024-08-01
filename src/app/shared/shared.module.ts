@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { SharedRoutingModule } from './shared-routing.module';
 import { UserHeaderComponent } from '../sidebars/user-sidebar/user-header/user-header.component';
-
+import {MatDialogModule} from '@angular/material/dialog';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -11,10 +12,15 @@ import { UserHeaderComponent } from '../sidebars/user-sidebar/user-header/user-h
   ],
   imports: [
     CommonModule,
-    SharedRoutingModule
+    ReactiveFormsModule,
+    FormsModule,
+    MatDialogModule
   ],
   exports: [
-    // UserHeaderComponent
+    CommonModule,    
+    ReactiveFormsModule,
+    FormsModule,
+    MatDialogModule
   ]
 })
 export class SharedModule { }

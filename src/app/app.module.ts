@@ -9,6 +9,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AdminSidebarComponent } from './sidebars/admin-sidebar/admin-sidebar.component';
 import { UserSidebarComponent } from './sidebars/user-sidebar/user-sidebar.component';
 import { UserHeaderComponent } from './sidebars/user-sidebar/user-header/user-header.component';
+import { ToastrModule } from 'ngx-toastr';
+import { AuthInterceptor } from './shared/auth.interceptor';
 const APP_CONTAINERS = [
   UserHeaderComponent,
   AdminSidebarComponent,
@@ -23,9 +25,20 @@ const APP_CONTAINERS = [
     BrowserAnimationsModule,
     AppRoutingModule,
     // SharedModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+      
+    }), // ToastrModule added
     HttpClientModule,
   ],
-  providers: [],
+  providers: [{  
+    provide: HTTP_INTERCEPTORS,  
+    useClass: AuthInterceptor,  
+    multi: true  
+  }
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

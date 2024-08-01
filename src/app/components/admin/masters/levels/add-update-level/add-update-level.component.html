@@ -1,0 +1,83 @@
+<section class="bg-theme-admin m-0 ">
+    <div class="row m-0">
+        <div class="col-md-12 d-flex justify-content-center">
+            <h4 class="header pt-4">{{isEdit?'Update':'Add'}} Level</h4>
+        </div>
+    </div>
+    <div class="row justify-content-center  m-0">
+        <div class="col-md-10 mb-3">
+            <form [formGroup]="form">
+                <div class="form-group col-md-12">
+                    <label for="level">Level</label>
+                    <input type="text" class="form-control" id="level" formControlName="level"
+                        [ngClass]="{'is-invalid': control['level'].invalid && (control['level'].dirty || control['level'].touched)}">
+                    <span *ngIf="control['level'].invalid &&(control['level'].dirty || control['level'].touched)"
+                        class="text-danger p-1">
+                        <span *ngIf="control['level'].errors?.['required']">Level is required. </span>
+                        <span *ngIf="control['level'].errors?.['minlength']">
+                            Level should have at least {{ control['level'].errors?.['minlength'].requiredLength }}
+                            characters.
+                        </span>
+                    </span>
+                </div>
+                <div class="form-group d-flex gap-1 justify-content-between m-0">
+                    <div class="form-group col-md-5">
+                        <label for="points_after_fill">Points <b>after fill</b> survey</label>
+                        <input type="number" class="form-control" id="points_after_fill"
+                            formControlName="points_after_fill"
+                            [ngClass]="{'is-invalid': control['points_after_fill'].invalid && (control['points_after_fill'].dirty || control['points_after_fill'].touched)}">
+                        <span
+                            *ngIf="control['points_after_fill'].invalid &&(control['points_after_fill'].dirty || control['points_after_fill'].touched)"
+                            class="text-danger p-1">Points is required.</span>
+                    </div>
+                    <div class="form-group col-md-5">
+                        <label for="points_after_create">Points <b>after create</b> survey</label>
+                        <input type="number" class="form-control" id="points_after_create"
+                            formControlName="points_after_create"
+                            [ngClass]="{'is-invalid': control['points_after_create'].invalid && (control['points_after_create'].dirty || control['points_after_create'].touched)}">
+                        <span
+                            *ngIf="control['points_after_create'].invalid &&(control['points_after_create'].dirty || control['points_after_create'].touched)"
+                            class="text-danger p-1">Points is required.</span>
+                    </div>
+                </div>
+                <div class="form-group d-flex gap-1 justify-content-between m-0">
+                    <div class="form-group col-md-5">
+                        <label for="limit_from">From limit </label>
+                        <input type="number" class="form-control" id="limit_from" formControlName="limit_from"
+                            [ngClass]="{'is-invalid': control['limit_from'].invalid && (control['limit_from'].dirty || control['limit_from'].touched)}">
+                        <span
+                            *ngIf="control['limit_from'].invalid &&(control['limit_from'].dirty || control['limit_from'].touched)"
+                            class="text-danger p-1">From limit is required.</span>
+                    </div>
+                    <div class="form-group col-md-5">
+                        <label for="limit_to">To limit</label>
+                        <input type="number" class="form-control" id="limit_to" formControlName="limit_to"
+                            [ngClass]="{'is-invalid': control['limit_to'].invalid && (control['limit_to'].dirty || control['limit_to'].touched)}">
+                        <span
+                            *ngIf="control['limit_to'].invalid &&(control['limit_to'].dirty || control['limit_to'].touched)"
+                            class="text-danger p-1">To limit is required.</span>
+                    </div>
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="region">Description</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                        formControlName="description"
+                        [ngClass]="{'is-invalid':control['description'].errors?.['maxlength']}"></textarea>
+                    <span
+                        *ngIf="control['description'].invalid &&(control['description'].dirty || control['description'].touched)"
+                        class="text-danger p-1">
+                        <span *ngIf="control['description'].errors?.['maxlength']">
+                            Description should have at most {{
+                            control['description'].errors?.['maxlength'].requiredLength }} characters.
+                        </span>
+                    </span>
+                </div>
+                <div class="d-flex justify-content-center bg-theme-admin gap-3 p-3">
+                    <button class="btn btn-dark  " (click)="onSubmit()">{{isEdit?'Update':'Add'}}</button>
+                    <button class="btn btn-light " (click)="closeDialog()">Cancel</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</section>
