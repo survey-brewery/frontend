@@ -1,0 +1,26 @@
+<section class="bg-theme-admin m-0 ">
+    <div class="row m-0">
+        <div class="col-md-12 d-flex justify-content-center">
+            <h4 class="header pt-4">{{isEdit?'Update':'Add'}} percentage</h4>
+        </div>
+    </div>
+    <div class="row justify-content-center  m-0">
+        <div class="col-md-10 mb-3">
+            <form [formGroup]="form">
+                <div class="form-group col-md-6 offset-3">
+                    <label for="percentage">Percentage</label>
+                    <input type="number" class="form-control" id="percentage
+                    " formControlName="percentage"
+                        [ngClass]="{'is-invalid': control['percentage'].invalid && (control['percentage'].dirty || control['percentage'].touched)}">
+                        <span
+                            *ngIf="control['percentage'].invalid &&(control['percentage'].dirty || control['percentage'].touched)"
+                            class="text-danger p-1">Percentage is required.</span>
+                </div>
+                <div class="d-flex justify-content-center bg-theme-admin gap-3 p-3">
+                    <button class="btn btn-dark  " (click)="onSubmit()">{{isEdit?'Update':'Add'}}</button>
+                    <button class="btn btn-light " (click)="closeDialog()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
