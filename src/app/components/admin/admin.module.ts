@@ -7,7 +7,7 @@ import { UsersComponent } from './users/users.component';
 import { LevelsComponent } from './masters/levels/levels.component';
 import { AddUpdateLevelComponent } from './masters/levels/add-update-level/add-update-level.component';
 import { PercentageComponent } from './masters/percentage/percentage.component';
-import { AppUpdatePercentageComponent } from './masters/percentage/app-update-percentage/app-update-percentage.component';
+import { AddUpdatePercentageComponent } from './masters/percentage/add-update-percentage/app-update-percentage.component';
 import { ProfessionComponent } from './masters/profession/profession.component';
 import { AddUpdateProfessionComponent } from './masters/profession/add-update-profession/add-update-profession.component';
 import { QuestionTypeComponent } from './masters/question-type/question-type.component';
@@ -24,7 +24,7 @@ import { AddUpdateSubProfessionComponent } from './masters/sub-profession/add-up
     LevelsComponent,
     AddUpdateLevelComponent,
     PercentageComponent,
-    AppUpdatePercentageComponent,
+    AddUpdatePercentageComponent,
     ProfessionComponent,
     AddUpdateProfessionComponent,
     QuestionTypeComponent,

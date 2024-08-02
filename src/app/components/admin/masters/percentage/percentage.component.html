@@ -1,1 +1,48 @@
-<p>percentage works!</p>
+<section>
+    <div class="container">
+      <div class="row m-0 ">
+        <div class="col-md-4 px-5 pt-5">
+          <h4 class="header"> Percentage</h4>
+        </div>
+      </div>
+      <div class="row m-0 d-flex justify-content-center ">
+        <div class="col-md-10 card p-0 my-5">
+          <div class="d-flex justify-content-end table-header">
+            <button class="btn btn-dark" (click)="openDialog()">Add</button>
+          </div>
+          <div class=" table-container p-3">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col" class="text-center">Sr.no</th>
+                  <th scope="col" class="text-center">Percentage </th>
+                  <th scope="col" class="text-center">User</th>
+                  <th scope="col" class="text-center">Status</th>
+                  <th scope="col" class="text-center">Edit</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor = "let item of allPercentageList;let i=index">
+                  <th scope="row" class="text-center">{{i+1}}</th>
+                  <td class="text-center">{{item.percentage}}</td>
+                  <td class="text-center">{{item.full_name}}</td>
+                  <td  class="text-center" >
+                    <mat-slide-toggle class="example-margin"
+                    (change)="changeEvent($event,item.percentage_id)"
+                     [checked]="(item.del_flag==1)?true:false">
+                    </mat-slide-toggle>
+                  </td> 
+
+                  <td class="text-center"><img src="../../../../../assets/edit.svg" alt="" (click)="openDialog(item)">
+                  </td>
+                </tr>
+                <tr *ngIf="allPercentageList.length==0">
+                  <td colspan="10" class="text-danger fw-bold text-center">No Data Available</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

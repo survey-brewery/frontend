@@ -1,25 +1,19 @@
 import { Component, Inject } from '@angular/core';
-import { AdminService } from '../../../admin.service';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AdminService } from '../../../admin.service';
 import { ToastrService } from 'ngx-toastr';
 import { LevelsComponent } from '../../levels/levels.component';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-add-update-questions-type',
-  templateUrl: './add-update-questions-type.component.html',
-  styleUrls: ['./add-update-questions-type.component.scss']
+  selector: 'app-app-update-percentage',
+  templateUrl: './app-update-percentage.component.html',
+  styleUrls: ['./app-update-percentage.component.scss']
 })
-export class AddUpdateQuestionsTypeComponent {
+export class AddUpdatePercentageComponent {
   form!: FormGroup;
   isEdit = false;
   user_id: any
-  inputTypeList=[
-    {key:'text',label:'Textbox'},
-    {key:'radio',label:'Radio'},
-    {key:'checkbox',label:'Checkbox'},
-  ]
-  
   constructor(
     private fb: FormBuilder,
     private _adminService: AdminService,
@@ -30,16 +24,15 @@ export class AddUpdateQuestionsTypeComponent {
   ngOnInit(): void {
     this.user_id = localStorage.getItem('user_id') as string;
     this.createForm();
-    if (this.data?.question_type_id != null) {
+    if (this.data?.percentage_id != null) {
       this.isEdit = true;
       this.prepopulateData(this.data);
     }
   }
+
   createForm() {
     this.form = this.fb.group({
-      question_type: [null, Validators.required],
-      input_type: [null, Validators.required],
-      description:[null,Validators.maxLength(250)],
+      percentage: [null, Validators.required],
       user_id: [this.user_id, Validators.required],
 
     })
@@ -48,11 +41,11 @@ export class AddUpdateQuestionsTypeComponent {
     return this.form.controls;
   }
   onSubmit() {
-    this.isEdit ? this.updateQuestionType() : this.createQuestionType();
+    this.isEdit ? this.updatePercentage() : this.createPercentage();
   }
-  createQuestionType() {
+  createPercentage() {
     if (this.form.valid) {
-      this._adminService.createQuestionType(this.form.value).subscribe({
+      this._adminService.createPercentage(this.form.value).subscribe({
         next: (res: any) => {
           if (res.status == 201) {
             this._toastrService.success(res.message);
@@ -74,9 +67,9 @@ export class AddUpdateQuestionsTypeComponent {
       this._toastrService.warning('fill required fields');
     }
   }
-  updateQuestionType() {
+  updatePercentage() {
     if (this.form.valid) {
-      this._adminService.updateQuestionType(this.form.value, this.data.question_type_id).subscribe({
+      this._adminService.updatePercentage(this.form.value, this.data.percentage_id).subscribe({
         next: (res: any) => {
           if (res.status == 201) {
             this._toastrService.success(res.message);
@@ -102,9 +95,8 @@ export class AddUpdateQuestionsTypeComponent {
     this.dialogRef.close(message)
   }
   prepopulateData(data: any) {
-    this.control['question_type'].patchValue(data.question_type);
-    this.control['description'].patchValue(data.description);  
-    this.control['input_type'].patchValue(data.input_type); 
+    this.control['percentage'].patchValue(data.percentage);
     this.control['user_id'].patchValue(data.user_id)
   }
+
 }
