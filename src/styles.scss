@@ -72,7 +72,8 @@ body {
     border-radius: 12px;
 }
 .header{
-    font-weight: 600;
+    font-weight: 500!important;
+    font-size: 1.4rem!important;
 }
 img {
     cursor: pointer;
@@ -109,6 +110,10 @@ label {
     // height: 100vh;
     background-color: #C1B99F;
 }
+.example-form mat-slide-toggle {
+    margin: 8px 0;
+    display: block;
+  }
 
 
 
@@ -129,3 +134,5 @@ label {
 // textarea:focus{
 //     box-shadow: 0 0 0 rgb(255, 255, 255);
 // }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
