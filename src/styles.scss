@@ -27,8 +27,8 @@ body {
     background: #dcdcdc;
     color: #0f0f0f;
     border-radius: 44.5px;
-    height: 45px;
-    padding: 10px 30px;
+    font-size: 0.9rem!important;
+    padding: 0.5rem 1rem !important;
 }
 
 .btn-light-cancel:hover {
@@ -40,33 +40,42 @@ body {
 .btn-success {
     background: #008323;
     border-radius: 44.5px;
-    padding: 10px 30px 10px 30px !important;
-    height: 45px;
+    padding: 0.5rem 1rem !important;
+    font-size: 0.9rem!important;
     text-align: center;
     border: none;
-}
-
-.btn-success:hover {
-    background: #fff;
-    color: #000;
-    border: 1px solid #000;
 }
 
 .btn-pink {
     background: rgba(226, 87, 76, 0.5);
     border-radius: 44.5px;
-    padding: 10px 30px 10px 30px !important;
-    height: 45px;
+    padding: 0.5rem 1rem !important;
+    font-size: 0.9rem!important;
     text-align: center;
     border: none;
 }
-
+.btn-gold{
+    background: #FCD96C;
+    border-radius: 44.5px;
+    padding: 0.5rem 1rem !important;
+    font-size: 0.9rem!important;
+    text-align: center;
+    border: none;
+}
 .btn-pink:hover {
     background: #fff;
     color: #000;
     border: 1px solid #000;
 }
-
+.btn-success:hover {
+    background: #fff;
+    color: #000;
+    border: 1px solid #000;
+}
+//text
+.fw-light{
+    font-weight: 400!important;
+}
 
 .card {
     border-radius: 12px;
