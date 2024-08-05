@@ -5,12 +5,30 @@
     background-color: #161616;
     color: aliceblue;
     width: calc(240px - 0%)!important;
+    position: fixed;
+    left: 0px;
+    z-index: 1;
+    height: 100vh;
 }
 .body{
     width: calc(100% - 240px);
     background-color: #F9FBFF;
     margin: 0px!important;
     padding: 0px!important;
+    position: relative;
+    left: 240px;
+    top: 50px;
+    z-index: 1;
+    .body-container{
+        top: 50px;
+    }
+    .header{
+        position: fixed; 
+        width: calc(100% - 240px);
+        top: 0px;
+        z-index: 1;
+        
+    }
 }
 .menu .nav{
     display: unset!important;
@@ -83,6 +101,9 @@
     }
     .body{
         width: 100%;
+        position: relative;
+        left: 0px;
+        z-index: 1;
     }
     app-user-header{
         display: none;

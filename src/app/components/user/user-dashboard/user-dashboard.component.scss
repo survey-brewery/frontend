@@ -1,0 +1,46 @@
+.dashboard-card {
+    border-radius: 15px;
+    background-color: #FFF !important;
+    border: 1px solid #757575;
+    margin: 1rem 0rem;
+
+    // font-family: 'Inter, sans-serif';
+    .card-header {
+        padding: 1rem 1rem 0rem 1rem;
+
+        border-bottom: 0.5px solid #e3e3e3;
+
+        h4 {
+            font-size: 1.2rem;
+        }
+
+        p {
+            color: #9E9E9E;
+            font-size: 0.8rem;
+        }
+    }
+
+    .card-body,
+    .card-footer {
+        padding: 1rem;
+        p {
+            font-size: 0.9rem;
+        }
+
+        .filter {
+            border: 1px solid #FBC108;
+            border-radius: 100px;
+            padding: 0.2rem 1rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            background: #FEF9EC;
+            margin-left: 0.4rem;
+        }
+    }
+}
+.dashboard-right-bottom{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+
+}

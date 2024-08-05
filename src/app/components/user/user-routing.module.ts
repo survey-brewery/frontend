@@ -4,24 +4,24 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { FillSurveyComponent } from './fill-survey/fill-survey.component';
 
 const routes: Routes = [
-  { path: "", redirectTo: "user", pathMatch: "full" },
+  { path: "", redirectTo: "dasboard", pathMatch: "full" },
   {
     path: "",
     component: UserDashboardComponent,
     // canActivate:[AuthGuard]
   },
   {
-    path: "user",
+    path: "user-dashboard",
     component: UserDashboardComponent,
     pathMatch: "full",
-    outlet: "user_Menu",
+    outlet: "user_menu",
     // canActivate:[AuthGuard]
   },
   {
     path: "fill-survey",
     component: FillSurveyComponent,
     pathMatch: "full",
-    outlet: "user_Menu",
+    outlet: "user_menu",
     // canActivate:[AuthGuard]
   },
   //   {
