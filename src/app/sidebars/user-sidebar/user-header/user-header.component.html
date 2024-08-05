@@ -1,9 +1,20 @@
 <div class="header d-flex justify-content-between">
     <div class="header-title">Dashboard</div>
     <ul class="sub-header-menu">
-        <li>Points</li>
-        <li>Level</li>
-        <li>Notification</li>
-        <li>Profile</li>
+        <li class="filter"><img src="../../../../assets/user/karma-point.svg" alt="karma-point"> &nbsp;&nbsp;150</li>
+        <li class="filter"><img src="../../../../assets/user/level/level-beginner.svg" alt="karma-point"> &nbsp;&nbsp;Begginer</li>
+        <li><img src="../../../../assets/images/icon/icon-notification.svg" height="20px"  alt="notification"></li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="../../../../assets/images/icon/icon-user-profile.svg" height="25px" alt="profile">
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item"   routerLink="/user/create-survey-report"> <img src="../../../../assets/images/icon/icon-user.svg" alt="user">  &nbsp; <small>My Account</small></a>
+              <a class="dropdown-item"   routerLink="/user/create-survey-report"><img src="../../../../assets/images/icon/icon-level.svg" alt="level"> &nbsp; <small>Level</small></a>
+              <a class="dropdown-item" routerLink="/user/fill-survey-report"><img src="../../../../assets/user/karma-point.svg" alt="user"> &nbsp; <small>Karma points</small></a>
+            </div>
+          </li>
+
+
     </ul>
 </div>

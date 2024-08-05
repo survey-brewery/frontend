@@ -7,13 +7,13 @@
             </div>
             <div class="menu">
                 <ul class="nav">
-                    <li class="nav-item" [routerLink]="['/user', { outlets: { user_Menu: ['user']}}]"> 
+                    <li class="nav-item" [routerLink]="['/user', { outlets: { user_menu: ['user-dashbaord']}}]"> 
                         <a class="nav-link" >Dashboard</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" >Create survey</a>
                     </li>
-                    <li class="nav-item" [routerLink]="['/user', { outlets: { user_Menu: ['fill-survey']}}]">
+                    <li class="nav-item" [routerLink]="['/user', { outlets: { user_menu: ['fill-survey']}}]">
                         <a class="nav-link" >Fill survey</a>
                     </li>
                     <li class="nav-item">
@@ -38,8 +38,8 @@
             </div>
         </div>
         <div class="body ">
-            <app-user-header></app-user-header>
-            <router-outlet name="user_Menu"></router-outlet>
+            <div class="header"><app-user-header></app-user-header></div>
+            <div class="body-container"><router-outlet name="user_menu"></router-outlet></div>
         </div>
     </div>
 </div>

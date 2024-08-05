@@ -2,13 +2,35 @@
     display: flex;
     justify-self: end;
     list-style: none;
-    
+    margin-bottom: 15px;
     li{
         margin-left: 40px;
     }
 }
 .header{
-    padding:20px 20px 0px 20px;
+    padding:10px 20px 0px 20px;
     background-color: #FFFF;
     margin: 0px;
+}
+.filter {
+    border: 1px solid #FBC108;
+    border-radius: 100px;
+    padding: 0.1rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background: #FEF9EC;
+    display: flex;
+    align-self: center;
+    img{
+        height: 20px;
+    }
+}
+.dropdown-menu{
+    position: absolute;
+    left: unset!important;
+
+    right: 0px !important;
+    left: unset !important;
+    top: 50px !important;
+    transform: unset !important;
 }
