@@ -6,6 +6,7 @@ import { LevelsComponent } from './masters/levels/levels.component';
 import { PercentageComponent } from './masters/percentage/percentage.component';
 import { ProfessionComponent } from './masters/profession/profession.component';
 import { QuestionTypeComponent } from './masters/question-type/question-type.component';
+import { SubProfessionComponent } from './masters/sub-profession/sub-profession.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "admin", pathMatch: "full" },
@@ -49,6 +50,14 @@ const routes: Routes = [
     outlet: "sub_menu",
     // canActivate:[AuthGuard]
   },
+  {
+    path: "sub-profession",
+    component: SubProfessionComponent,
+    pathMatch: "full",
+    outlet: "sub_menu",
+    // canActivate:[AuthGuard]
+  },
+
   
   {
     path: "users",

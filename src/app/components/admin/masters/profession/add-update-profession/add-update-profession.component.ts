@@ -98,5 +98,4 @@ export class AddUpdateProfessionComponent {
     this.control['description'].patchValue(data.description);
     this.control['user_id'].patchValue(data.user_id)
   }
-
 }
