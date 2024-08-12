@@ -34,7 +34,7 @@ export class LevelsComponent implements OnInit {
     });
   }
   getAllLevelsList() {
-    this.adminService.getAllAdminLevelsList().subscribe({
+    this.adminService.getAllAdminLevelsList('','').subscribe({
       next: (res: any) => {
         if (res.data.length > 0) {
           this.allLevelsList = res.data

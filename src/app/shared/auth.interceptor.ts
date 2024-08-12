@@ -2,6 +2,8 @@ import { Injectable } from "@angular/core";
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { catchError, finalize, Observable, throwError } from "rxjs";
 import { SurveyService } from "../components/auth/auth.service";
+import { Router } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -9,7 +11,7 @@ export class AuthInterceptor implements HttpInterceptor {
     'Content-Type': 'application/json'
   });
 
-  constructor(private surveyService: SurveyService) {}
+  constructor(private surveyService: SurveyService, private _router: Router, private _toastrService: ToastrService,) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = this.surveyService.getToken();
@@ -34,7 +36,13 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   private handleAuthError(err: HttpErrorResponse): Observable<any> {
-    console.log(err);
+    console.log(err.error.message);
+    this._toastrService.clear();
+    this._toastrService.warning(err.error.message);
+    if (err.error.status == 401) {
+      this._router.navigate(['']);
+      localStorage.setItem('isLogin', 'false');
+    }
     return throwError(err);
   }
 }

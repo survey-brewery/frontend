@@ -38,7 +38,7 @@ export class UserDashboardComponent  implements OnInit{
   }
 
   getAllSurveyBasicDetailsList() {
-    this._userService.getAllSurveyBasicDetailsList(this.user_id).subscribe({
+    this._userService.getAllSurveyBasicDetailsList(this.user_id,'','').subscribe({
       next: (res: any) => {
         if (res.data.length > 0) {
           this.allSurveyList = res.data;

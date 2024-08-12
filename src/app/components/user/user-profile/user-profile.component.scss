@@ -1,0 +1,24 @@
+.btn-group {
+    width: 60%;
+    color: #000000;
+    padding: 0px 15px;
+}
+
+.btn {
+    padding: 8px 20px;
+    display: unset!important;
+}
+
+.gender-btn {
+    text-decoration: none;
+    background: #FFFFFF;
+}
+
+input[type="radio"]:checked+label {
+    color: #000000;
+    background: #fbc108;
+    background-image: url(../../../../assets/images/icon/icon-check.svg);
+    background-repeat: no-repeat;
+    background-size: 15px;
+    background-position: left;
+}

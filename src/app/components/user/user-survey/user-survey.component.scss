@@ -1,0 +1,15 @@
+
+.dashboard-card {
+    background-image: url(../../../../assets/images/background/user-level.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+.dashboard-card-image{
+  position: absolute;
+  height: 140px;
+  bottom: 0px;
+  right: 0px;
+  opacity: 0.3;
+}
+  

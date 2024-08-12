@@ -1,6 +1,5 @@
-<div class="container-fuild h-100" >
+<div class="container-fuild h-100">
     <router-outlet *ngIf="!isUserDashboard&&!isAdminDashboard"></router-outlet>
-<app-admin-sidebar *ngIf="isAdminDashboard"></app-admin-sidebar>
-<app-user-sidebar *ngIf="isUserDashboard"></app-user-sidebar>
+    <app-admin-sidebar *ngIf="isAdminDashboard"></app-admin-sidebar>
+    <app-user-sidebar *ngIf="isUserDashboard"></app-user-sidebar>
 </div>
-    

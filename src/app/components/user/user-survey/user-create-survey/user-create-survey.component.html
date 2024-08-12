@@ -1,0 +1,326 @@
+<div class="container p-5 pt-0">
+    <div class="row pt-3 ">
+        <div class="">
+            <button class="btn-sm-gold" [routerLink]="['/user', { outlets: { user_menu: ['survey']}}]"><i
+                    class="material-icons fs-6 w-20">arrow_backward</i> Back </button>
+        </div>
+        <div class="row my-3">
+            <div class="col-md-12">
+                <mat-tab-group class=" " selectedIndex="2">
+                    <mat-tab label="Basic Info">
+                        <div class="dashboard-card">
+                            <div class="row card-body mx-0">
+                                <div class="row">
+                                    <div class="col-md-5 col-sm-12">
+                                        <div class="form-group-user">
+                                            <label for="name" class="bg-white">Survey Title</label>
+                                            <input type="text" class="form-control bg-white" placeholder="Survey title"
+                                                id="floatingInput" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-12">
+                                        <div class="form-group-user">
+                                            <label for="name" class="bg-white">End Date</label>
+                                            <input type="text" class="form-control bg-white" placeholder="End Date"
+                                                id="floatingInput" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 col-sm-12">
+                                        <div class="form-group-user">
+                                            <label for="Select level to float survey" class="bg-white">Select level to
+                                                float survey</label>
+                                            <mat-select class="form-control classic bg-white"
+                                                placeholder="Select level to float survey">
+                                                <mat-option class="dark-background" *ngFor="let item of allRegionsList"
+                                                    [value]="item.region_id">
+                                                    {{ item.region }}
+                                                </mat-option>
+                                            </mat-select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 my-3 gap-3 d-flex">
+                                        <button class="btn-sm-pink" (click)="changeTab('Basic Info')">
+                                            <i class="material-icons fs-6 w-20">arrow_backward</i> Cancel
+                                        </button>
+                                        <button class="btn-sm-gold" (click)="changeTab('Filters')">
+                                            Next <i class="material-icons fs-6 w-20">arrow_forward</i>
+                                        </button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Filters">
+                        <div class="dashboard-card">
+                            <div class="row card-body mx-0">
+                                <h4 class="fw-bold">Select additional filters for the survey respondents (Not mandatory)
+                                </h4>
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-12">
+                                        <div class="form-group-user">
+                                            <label for="Select level to float survey" class="bg-white">Gender</label>
+                                            <mat-select class="form-control classic bg-white"
+                                                placeholder="Select gender">
+                                                <mat-option class="dark-background" *ngFor="let item of allRegionsList"
+                                                    [value]="item.region_id">
+                                                    {{ item.region }}
+                                                </mat-option>
+                                            </mat-select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-12">
+                                        <div class="form-group-user">
+                                            <label for="Region" class="bg-white">Region</label>
+                                            <mat-select class="form-control classic bg-white"
+                                                placeholder="Select region">
+                                                <mat-option class="dark-background" *ngFor="let item of allRegionsList"
+                                                    [value]="item.region_id">
+                                                    {{ item.region }}
+                                                </mat-option>
+                                            </mat-select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-4 col-sm-12">
+                                        <div class="form-group-user">
+                                            <label for="Region" class="bg-white">Profession</label>
+                                            <mat-select class="form-control classic bg-white"
+                                                placeholder="Select profession">
+                                                <mat-option class="dark-background" *ngFor="let item of allRegionsList"
+                                                    [value]="item.region_id">
+                                                    {{ item.region }}
+                                                </mat-option>
+                                            </mat-select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-12">
+                                        <div class="form-group-user">
+                                            <label for="Region" class="bg-white">Sub-Profession</label>
+                                            <mat-select class="form-control classic bg-white"
+                                                placeholder="Select sub profession">
+                                                <mat-option class="dark-background" *ngFor="let item of allRegionsList"
+                                                    [value]="item.region_id">
+                                                    {{ item.region }}
+                                                </mat-option>
+                                            </mat-select>
+                                        </div>
+                                    </div>
+                                    <h4 class="fw-bold my-3">Maximum possible responses for this survey - 950</h4>
+                                    <div class="col-md-12 my-3 gap-3 d-flex">
+                                        <button class="btn-sm-pink" (click)="changeTab('Basic Info')">
+                                            <i class="material-icons fs-6 w-20">arrow_backward</i> Previous
+                                        </button>
+                                        <button class="btn-sm-gold" (click)="changeTab('Questions')">
+                                            Next <i class="material-icons fs-6 w-20 ">arrow_forward</i>
+                                        </button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </mat-tab>
+                    <mat-tab label="Questions">
+                        <div class="dashboard-card">
+                            <div class="row card-body mx-0">
+                                <div class="sub-card my-2 py-2">
+                                    <div class="row">
+                                        <div class="col-md-3 col-sm-12">
+                                            <div class="form-group-user">
+                                                <label for="Region" class="bg-light-pink">Question type</label>
+                                                <mat-select class="form-control classic bg-light-pink"
+                                                    placeholder="Select question type">
+                                                    <mat-option class="dark-background"
+                                                        *ngFor="let item of allRegionsList" [value]="item.region_id">
+                                                        {{ item.region }}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-12">
+                                            <div class="form-group-user">
+                                                <label for="name" class="bg-light-pink">Question</label>
+                                                <input type="text" class="form-control bg-light-pink" placeholder="Question"
+                                                    id="floatingInput" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="row mt-2 d-flex align-items-center">
+                                                <div class="col-12 col-md-1">
+                                                    <div class="form-group-user">
+                                                        <input [type]="'radio'">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <div class="form-group-user">
+                                                        <label for="name" class="bg-light-pink">Option 1</label>
+                                                        <input type="text" class="form-control bg-light-pink" placeholder="Enter an Answer Choice"
+                                                            id="floatingInput" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-2 col-md-2 d-flex">
+                                                    <img class="mx-2" src="../../../../../assets/plus.svg" alt="">
+                                                    <img class="mx-2" src="../../../../../assets/minus.svg" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row mt-2 d-flex align-items-center">
+                                                <div class="col-12 col-md-1">
+                                                    <div class="form-group-user">
+                                                        <input [type]="'radio'">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <div class="form-group-user">
+                                                        <label for="name" class="bg-light-pink">Option 2</label>
+                                                        <input type="text" class="form-control bg-light-pink" placeholder="Enter an Answer Choice"
+                                                            id="floatingInput" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-2 col-md-2 d-flex">
+                                                    <img class="mx-2" src="../../../../../assets/plus.svg" alt="">
+                                                    <img class="mx-2" src="../../../../../assets/minus.svg" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sub-card my-2 py-2">
+                                    <div class="row">
+                                        <div class="col-md-3 col-sm-12">
+                                            <div class="form-group-user">
+                                                <label for="Region" class="bg-light-pink">Question type</label>
+                                                <mat-select class="form-control classic bg-light-pink"
+                                                    placeholder="Select question type">
+                                                    <mat-option class="dark-background"
+                                                        *ngFor="let item of allRegionsList" [value]="item.region_id">
+                                                        {{ item.region }}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-12">
+                                            <div class="form-group-user">
+                                                <label for="name" class="bg-light-pink">Question</label>
+                                                <input type="text" class="form-control bg-light-pink" placeholder="Question"
+                                                    id="floatingInput" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="row mt-2 d-flex align-items-center">
+                                                <div class="col-12 col-md-1">
+                                                    <div class="form-group-user">
+                                                        <input [type]="'radio'">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <div class="form-group-user">
+                                                        <label for="name" class="bg-light-pink">Option 1</label>
+                                                        <input type="text" class="form-control bg-light-pink" placeholder="Enter an Answer Choice"
+                                                            id="floatingInput" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-2 col-md-2 d-flex">
+                                                    <img class="mx-2" src="../../../../../assets/plus.svg" alt="">
+                                                    <img class="mx-2" src="../../../../../assets/minus.svg" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row mt-2 d-flex align-items-center">
+                                                <div class="col-12 col-md-1">
+                                                    <div class="form-group-user">
+                                                        <input [type]="'radio'">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <div class="form-group-user">
+                                                        <label for="name" class="bg-light-pink">Option 2</label>
+                                                        <input type="text" class="form-control bg-light-pink" placeholder="Enter an Answer Choice"
+                                                            id="floatingInput" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-2 col-md-2 d-flex">
+                                                    <img class="mx-2" src="../../../../../assets/plus.svg" alt="">
+                                                    <img class="mx-2" src="../../../../../assets/minus.svg" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 my-3 gap-3 d-flex">
+                                        <button class="btn-sm-pink" (click)="changeTab('Filters')">
+                                            <i class="material-icons fs-6 w-20">arrow_backward</i> Previous
+                                        </button>
+                                        <button class="btn-sm-gold" (click)="changeTab('Make Live')">
+                                            Next <i class="material-icons fs-6 w-20">arrow_forward</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Make Live">
+                        Make Live
+                        <button class="btn-sm-pink" (click)="changeTab('Questions')">
+                            <i class="material-icons fs-6 w-20">arrow_backward</i> Previous
+                        </button>
+                    </mat-tab>
+                </mat-tab-group>
+            </div>
+        </div>
+        <div class="row m-0">
+            <div class="col-md-12 m-0">
+                <div class="instruction row m-0">
+                    <h5 class="fs-6">
+                        <img src="../../../../assets/user/dashboard/icon-faq.svg" alt="" />
+                        What are levels?
+                    </h5>
+                    <div class="col-3">
+                        <div class="dashboard-card rounded-3 p-1">
+                            <div class="card-body p-2">
+                                <small>Your Karma points decide the level you are in</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-auto d-flex align-items-center p-0 m-0">
+                        <i class="material-icons fs-6 w-20">arrow_forward</i>
+                    </div>
+                    <div class="col-3">
+                        <div class="dashboard-card rounded-3 p-1">
+                            <div class="card-body p-2">
+                                <small>Upgrade to higher levels by earning more Karma points</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-auto d-flex align-items-center p-0 m-0">
+                        <i class="material-icons fs-6 w-20">arrow_forward</i>
+                    </div>
+                    <div class="col-3">
+                        <div class="dashboard-card rounded-3 p-1">
+                            <div class="card-body p-2">
+                                <small>In Higher levels surveys will have better completion rate</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

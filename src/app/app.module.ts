@@ -25,10 +25,10 @@ const APP_CONTAINERS = [
     AppRoutingModule,
     // SharedModule,
     ToastrModule.forRoot({
-      timeOut: 3000,
+      timeOut: 6000,
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
-      
+      closeButton:true
     }), // ToastrModule added
     HttpClientModule,
   ],

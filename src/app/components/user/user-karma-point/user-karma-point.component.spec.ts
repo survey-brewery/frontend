@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FillSurveyComponent } from './fill-survey.component';
+import { UserKarmaPointComponent } from './user-karma-point.component';
 
-describe('FillSurveyComponent', () => {
-  let component: FillSurveyComponent;
-  let fixture: ComponentFixture<FillSurveyComponent>;
+describe('UserKarmaPointComponent', () => {
+  let component: UserKarmaPointComponent;
+  let fixture: ComponentFixture<UserKarmaPointComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FillSurveyComponent ]
+      declarations: [ UserKarmaPointComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(FillSurveyComponent);
+    fixture = TestBed.createComponent(UserKarmaPointComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

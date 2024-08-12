@@ -9,9 +9,9 @@
                 <img src="../../../../assets/images/icon/icon-user-profile.svg" height="25px" alt="profile">
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item"   routerLink="/user/create-survey-report"> <img src="../../../../assets/images/icon/icon-user.svg" alt="user">  &nbsp; <small>My Account</small></a>
-              <a class="dropdown-item"   routerLink="/user/create-survey-report"><img src="../../../../assets/images/icon/icon-level.svg" alt="level"> &nbsp; <small>Level</small></a>
-              <a class="dropdown-item" routerLink="/user/fill-survey-report"><img src="../../../../assets/user/karma-point.svg" alt="user"> &nbsp; <small>Karma points</small></a>
+              <a class="dropdown-item" [routerLink]="['/user', { outlets: { user_menu: ['my-profile']}}]"> <img src="../../../../assets/images/icon/icon-user.svg" alt="user">  &nbsp; <small>My Account</small></a>
+              <a class="dropdown-item" [routerLink]="['/user', { outlets: { user_menu: ['user-level']}}]"><img src="../../../../assets/images/icon/icon-level.svg" alt="level"> &nbsp; <small>Level</small></a>
+              <a class="dropdown-item" [routerLink]="['/user', { outlets: { user_menu: ['karma-point']}}]"><img src="../../../../assets/user/karma-point.svg" alt="user"> &nbsp; <small>Karma points</small></a>
             </div>
           </li>
 

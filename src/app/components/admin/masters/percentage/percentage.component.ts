@@ -36,7 +36,7 @@ export class PercentageComponent {
     });
   }
   getPercentageList() {
-    this._adminService.getAllPercentagesList().subscribe({
+    this._adminService.getAllPercentagesList('','').subscribe({
       next: (res: any) => {
         if (res.data.length > 0) {
           this.allPercentageList = res.data
