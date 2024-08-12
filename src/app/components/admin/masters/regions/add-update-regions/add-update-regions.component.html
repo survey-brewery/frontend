@@ -1,0 +1,43 @@
+<section class="bg-theme-admin m-0 ">
+    <div class="row m-0">
+        <div class="col-md-12 d-flex justify-content-center">
+            <h4 class="header pt-4">{{isEdit?'Update':'Add'}} Region</h4>
+        </div>
+    </div>
+    <div class="row justify-content-center  m-0">
+        <div class="col-md-10 mb-3">
+            <form [formGroup]="form">
+                <div class="form-group col-md-12 ">
+                    <label for="region">Region</label>
+                    <input type="text" class="form-control" id="region
+                    " formControlName="region"
+                        [ngClass]="{'is-invalid': control['region'].invalid && (control['region'].dirty || control['region'].touched)}">
+                        <span
+                            *ngIf="control['region'].invalid &&(control['region'].dirty || control['region'].touched)"
+                            class="text-danger p-1">Region is required.</span>
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="description">Description</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                        formControlName="description"
+                        [ngClass]="{'is-invalid':control['description'].errors?.['maxlength']}"></textarea>
+                    <span
+                        *ngIf="control['description'].invalid &&(control['description'].dirty || control['description'].touched)"
+                        class="text-danger p-1">
+                        <span *ngIf="control['description'].errors?.['maxlength']">
+                            Description should have at most {{
+                            control['description'].errors?.['maxlength'].requiredLength }} characters.
+                        </span>
+                    </span>
+                </div>
+
+                <div class="d-flex justify-content-center bg-theme-admin gap-3 p-3">
+                    <button class="btn btn-dark  " (click)="onSubmit()">{{isEdit?'Update':'Add'}}</button>
+                    <button class="btn btn-light " (click)="closeDialog()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+

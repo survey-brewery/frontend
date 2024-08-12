@@ -1,0 +1,118 @@
+<section>
+    <div class="container">
+      <div class="row m-0 ">
+        <div class="col-md-4 px-5 pt-5">
+          <h4 class="header"> Fill Survey</h4>
+        </div>
+      </div>
+      <div class="row m-0 d-flex justify-content-center ">
+        <div class="col-md-10 card p-0 my-5">
+          <!-- <div class=" row m-0 d-flex justify-content-end table-header p-3  ">
+             <div class="col-md-5 d-flex justify-content-end  "> 
+                <label for="endDate" class="label col-md-2 fw-bold mt-2 me-2">Form date</label>
+                <div class="col-md-8 " >
+                  <input
+                    type="date"
+                    class="form-control"
+                    placeholder="MM-DD-YYYY"
+                    id="startDate"
+                    #fromDate
+                  />
+                </div>
+            </div>
+             <div class="col-md-5 d-flex">
+                <label for="endDate" class="label col-md-2 fw-bold mt-2">To date</label>
+                <div class="col-md-8">
+                  <input
+                    type="date"
+                    class="form-control"
+                    placeholder="MM-DD-YYYY"
+                    id="endDate"
+                    #toDate
+                  />
+                </div>
+            </div>
+            <div  class="col-md-2 mt-1"><button class="btn btn-dark" (click)="filter(fromDate.value, toDate.value)">Submit </button></div>
+          </div> -->
+          <div class="row table-header p-3 m-0 justify-content-end">
+            <div class="col-md-5">
+              <div class="row ">
+                <div class="col-md-4 d-flex justify-content-end">
+                  <label for="" class=" justify-content-center">From date</label>
+                </div>
+                <div class="col-md-8 ">
+                  <input
+                    type="date"
+                    class="form-control col-lmd-2 p-0 ps-1"
+                    placeholder="MM-DD-YYYY"
+                    id="startDate"
+                    #fromDate
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="row ">
+                <div class="col-md-4  d-flex justify-content-end">
+                  <label for="" class="">To date</label>
+                </div>
+                <div class="col-md-8">
+                  <input
+                    type="date"
+                    class="form-control col-lmd-2 p-0 ps-1"
+                    placeholder="MM-DD-YYYY"
+                    id="startDate"
+                    #toDate
+                  />
+                </div>
+              </div>
+                
+            </div>
+            <div class="col-md-2">
+              <div class="">
+                <button
+              class="text-white btn-sm rounded-1 btn-dark "
+              (click)="filter(fromDate.value, toDate.value)"
+            >
+              Submit
+            </button>
+              </div>
+            </div>
+          </div>
+          
+          
+          <div class=" table-container p-3">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                    <tr>
+                        <th scope="col" class="text-center">S.no</th>
+                        <th scope="col">Survey title</th>
+                        <th scope="col" class="text-center">Start date</th>
+                        <th scope="col" class="text-center">End date</th>
+                        <th scope="col">User Count</th>
+                    
+                      </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of AllFillSurveyList; let i = index">
+                    <th scope="row" class="text-center">{{ i + 1 }}</th>
+                    <td>{{ item.survey_title }}</td>
+                    <td class="text-center">{{ item.start_date|date:'dd-MM-YYYY' }}</td>
+                    <td class="text-center">{{ item.end_date|date:'dd-MM-YYYY' }}</td>
+                    <td class="text-center">{{ item.usersCount }}</td>
+                    
+                </tr>
+                <tr *ngIf="AllFillSurveyList.length==0">
+                  <td colspan="10" class="text-danger fw-bold text-center">No Data Available</td>
+                </tr>
+              </tbody>
+            </table>
+            <mat-paginator [length]="total" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page" [showFirstLastButtons]="true" (page)="onPageChangeFillSurvey($event)">
+            </mat-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
