@@ -2,28 +2,26 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AdminService } from '../../admin.service';
 import { ToastrService } from 'ngx-toastr';
-import { AddUpdateSubProfessionComponent } from './add-update-sub-profession/add-update-sub-profession.component';
+import { AddUpdateRegionsComponent } from './add-update-regions/add-update-regions.component';
 
 @Component({
-  selector: 'app-sub-profession',
-  templateUrl: './sub-profession.component.html',
-  styleUrls: ['./sub-profession.component.scss']
+  selector: 'app-regions',
+  templateUrl: './regions.component.html',
+  styleUrls: ['./regions.component.scss']
 })
-export class SubProfessionComponent {
-  allgetSubProfessionList: Array<any> = [];
-  user_id:any
+export class RegionsComponent {
+  allRegionsList: Array<any> = [];
   constructor(
     private dialog: MatDialog,
     private _adminService: AdminService,
     private _toastrService:ToastrService
   ) { }
   ngOnInit(): void {
-    this.user_id = localStorage.getItem('user_id') as string;
-    this.getSubProfessionList();
+    this.getRegionsList();
   
   }
   openDialog(data?: any) {
-    const dialogRef = this.dialog.open(AddUpdateSubProfessionComponent, {
+    const dialogRef = this.dialog.open(AddUpdateRegionsComponent, {
       data: data,
       width: '744px',
       height: 'auto'
@@ -31,29 +29,29 @@ export class SubProfessionComponent {
 
     dialogRef.afterClosed().subscribe((message: string) => {
       if (message == 'create' || message == 'update') {
-        this.getSubProfessionList();
+        this.getRegionsList();
       } else {
         console.log('nothing happen');
       }
     });
   }
-  getSubProfessionList() {
-    this._adminService.getAllSubProfessionsList(this.user_id).subscribe({
+  getRegionsList() {
+    this._adminService.getAllRegionsList().subscribe({
       next: (res: any) => {
         if (res.data.length > 0) {
-          this.allgetSubProfessionList = res.data
+          this.allRegionsList = res.data
         } else {
-          this.allgetSubProfessionList = []
+          this.allRegionsList = []
         }
       }
     })
   }
-  deleteSubProfession(id:any) {
-    this._adminService.deleteSubProfessionById(id).subscribe({
+  deleteRegions(id:any) {
+    this._adminService.deleteRegionById(id).subscribe({
       next: (res: any) => {
         if (res.status == 201) {
           this._toastrService.success(res.message);
-          this.getSubProfessionList();
+          this.getRegionsList();
 
         } else {
           this._toastrService.warning(res.massage)
@@ -68,5 +66,4 @@ export class SubProfessionComponent {
       }
     })
    }
-  
 }

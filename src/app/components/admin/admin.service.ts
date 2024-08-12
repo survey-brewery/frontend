@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { __param } from 'tslib';
 
 @Injectable({
   providedIn: 'root'
@@ -161,31 +162,39 @@ subProfessionListByProfessionId(id:any):Observable<any>{
   return this.http.get(this.baseUrl+'admin/master-tables/sub-professions/subProfessionByProfessionId.php/'+id)
 }
 
-getCreateSurveyList(fromDate:any,toDate:any,user_id:any):Observable<any>{
+getCreateSurveyList(fromDate:any,toDate:any,user_id:any,page:any,perPage:any):Observable<any>{
   let params={
     'fromDate':fromDate,
     'toDate':toDate,
-    'user_id':user_id
+    'user_id':user_id,
+    'page':page,
+    'perPage':perPage
   };
   if(fromDate==null||fromDate==''){
     delete params['fromDate'];
-  }else if(toDate==null||toDate==''){
-    delete params['toDate'];
-  }else if(user_id==''){
-    delete params['user_id'];
-  }else{
-    
   }
-  
+   if(toDate==null||toDate==''){
+    delete params['toDate'];
+  }
+   if(user_id==''||user_id==null){
+
+    delete params['user_id'];
+  }
+  if(page==''||perPage==''){
+    delete params['page'];
+    delete params['perPage'];
+  }
   return this.http.get(this.baseUrl+'admin/survey/create-survey/create-survey-list.php',{
     params:params
   })
 }
-getFillSurveyList(fromDate:any,toDate:any,user_id:any):Observable<any>{
+getFillSurveyList(fromDate:any,toDate:any,user_id:any,page:any,perPage:any):Observable<any>{
   let params={
     'fromDate':fromDate,
     'toDate':toDate,
-    'user_id':user_id
+    'user_id':user_id,
+    'page':page,
+    'perPage':perPage
   };
   if(fromDate==null||fromDate==''){
     delete params['fromDate'];
@@ -193,6 +202,9 @@ getFillSurveyList(fromDate:any,toDate:any,user_id:any):Observable<any>{
     delete params['toDate'];
   }else if(user_id==''){
     delete params['user_id'];
+  }else if(page==''||perPage==''){
+    delete params['page'];
+    delete params['perPage'];
   }else{
     
   }
@@ -260,4 +272,5 @@ updatePercentage(userData:any,user_id:any):Observable<any>{
       params: param,
     });
   }
-}
+
+ }

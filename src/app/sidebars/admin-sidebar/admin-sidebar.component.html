@@ -27,14 +27,36 @@
                   src="../../../assets/images/icon/icon-dashboard.svg" alt="Dashboard"></span> Question Type </li>
             <li class="nav-item" [routerLink]="['/admin', { outlets: { sub_menu: 'sub-profession' } }]"><span><img
                     src="../../../assets/images/icon/icon-dashboard.svg" alt="Dashboard"></span> Sub Profession </li>
+            <li class="nav-item" [routerLink]="['/admin', { outlets: { sub_menu: 'regions' } }]"><span><img
+                      src="../../../assets/images/icon/icon-dashboard.svg" alt="Dashboard"></span> Regions </li>        
 
           </ul>
           <li class="nav-item" [routerLink]="['/admin', { outlets: { sub_menu: ['users']}}]"> <span><img
                 src="../../../assets/images/icon/icon-dashboard.svg" alt="Dashboard"></span>Users</li>
-          <li class="nav-item"><span><img src="../../../assets/images/icon/icon-dashboard.svg" alt="Dashboard"></span>
-            Create survey</li>
+          <!-- <li class="nav-item"><span><img src="../../../assets/images/icon/icon-dashboard.svg" alt="Dashboard"></span>
+            Create survey</li> -->
+            <li class="nav-item"><span><img src="../../../assets/images/icon/icon-dashboard.svg"
+              alt="Dashboard"></span><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour"
+            aria-expanded="false" aria-controls="collapseFour" >
+            Create survey
+          </button></li>
+          <ul id="collapseFour" class="accordion-collapse collapse ">
+            <li class="nav-item" [routerLink]="['/admin', { outlets: { sub_menu: 'create-survey-list' } }]"><span><img
+            src="../../../assets/images/icon/icon-dashboard.svg" alt="create"></span> Create </li>
+          
+         </ul>
           <li class="nav-item"><span><img src="../../../assets/images/icon/icon-dashboard.svg"
-                alt="Dashboard"></span>Reports</li>
+                alt="Dashboard"></span><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"
+              aria-expanded="false" aria-controls="collapseThree" >
+              Reports
+            </button></li>
+            <ul id="collapseThree" class="accordion-collapse collapse ">
+              <li class="nav-item" [routerLink]="['/admin', { outlets: { sub_menu: 'create-survey' } }]"><span><img
+              src="../../../assets/images/icon/icon-dashboard.svg" alt="create"></span> Create Survey </li>
+             <li class="nav-item" [routerLink]="['/admin', { outlets: { sub_menu: 'fill-survey' } }]"><span><img
+             src="../../../assets/images/icon/icon-dashboard.svg" alt="fill-survey"></span> Fill Survey </li>
+
+           </ul>
           <li class="nav-item" routerLink=""><span><img src="../../../assets/images/icon/icon-dashboard.svg"
                 alt="Dashboard"></span>Logout</li>
         </ul>

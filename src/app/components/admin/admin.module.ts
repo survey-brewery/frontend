@@ -15,6 +15,14 @@ import { AddUpdateQuestionsTypeComponent } from './masters/question-type/add-upd
 import { SharedModule } from 'src/app/shared/shared.module';
 import { SubProfessionComponent } from './masters/sub-profession/sub-profession.component';
 import { AddUpdateSubProfessionComponent } from './masters/sub-profession/add-update-sub-profession/add-update-sub-profession.component';
+import { RegionsComponent } from './masters/regions/regions.component';
+import { AddUpdateRegionsComponent } from './masters/regions/add-update-regions/add-update-regions.component';
+import { ViewusersComponent } from './users/viewusers/viewusers.component';
+import { CreateSurveyComponent } from './reports/create-survey/create-survey.component';
+import { FillSurveyComponent } from './reports/fill-survey/fill-survey.component';
+import { CreateComponent } from './create-survey/create/create.component';
+import { UserAnalyticsComponent } from './users/user-analytics/user-analytics.component';
+
 
 
 @NgModule({
@@ -30,7 +38,15 @@ import { AddUpdateSubProfessionComponent } from './masters/sub-profession/add-up
     QuestionTypeComponent,
     AddUpdateQuestionsTypeComponent,
     SubProfessionComponent,
-    AddUpdateSubProfessionComponent
+    AddUpdateSubProfessionComponent,
+    RegionsComponent,
+    AddUpdateRegionsComponent,
+    ViewusersComponent,
+    CreateSurveyComponent,
+    FillSurveyComponent,
+    CreateComponent,
+    UserAnalyticsComponent,
+    
   ],
   imports: [
     CommonModule,

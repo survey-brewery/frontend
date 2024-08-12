@@ -24,8 +24,18 @@ constructor(private http: HttpClient) {
    });
  }
  //for user dashboard survey list  
- getAllSurveyBasicDetailsList(user_id:any):Observable<any>{
-  let params =new HttpParams().set('user_id',user_id);
+ getAllSurveyBasicDetailsList(user_id:any,page:any,perPage:any):Observable<any>{
+  // let params =new HttpParams().set('user_id',user_id);
+  let params={
+    'user_id':user_id, 
+    'page':page,
+    'perPage':perPage
+  }
+  if(page==''||perPage==''){
+    delete params['page'];
+    delete params['perPage'];
+  }
+
   return this.http.get(this.baseUrl+'user/survey/all-survey-basic-list.php',{
     params:params
   });
@@ -93,4 +103,5 @@ getUserListSurveyId(surveyId:any):Observable<any>{
 fillSurveyViewById(id:any):Observable<any>{
   return this.http.get(this.baseUrl+'user/fill-survey/getFillSurveyById.php/'+id)
 }
+
 }

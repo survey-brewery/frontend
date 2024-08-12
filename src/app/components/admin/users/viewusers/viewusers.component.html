@@ -1,0 +1,195 @@
+<section>
+  <div class="container mb-5">
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+        <div class="d-flex justify-content-between pt-5">
+          <h4 class="header">View User</h4>
+          <button class="btn btn-dark" [routerLink]="['/admin', { outlets: { sub_menu: ['users'] } }]">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-10 p-0">
+        <div class="col-md-12 card p-0 my-5">
+          <div class="table-header p-2">
+            <h4 class="fw-bold m-3">User Details</h4>
+          </div>
+          <form>
+            <div class="row m-0 mt-3 p-3">
+              <div class="col-md-3">
+                <label for="user_name" class="fw-bold">User Name</label>
+                <p type="text" id="user_name" for="user_name">
+                  {{ userDetails.user_name }}
+                </p>
+              </div>
+              <div class="col-md-4">
+                <label for="full_name" class="fw-bold">Email</label>
+                <p type="text" id="full_name" for="full_name">
+                  {{ userDetails.full_name }}
+                </p>
+              </div>
+              <div class="col-md-4">
+                <label for="full_name" class="fw-bold">Full Name</label>
+                <p type="text" id="full_name" for="full_name">
+                  {{ userDetails.full_name }}
+                </p>
+              </div>
+              <div class="col-md-3">
+                <label for="gender" class="fw-bold">Gender</label>
+                <p type="text" id="gender" for="gender" *ngIf="userDetails.gender == 1">
+                  Male
+                </p>
+                <p type="text" id="gender" for="gender" *ngIf="userDetails.gender == 2">
+                  Female
+                </p>
+                <p type="text" id="gender" for="gender" *ngIf="userDetails.gender == 3">
+                  Other
+                </p>
+              </div>
+              <div class="col-md-4">
+                <label for="profession" class="fw-bold">Profession</label>
+                <p type="text" id="profession" for="profession">
+                  {{ userDetails.profession }}
+                </p>
+              </div>
+              <div class="col-md-4" *ngIf="userDetails.sub_profession != null">
+                <label for="profession" class="fw-bold">Sub-profession</label>
+                <p type="text" id="profession" for="profession">
+                  {{ userDetails.sub_profession }}
+                </p>
+              </div>
+
+              <div class="col-md-4">
+                <label for="region" class="fw-bold">Region</label>
+                <p type="text" id="region" for="region">
+                  {{ userDetails.region }}
+                </p>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-10 p-0">
+        <div class="col-md-12 card p-0 my-5 overflow-auto">
+          <div class="table-header p-2">
+            <h4 class="fw-bold m-3">Other Details</h4>
+          </div>
+          <form>
+            <div class=" ">
+              <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4">
+                <mat-tab label="Create Survey">
+                  <div class="table-container p-3">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th scope="col" class="text-center">Sr.no</th>
+                          <th scope="col" class="text-center">Survey title</th>
+                          <th scope="col" class="text-center">Start date</th>
+                          <th scope="col" class="text-center">End date</th>
+                          <th scope="col" class="text-center">
+                            No of Questions
+                          </th>
+                          <th scope="col" class="text-center">Status</th>
+                          <th scope="col" class="text-center">View</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="
+                            let item of allCreateSurveyList;
+                            let i = index
+                          ">
+                          <th scope="row" class="text-center">{{ i + 1 }}</th>
+                          <td class="text-center">
+                            {{ item.survey_title || "--" }}
+                          </td>
+                          <td class="text-center">
+                            {{
+                            (item.start_date | date : "dd-MM-YYYY") || "--"
+                            }}
+                          </td>
+                          <td class="text-center">
+                            {{ (item.end_date | date : "dd-MM-YYYY") || "--" }}
+                          </td>
+                          <td class="text-center">
+                            {{ item.questionsCount || "--" }}
+                          </td>
+                          <td class="text-center">
+                            {{ item.status == 1 ? "Live" : "Close" || "--" }}
+                          </td>
+
+                          <td class="text-center">
+                            <a [routerLink]="['/admin', {outlets: { sub_menu:['user-analytics',item.survey_id]}}]">
+                              <img src="../../../../../assets/eye.svg" alt="" />
+                            </a>
+                          </td>
+                        </tr>
+                        <tr *ngIf="allCreateSurveyList.length == 0">
+                          <td colspan="10" class="text-danger fw-bold text-center">
+                            No Data Available
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div class="row">
+                      <mat-paginator [length]="totalCreate" [pageSize]="pageSizeCreate"
+                        [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page" [showFirstLastButtons]="true"
+                        (page)="onPageChangeCreateSurvey($event)">
+                      </mat-paginator>
+                    </div>
+                  </div>
+                </mat-tab>
+                <mat-tab label="Fill Survey">
+                  <div class="table-container p-3">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th scope="col" class="text-center">Sr.no</th>
+                          <th scope="col" class="text-center">Survey title</th>
+                          <th scope="col" class="text-center">Start date</th>
+                          <th scope="col" class="text-center">End date</th>
+                          <th scope="col" class="text-center">Questions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let item of AllFillSurveyList; let i = index">
+                          <th scope="row" class="text-center">{{ i + 1 }}</th>
+                          <td class="text-center">
+                            {{ item.survey_title || "--" }}
+                          </td>
+                          <td class="text-center">
+                            {{
+                            (item.start_date | date : "dd-MM-YYYY") || "--"
+                            }}
+                          </td>
+                          <td class="text-center">
+                            {{ (item.end_date | date : "dd-MM-YYYY") || "--" }}
+                          </td>
+                          <td class="text-center">{{ item.questionsCount }}</td>
+                        </tr>
+                        <tr *ngIf="AllFillSurveyList.length == 0">
+                          <td colspan="10" class="text-danger fw-bold text-center">
+                            No Data Available
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div class="row">
+                      <mat-paginator [length]="total" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]"
+                        aria-label="Select page" [showFirstLastButtons]="true" (page)="onPageChangeFillSurvey($event)">
+                      </mat-paginator>
+                    </div>
+                  </div>
+                </mat-tab>
+              </mat-tab-group>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
