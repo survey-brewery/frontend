@@ -26,7 +26,7 @@
         position: fixed; 
         width: calc(100% - 240px);
         top: 0px;
-        z-index: 1;
+        z-index: 3;
         
     }
 }
@@ -39,6 +39,7 @@
 }
 .nav-item:hover {
     border-bottom: 1px solid #FFFF!important;
+    font-size: 0.9rem !important;
 }
 
 .nav-drop-down{

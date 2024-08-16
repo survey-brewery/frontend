@@ -35,7 +35,7 @@ export class QuestionTypeComponent {
     });
   }
   getQuestionList() {
-    this._adminService.getAllQuestionsTypeList().subscribe({
+    this._adminService.getAllQuestionsTypeList('','').subscribe({
       next: (res: any) => {
         if (res.data.length > 0) {
           this.allQuestionList = res.data

@@ -38,7 +38,7 @@ export class SubProfessionComponent {
     });
   }
   getSubProfessionList() {
-    this._adminService.getAllSubProfessionsList(this.user_id).subscribe({
+    this._adminService.getAllSubProfessionsList('','').subscribe({
       next: (res: any) => {
         if (res.data.length > 0) {
           this.allgetSubProfessionList = res.data

@@ -1,27 +1,23 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { __param } from 'tslib';
-
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService {
-  baseUrl = 'http://localhost/PHPworkspace/survey-brewery/';
-  // baseUrl = 'https://www.surveybrewery.com/survey-brewery/';
+  baseUrl = environment.baseUrl;
   httpHeaders = new HttpHeaders({
    'Content-Type': 'application/json'
  });
  constructor(private http: HttpClient) { }
   //create Level...
   createLevel(data: any) {
-    return this.http.post(this.baseUrl+'admin/master-tables/level/create-level.php', data, {
-      headers:this.httpHeaders
-    });
+    return this.http.post(this.baseUrl+'admin/master-tables/level/create-level.php', data);
   }
  
   //get all Levels list...
-  getAllLevelsList(user_id?:any):Observable<any>{
+  getAllLevelsList(user_id:any):Observable<any>{
     let params={
       user_id:user_id
     }
@@ -33,22 +29,22 @@ export class AdminService {
    });
   }
    //get all Levels list...
-   getAllAdminLevelsList(user_id?:any):Observable<any>{
+   getAllAdminLevelsList(page:any,perPage:any):Observable<any>{
     let params={
-      user_id:user_id
+      'page':page,
+      'perPage':perPage
+    };
+    if(page==''||perPage==''){
+      delete params['page'];
+      delete params['perPage'];
     }
-        if (user_id==''||user_id==undefined) {
-          delete params['user_id']
-        }
        return this.http.get(this.baseUrl+'admin/master-tables/level/all-admin-levels-list.php',{
         params:params
        });
       }
   //update Level...
   updateLevel(userData:any,user_id:any):Observable<any>{
-   return this.http.put(this.baseUrl+'admin/master-tables/level/update-Level.php/'+user_id,userData, {
-     headers:this.httpHeaders
-   });
+   return this.http.put(this.baseUrl+'admin/master-tables/level/update-Level.php/'+user_id,userData);
   }
   //delete Level...
   deleteLevelById(id:any):Observable<any>{
@@ -57,21 +53,27 @@ export class AdminService {
  
  //create region...
  createRegion(data: any) {
-   return this.http.post(this.baseUrl+'admin/master-tables/regions/create-region.php', data, {
-     headers:this.httpHeaders
-   });
+   return this.http.post(this.baseUrl+'admin/master-tables/regions/create-region.php', data);
  }
 
  //get all regions list...
- getAllRegionsList():Observable<any>{
-  return this.http.get(this.baseUrl+'admin/master-tables/regions/all-regions-list.php')
+ getAllRegionsList(page:any,perPage:any):Observable<any>{
+  let params={
+    page:page,
+    perPage:perPage,
+  }
+  if(page==''||perPage==''){
+   delete params['page'];
+   delete params['perPage'];
+ }
+  return this.http.get(this.baseUrl+'admin/master-tables/regions/all-regions-list.php',{
+    params:params
+  });
  }
 
  //update region...
  updateRegion(userData:any,user_id:any):Observable<any>{
-  return this.http.put(this.baseUrl+'admin/master-tables/regions/update-region.php/'+user_id,userData, {
-    headers:this.httpHeaders
-  });
+  return this.http.put(this.baseUrl+'admin/master-tables/regions/update-region.php/'+user_id,userData);
  }
  //delete region...
  deleteRegionById(id:any):Observable<any>{
@@ -79,21 +81,27 @@ export class AdminService {
  }
   //create Profession...
   createProfession(data: any) {
-    return this.http.post(this.baseUrl+'admin/master-tables/professions/create-profession.php', data, {
-      headers:this.httpHeaders
-    });
+    return this.http.post(this.baseUrl+'admin/master-tables/professions/create-profession.php', data);
   }
  
   //get all Professions list...
-  getAllProfessionsList():Observable<any>{
-   return this.http.get(this.baseUrl+'admin/master-tables/professions/all-professions-list.php')
+  getAllProfessionsList(page:any,perPage:any):Observable<any>{
+    let params={
+      page:page,
+      perPage:perPage,
+    }
+    if(page==''||perPage==''){
+     delete params['page'];
+     delete params['perPage'];
+   }
+   return this.http.get(this.baseUrl+'admin/master-tables/professions/all-professions-list.php',{
+    params:params
+   });
   }
  
   //update Profession...
   updateProfession(userData:any,id:any):Observable<any>{
-   return this.http.put(this.baseUrl+'admin/master-tables/professions/update-profession.php/'+id,userData, {
-     headers:this.httpHeaders
-   });
+   return this.http.put(this.baseUrl+'admin/master-tables/professions/update-profession.php/'+id,userData);
   }
   //delete Profession...
   deleteProfessionById(id:any):Observable<any>{
@@ -102,29 +110,45 @@ export class AdminService {
  
  //create question-type...
  createQuestionType(data: any) {
-  return this.http.post(this.baseUrl+'admin/master-tables/questions-type/create-question-type.php', data, {
-    headers:this.httpHeaders
-  });
+  return this.http.post(this.baseUrl+'admin/master-tables/questions-type/create-question-type.php', data);
 }
 
 //get all questions-type list...
-getAllQuestionsTypeList():Observable<any>{
- return this.http.get(this.baseUrl+'admin/master-tables/questions-type/all-questions-type-list.php')
+getAllQuestionsTypeList(page:any,perPage:any):Observable<any>{
+  let params={
+    page:page,
+    perPage:perPage,
+  }
+  if(page==''||perPage==''){
+   delete params['page'];
+   delete params['perPage'];
+ }
+ return this.http.get(this.baseUrl+'admin/master-tables/questions-type/all-questions-type-list.php',{
+  params:params
+ });
 }
 
 //update question-type...
 updateQuestionType(userData:any,id:any):Observable<any>{
- return this.http.put(this.baseUrl+'admin/master-tables/questions-type/update-question-type.php/'+id,userData, {
-   headers:this.httpHeaders
- });
+ return this.http.put(this.baseUrl+'admin/master-tables/questions-type/update-question-type.php/'+id,userData);
 }
 //delete question-type...
 deleteQuestionTypeById(id:any):Observable<any>{
  return this.http.delete(this.baseUrl+'admin/master-tables/questions-type/delete-question-type.php/'+id)
 }
 //all user list...
-allUserList():Observable<any>{
-  return this.http.get(this.baseUrl+'user-registration/all-user-registration-list.php')
+allUserList(page:any,perPage:any):Observable<any>{
+  let params={
+    page:page,
+    perPage:perPage
+  }
+  if (page===''||perPage==='') {
+    delete params['page'];
+    delete params['perPage'];
+  }
+  return this.http.get(this.baseUrl+'user-registration/all-user-registration-list.php',{
+    params:params
+  })
 }
 // user-registration/user-details-by-id.php/6
 getUserDetailsById(user_id:any):Observable<any>{
@@ -132,16 +156,19 @@ getUserDetailsById(user_id:any):Observable<any>{
 }
  //create sub Profession...
  createSubProfession(data: any) {
-  return this.http.post(this.baseUrl+'admin/master-tables/sub-professions/create-sub-profession.php', data, {
-    headers:this.httpHeaders
-  });
+  return this.http.post(this.baseUrl+'admin/master-tables/sub-professions/create-sub-profession.php', data);
 }
 
 //get all sub Professions list...
-getAllSubProfessionsList(userId:any):Observable<any>{
+getAllSubProfessionsList(page:any,perPage:any):Observable<any>{
  let params={
-   id:userId
+   page:page,
+   perPage:perPage,
  }
+ if(page==''||perPage==''){
+  delete params['page'];
+  delete params['perPage'];
+}
  return this.http.get(this.baseUrl+'admin/master-tables/sub-professions/all-sub-professions-list.php',{
    params:params
  })
@@ -149,9 +176,7 @@ getAllSubProfessionsList(userId:any):Observable<any>{
 
 //update Profession...
 updateSubProfession(userData:any,id:any):Observable<any>{
- return this.http.put(this.baseUrl+'admin/master-tables/sub-professions/update-sub-profession.php/'+id,userData, {
-   headers:this.httpHeaders
- });
+ return this.http.put(this.baseUrl+'admin/master-tables/sub-professions/update-sub-profession.php/'+id,userData);
 }
 //delete Profession...
 deleteSubProfessionById(id:any):Observable<any>{
@@ -177,6 +202,16 @@ getCreateSurveyList(fromDate:any,toDate:any,user_id:any,page:any,perPage:any):Ob
     delete params['toDate'];
   }
    if(user_id==''||user_id==null){
+    delete params['user_id'];
+  }
+  if(page==''||perPage==''){
+    delete params['page'];
+    delete params['perPage'];
+  }
+   if(toDate==null||toDate==''){
+    delete params['toDate'];
+  }
+   if(user_id==''||user_id==null){
 
     delete params['user_id'];
   }
@@ -192,7 +227,7 @@ getFillSurveyList(fromDate:any,toDate:any,user_id:any,page:any,perPage:any):Obse
   let params={
     'fromDate':fromDate,
     'toDate':toDate,
-    'user_id':user_id,
+    'user_id':user_id,    
     'page':page,
     'perPage':perPage
   };
@@ -208,7 +243,6 @@ getFillSurveyList(fromDate:any,toDate:any,user_id:any,page:any,perPage:any):Obse
   }else{
     
   }
-  
   return this.http.get(this.baseUrl+'admin/survey/fill-survey/fill-survey-list.php',{
     params:params
   })
@@ -242,18 +276,18 @@ getPossibleResponseCount(gender:any,region_id:any,profession_id:any,sub_professi
 
 //create percentage...
 createPercentage(data: any) {
-  return this.http.post(this.baseUrl+'admin/master-tables/percentage/create-percentage.php', data, {
-    headers:this.httpHeaders
-  });
+  return this.http.post(this.baseUrl+'admin/master-tables/percentage/create-percentage.php', data);
 }
 
 //get all percentages list...
-getAllPercentagesList(user_id?:any):Observable<any>{
-let params={
-user_id:user_id
-}
-  if (user_id==''||user_id==undefined) {
-    delete params['user_id']
+getAllPercentagesList(page:any,perPage:any):Observable<any>{
+  let params={
+    'page':page,
+    'perPage':perPage
+  };
+  if(page==''||perPage==''){
+    delete params['page'];
+    delete params['perPage'];
   }
  return this.http.get(this.baseUrl+'admin/master-tables/percentage/all-percentages-list.php',{
   params:params
@@ -261,9 +295,7 @@ user_id:user_id
 }
 //update percentage...
 updatePercentage(userData:any,user_id:any):Observable<any>{
- return this.http.put(this.baseUrl+'admin/master-tables/percentage/update-percentage.php/'+user_id,userData, {
-   headers:this.httpHeaders
- });
+ return this.http.put(this.baseUrl+'admin/master-tables/percentage/update-percentage.php/'+user_id,userData);
 }
   // enable disable percentage api
   percentageEnableDisable(id: number, status: number): Observable<any> {
@@ -272,5 +304,44 @@ updatePercentage(userData:any,user_id:any):Observable<any>{
       params: param,
     });
   }
+  getFillSurveyLiest(fromDate:any,toDate:any,user_id:any,page:any,perPage:any):Observable<any>{
+    let params={
+      'fromDate':fromDate,
+      'toDate':toDate,
+      'user_id':user_id,    
+      'page':page,
+      'perPage':perPage
+    };
+    if(fromDate==null||fromDate==''){
+      delete params['fromDate'];
+    }
+    if(toDate==null||toDate==''){
+      delete params['toDate'];
+    }
+    if(user_id==''){
+      delete params['user_id'];
+    }
+    if(page==''||perPage==''){
+      delete params['page'];
+      delete params['perPage'];
+    }
+    return this.http.get(this.baseUrl+'admin/survey/fill-survey/fill-survey-list.php',{
+      params:params
+    })
+  }
+  getKarmaPointHistory(page:any,perPage:any,user_id:any):Observable<any>{
+    let params={
+      page:page,
+      perPage:perPage,
+      user_id:user_id
+    }
+    if(page==''||perPage==''){
+      delete params['page'];
+      delete params['perPage'];
+    }
+    return this.http.get(this.baseUrl+'user-registration/karma-point-history.php',{
+      params:params
+    });
+  }
+}
 
- }

@@ -1,0 +1,74 @@
+<div class="container p-5 pt-0">
+    <div class="row pt-3">
+        <div class="">
+            <button class="btn-sm-gold" [routerLink]="['/user', { outlets: { user_menu: ['survey']}}]"><i
+                    class="material-icons fs-6 w-20">arrow_backward</i> Back </button>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col-md-4">
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between">
+                        <h4 class="fw-bold">Surveys live</h4>
+                        <i class="material-icons fw-bold">arrow_forward</i>
+                    </div>
+                    <p>Your surveys which are active</p>
+                </div>
+                <div class="row card-body">
+                    <div class="col-md-12 ">
+                        <h5 class="fw-bold fs-5">
+                            {{userDetails.karma_points}}
+                        </h5>
+                             
+                        <p>Need <img src="../../../../assets/user/karma-point.svg" alt="karma-points">40 to create a survey</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4  d-flex align-self-end pb-3">
+            <button class="btn-gold fw-bold" [routerLink]="['/user', { outlets: { user_menu: ['create-survey']}}]">+ Create New
+                Survey</button>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-8">
+            <div class=" table-container ">
+                <table class=" table level-table mb-0">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Expiry Date</th>
+                            <th scope="col">Survey Title </th>
+                            <th scope="col">Responses</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Action</th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of allSurveyList;let i=index">
+                            <td>{{i+1}}</td>
+                            <td>{{item.end_date|date:'dd-MM-yyyy'}}</td>
+                            <td>{{item.survey_title}}</td>
+                            <td>252/500</td>
+                            <td class="" [ngClass]="item.status==1?'text-danger':'text-success'">
+                                {{(item.status==1)?'LIVE':'Completed'}}</td>
+                            <td class="d-flex align-content-center text-primary" > Analyze <i
+                                    class="material-icons fs-6">arrow_forward</i></td>
+                        </tr>
+                        <tr *ngIf="allSurveyList.length==0">
+                            <td colspan="10" class="text-danger fw-bold text-center">No Data Available</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="paginator-p">
+                    <mat-paginator [hidePageSize]="true" [length]="total" [pageSize]="pageSize" 
+                         (page)="onPageChange($event)">
+                    </mat-paginator>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

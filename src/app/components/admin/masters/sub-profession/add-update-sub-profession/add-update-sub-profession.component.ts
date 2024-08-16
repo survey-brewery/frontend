@@ -44,7 +44,7 @@ export class AddUpdateSubProfessionComponent {
     return this.form.controls;
   }
   getAllProfession(){
-    this._adminService.getAllProfessionsList().subscribe((res:any)=>{
+    this._adminService.getAllProfessionsList('','').subscribe((res:any)=>{
       this.allProfessionList=res.data;
     })
   }

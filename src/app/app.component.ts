@@ -18,14 +18,6 @@ export class AppComponent implements OnInit, AfterContentChecked {
   ) {
   }
   ngOnInit(): void {
-  // let btnToggle :any = document.querySelector(".btn-toggle");
-
-  // btnToggle.addEventListener("click", (e:any) => {
-  //   let sidebar :any= document.querySelector(".sidebar");
-  //   let container :any = document.querySelector(".container");
-  //   sidebar.classList.toggle("active");
-  //   container.classList.toggle("active_margin_left");
-  // });
   }
   ngAfterContentChecked() {
     let currentRoute = this.router.routerState.snapshot.url;

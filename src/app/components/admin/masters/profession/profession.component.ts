@@ -36,7 +36,7 @@ export class ProfessionComponent {
     });
   }
   getProfessionList() {
-    this._adminService.getAllProfessionsList().subscribe({
+    this._adminService.getAllProfessionsList('','').subscribe({
       next: (res: any) => {
         if (res.data.length > 0) {
           this.allProfessionList = res.data

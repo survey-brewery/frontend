@@ -1,0 +1,52 @@
+<div class="container p-5 pt-0">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="dashboard-card">
+                <div class="row card-body">
+                    <div class="col-md-1">
+                        <img src="../../../../assets/user/karma-point.svg" height="40px" alt="Level" />
+                    </div>
+                    <div class="col-md-12 mt-3">
+                        <h5 class="fw-bold fs-5">
+                            {{userDetails.karma_points}} 
+                        </h5>
+                        <p>You are in <span class="fw-bold"> {{(userDetails.level||'BEGINNER') | titlecase}} </span> level</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h5 class="fs-6 fw-bold">Karma point transaction history</h5>
+    <div class="row mt-3">
+       <div class="col-md-10">
+        <div class=" table-container ">
+            <table class=" table level-table ">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Title Survey </th>
+                  <th scope="col">Type </th>
+                  <th >Karma Points </th>
+                  <th >Total karma Points </th>
+                </tr>
+              </thead>
+              <tbody >
+                <tr *ngFor="let item of fillSurveyList;let i=index" >
+                    <td class="text-center">{{i+1}}</td>
+                  <td>{{item.cts|date:'dd-MM-yyyy'}}</td>
+                  <td >{{item.survey_title}}</td>
+                  <td >{{item.survey_type|titlecase}}</td>
+                  <td [ngClass]="item.survey_type==='fill'?'text-success':'text-danger'"> {{item.survey_type==='fill'?'+':'-'}} {{item.points}} <img src="../../../../assets/user/karma-point.svg" alt="karma-points" ></td>
+                  <td class="text-success ">+ {{item.total}} <img src="../../../../assets/user/karma-point.svg" alt="karma-points" ></td>
+                </tr>
+                <tr *ngIf="fillSurveyList.length==0">
+                  <td colspan="10" class="text-danger fw-bold text-center">No Data Available</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+       </div>
+    </div>
+    <img src="../../../../assets/user/dashboard/level-image.svg" alt="" class="dashboard-right-bottom" />
+</div>

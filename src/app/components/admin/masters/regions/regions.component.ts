@@ -36,7 +36,7 @@ export class RegionsComponent {
     });
   }
   getRegionsList() {
-    this._adminService.getAllRegionsList().subscribe({
+    this._adminService.getAllRegionsList('','').subscribe({
       next: (res: any) => {
         if (res.data.length > 0) {
           this.allRegionsList = res.data

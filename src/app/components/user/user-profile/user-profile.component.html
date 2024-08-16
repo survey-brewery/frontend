@@ -1,0 +1,155 @@
+<div class="container py-5 pt-3 px-4">
+    <div class="header mb-3">Details</div>
+    <div class="row" [formGroup]="form">
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+                <div class="form-group">
+                    <label for="Your User Name">Your User Name</label>
+                    <input type="text" placeholder="User name" formControlName="user_name"
+                        class="form-control"
+                        [ngClass]="{ 'is-invalid':controls['user_name'].invalid && (controls['user_name'].dirty || controls['user_name'].touched) }" />
+                    <div class="error-message">
+                        <span
+                            *ngIf="controls['user_name'].invalid &&(controls['user_name'].dirty || controls['user_name'].touched)">
+                            <small class="text-danger p-2 w-100 d-flex justify-content-start">
+                                <span class="error-icon"></span> User name is required.
+                            </small>
+                        </span>
+                    </div>
+                </div>
+               
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <div class="form-group">
+                    <label for="full name">Full name</label>
+                    <input type="text" placeholder="Full name" formControlName="full_name"
+                        class="form-control"
+                        [ngClass]="{ 'is-invalid':controls['full_name'].invalid && (controls['full_name'].dirty || controls['full_name'].touched) }" />
+                    <div class="error-message">
+                        <span
+                            *ngIf="controls['full_name'].invalid &&(controls['full_name'].dirty || controls['full_name'].touched)">
+                            <small class="text-danger p-2 w-100 d-flex justify-content-start">
+                                <span class="error-icon"></span> Full name is required.
+                            </small>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <mat-select class="form-control classic" placeholder="Select gender"
+                        formControlName="gender">
+                        <mat-option class="dark-background" *ngFor="let item of allGenderList"
+                            [value]="item.gender_id">
+                            {{ item.gender }}
+                        </mat-option>
+                    </mat-select>
+                    <div class="error-message">
+                        <span
+                            *ngIf="controls['gender'].invalid &&(controls['gender'].dirty || controls['gender'].touched)">
+                            <small class="text-danger p-2 w-100 d-flex justify-content-start">
+                                <span class="error-icon"></span> Gender is required.
+                            </small>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <div class="form-group">
+                    <label for="level">Region</label>
+                    <mat-select #singleSelect class="form-control classic" placeholder="Search State"
+                        formControlName="region_id">
+                        <mat-option>
+                            <ngx-mat-select-search [(ngModel)]="searchRegionValue" (input)="filterRegion()"
+                                [ngModelOptions]="{ standalone: true }" placeholderLabel="Search State"
+                                noEntriesFoundLabel="No State available"></ngx-mat-select-search>
+                        </mat-option>
+                        <mat-option class="dark-background" *ngFor="let item of filteredRegionList"
+                            [value]="item.region_id">
+                            {{ item.region }}
+                        </mat-option>
+                    </mat-select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-12">
+            <div class="form-group pt-3">
+                <span class="text-muted"> Email (can’t change now)</span><br>
+               <label for="">{{controls['email_id'].value}}</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+                <div class="form-group">
+                    <label for="level">Profession</label>
+                    <mat-select class="form-control classic" placeholder="Select Profession" formControlName="profession_id"
+                        (selectionChange)="getsubProfessionListByProfessionId()">
+                        <mat-option class="dark-background" *ngFor="let item of allProfessionList"
+                            [value]="item.profession_id">
+                            {{ item.profession }}
+                        </mat-option>
+                    </mat-select>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12" *ngIf="this.profession === 'student'">
+                <div class="form-group">
+                    <label for="level">Education (choose highest relevant)</label>
+                    <mat-select class="form-control classic" placeholder="Select Sub Profession"
+                        formControlName="sub_profession_id">
+                        <mat-option class="dark-background" [value]="item.sub_profession_id"
+                            *ngFor="let item of allSubProfessionList">
+                            {{ item.sub_profession }}
+                        </mat-option>
+                    </mat-select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 mt-3">
+            <div class="row">
+                <div class="col-md-1">
+                    <button class="btn-gold" (click)="userSave()">Save</button>
+                </div>
+                <div class="col-md-1">
+                    <button class="btn btn-light-cancel"
+                        [routerLink]="['/user', { outlets: { user_menu: ['dashboard'] } }]">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="header mb-3">Change Password</div>
+    <div class="row">
+        <div class="col-md-4 col-sm-12">
+            <div class="form-group">
+                <label for="name">Current Password</label>
+                <input type="text" class="form-control" placeholder="Current password" id="floatingInput" />
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-12">
+            <div class="form-group">
+                <label for="name">New Password</label>
+                <input type="text" class="form-control" placeholder="New password" id="floatingInput" />
+            </div>
+        </div>
+        <div class="col-md-12 mt-3">
+            <div class="row">
+                <div class="col-md-1">
+                    <button class="btn-pink">Save</button>
+                </div>
+                <div class="col-md-1">
+                    <button class="btn btn-light-cancel"
+                        [routerLink]="['/user', { outlets: { user_menu: ['dashboard'] } }]">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <img src="../../../../assets/user/dashboard/level-image.svg" alt="" class="dashboard-right-bottom" />
+</div>

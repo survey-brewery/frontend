@@ -7,10 +7,10 @@
             </div>
             <div class="menu">
                 <ul class="nav">
-                    <li class="nav-item" [routerLink]="['/user', { outlets: { user_menu: ['user-dashbaord']}}]"> 
+                    <li class="nav-item" [routerLink]="['/user', { outlets: { user_menu: ['dashboard']}}]"> 
                         <a class="nav-link" >Dashboard</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" [routerLink]="['/user', { outlets: { user_menu: ['survey']}}]">
                         <a class="nav-link" >Create survey</a>
                     </li>
                     <li class="nav-item" [routerLink]="['/user', { outlets: { user_menu: ['fill-survey']}}]">
@@ -39,7 +39,7 @@
         </div>
         <div class="body ">
             <div class="header"><app-user-header></app-user-header></div>
-            <div class="body-container"><router-outlet name="user_menu"></router-outlet></div>
+            <div class="body-container "><router-outlet name="user_menu"></router-outlet></div>
         </div>
     </div>
 </div>

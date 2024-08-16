@@ -1,0 +1,618 @@
+<div class="container p-5 pt-0">
+  <div class="row pt-3">
+    <div class="">
+      <button
+        class="btn-sm-gold"
+        [routerLink]="['/user', { outlets: { user_menu: ['survey'] } }]"
+      >
+        <i class="material-icons fs-6 w-20">arrow_backward</i> Back
+      </button>
+    </div>
+    <div class="row my-3">
+      <div class="col-md-12" [formGroup]="createSurveyForm">
+        <mat-tab-group
+          (selectedIndexChange)="onTabSelect($event)"
+          [selectedIndex]="selectedTabIndex"
+        >
+          <mat-tab label="Basic Info">
+            <div class="dashboard-card">
+              <div class="row card-body mx-0">
+                <div class="row">
+                  <div class="col-md-5 col-sm-12">
+                    <div class="form-group">
+                      <label for="name">Survey Title</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Survey title"
+                        formControlName="title"
+                        id="floatingInput"
+                        [ngClass]="{
+                          'is-invalid':
+                            control['title'].invalid &&
+                            (control['title'].dirty || control['title'].touched)
+                        }"
+                      />
+                      <div class="error-message">
+                        <span
+                          *ngIf="
+                            control['title']?.invalid &&
+                            (control['title'].dirty || control['title'].touched)
+                          "
+                        >
+                          <small
+                            class="text-danger p-2 w-100 d-flex justify-content-start"
+                          >
+                            <span class="error-icon"></span>Survey title is
+                            required.
+                          </small>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4 col-sm-12">
+                    <div class="form-group">
+                      <label for="name">End Date</label>
+                      <input
+                        type="date"
+                        class="form-control"
+                        placeholder="End Date"
+                        formControlName="endDate"
+                        id="floatingInput"
+                        [ngClass]="{
+                          'is-invalid':
+                            control['endDate'].invalid &&
+                            (control['endDate'].dirty ||
+                              control['endDate'].touched)
+                        }"
+                      />
+                      <div class="error-message">
+                        <span
+                          *ngIf="
+                            control['endDate']?.invalid &&
+                            (control['endDate'].dirty ||
+                              control['endDate'].touched)
+                          "
+                        >
+                          <small
+                            class="text-danger p-2 w-100 d-flex justify-content-start"
+                          >
+                            <span class="error-icon"></span> Full name is
+                            required.
+                          </small>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-5 col-sm-12">
+                    <div class="form-group">
+                      <label for="Select level to float survey"
+                        >Select level to float survey</label
+                      >
+                      <mat-select
+                        class="form-control classic"
+                        (selectionChange)="onLevelChange()"
+                        formControlName="level_id"
+                        placeholder="Select level to float survey"
+                        [ngClass]="{
+                          'is-invalid':
+                            control['level_id'].invalid &&
+                            (control['level_id'].dirty ||
+                              control['level_id'].touched)
+                        }"
+                      >
+                        <mat-option
+                          class="dark-background"
+                          [disabled]="
+                            totalKarmaPoints <
+                            convertString(item.points_after_create)
+                          "
+                          *ngFor="let item of allLevelsList"
+                          [value]="item"
+                        >
+                          {{ item.level }}
+                        </mat-option>
+                      </mat-select>
+                      <div class="error-message">
+                        <span
+                          *ngIf="
+                            control['level_id']?.invalid &&
+                            (control['level_id'].dirty ||
+                              control['level_id'].touched)
+                          "
+                        >
+                          <small
+                            class="text-danger p-2 w-100 d-flex justify-content-start"
+                          >
+                            <span class="error-icon"></span> Level is required.
+                          </small>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <h5 class="fs-6 fw-bold" *ngIf="deductedPoint">
+                    <small
+                      >{{ deductedPoint }} will be deducted to make this survey
+                      live</small
+                    >
+                  </h5>
+
+                  <div class="col-md-12 my-3 gap-3 d-flex">
+                    <button
+                      class="btn-sm-pink"
+                      (click)="changeTab('Basic Info')"
+                    >
+                      <i class="material-icons fs-6 w-20">arrow_backward</i>
+                      Cancel
+                    </button>
+                    <button class="btn-sm-gold" (click)="changeTab('Filters')">
+                      Next <i class="material-icons fs-6 w-20">arrow_forward</i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab label="Filters">
+            <div class="dashboard-card">
+              <div class="row card-body mx-0">
+                <h4 class="fw-bold">
+                  Select additional filters for the survey respondents (Not
+                  mandatory)
+                </h4>
+                <div class="row">
+                  <div class="col-md-4 col-sm-12">
+                    <div class="form-group">
+                      <label for="Select level to float survey" class=""
+                        >Gender</label
+                      >
+                      <mat-select
+                        class="form-control classic"
+                        (selectionChange)="onGenderChange($event)"
+                        placeholder="Select gender"
+                        formControlName="gender"
+                      >
+                        <mat-option [value]="0">All Gender</mat-option>
+                        <mat-option
+                          class="dark-background"
+                          *ngFor="let item of allGenderList"
+                          [value]="item.gender_id"
+                        >
+                          {{ item.gender }}
+                        </mat-option>
+                      </mat-select>
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-sm-12">
+                    <div class="form-group">
+                      <label for="Region" class="">Region</label>
+                      <mat-select
+                        class="form-control classic"
+                        placeholder="Select region"
+                        (selectionChange)="onRegionChange($event)"
+                        formControlName="region"
+                      >
+                        <mat-option [value]="0">All Region</mat-option>
+                        <mat-option
+                          class="dark-background"
+                          *ngFor="let item of allRegionsList"
+                          [value]="item.region_id"
+                        >
+                          {{ item.region }}
+                        </mat-option>
+                      </mat-select>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4 col-sm-12">
+                    <div class="form-group">
+                      <label for="Region" class="">Profession</label>
+                      <mat-select
+                        class="form-control classic"
+                        placeholder="Select profession"
+                        (selectionChange)="getSubProfessionListById()"
+                        formControlName="profession"
+                      >
+                        <mat-option [value]="0">All Profession</mat-option>
+                        <mat-option
+                          class="dark-background"
+                          *ngFor="let item of allProfessionsList"
+                          [value]="item.profession_id"
+                        >
+                          {{ item.profession }}
+                        </mat-option>
+                      </mat-select>
+                    </div>
+                  </div>
+                  <div
+                    class="col-md-4 col-sm-12"
+                    *ngIf="profession === 'student'"
+                  >
+                    <div class="form-group">
+                      <label for="Region" class="">Sub-Profession</label>
+                      <mat-select
+                        class="form-control classic"
+                        (selectionChange)="onSubProfessionChange($event)"
+                        formControlName="sub_profession"
+                        placeholder="Select sub profession"
+                      >
+                        <mat-option [value]="0">All Sub Profession</mat-option>
+                        <mat-option
+                          class="dark-background"
+                          *ngFor="let item of allSubProfessionsList"
+                          [value]="item.sub_profession_id"
+                        >
+                          {{ item.sub_profession }}
+                        </mat-option>
+                      </mat-select>
+                    </div>
+                  </div>
+                  <h4 class="fw-bold my-3">
+                    Maximum possible responses for this survey -
+                    {{ possibleResponseCount }}
+                  </h4>
+                  <div class="col-md-12 my-3 gap-3 d-flex">
+                    <button
+                      class="btn-sm-pink"
+                      (click)="changeTab('Basic Info')"
+                    >
+                      <i class="material-icons fs-6 w-20">arrow_backward</i>
+                      Previous
+                    </button>
+                    <button
+                      class="btn-sm-gold"
+                      (click)="changeTab('Questions')"
+                    >
+                      Next <i class="material-icons fs-6 w-20">arrow_forward</i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab label="Questions">
+            <div class="dashboard-card" [formGroup]="questionForm">
+              <div class="row card-body mx-0" formArrayName="questions">
+                <div
+                  class="sub-card my-2 py-2"
+                  *ngFor="let question of questions.controls; let i = index"
+                  [formGroupName]="i"
+                >
+                  <div class="row">
+                    <div class="col-md-3 col-sm-12">
+                      <div class="form-group">
+                        <label for="Region" class="">Question typesd</label>
+                        <mat-select
+                          class="form-control classic"
+                          placeholder="Select question type"
+                          formControlName="input_type"
+                          aria-label="Default select example"
+                          (selectionChange)="onchangeOptionType($event, i)"
+                          [ngClass]="{
+                            'is-invalid':
+                              questions.at(i).get('input_type')?.invalid &&
+                              (questions.at(i).get('input_type')?.dirty ||
+                                questions.at(i).get('input_type')?.touched)
+                          }"
+                        >
+                          <mat-option
+                            class="dark-background"
+                            *ngFor="let item of optionTypeList"
+                            [value]="{
+                              question_type_id: item.question_type_id,
+                              input_type: item.input_type
+                            }"
+                          >
+                            {{ item.question_type }}
+                          </mat-option>
+                        </mat-select>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group" *ngIf="questions.length > 1">
+                        <button
+                          class="btn-sm-gold p-0"
+                          (click)="removeQuestion(i)"
+                        >
+                          <small>Delete</small>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                      <div class="form-group">
+                        <label for="name" class="">Question</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          formControlName="question"
+                          placeholder="Enter question content here"
+                          id="floatingInput"
+                          [ngClass]="{
+                            'is-invalid':
+                              questions.at(i).get('question')?.invalid &&
+                              (questions.at(i).get('question')?.dirty ||
+                                questions.at(i).get('question')?.touched)
+                          }"
+                        />
+                        <div class="error-message">
+                          <span
+                            *ngIf="
+                              questions.at(i).get('question')?.invalid &&
+                              (questions.at(i).get('question')?.dirty ||
+                                questions.at(i).get('question')?.touched)
+                            "
+                          >
+                            <small
+                              class="text-danger p-2 w-100 d-flex justify-content-start"
+                            >
+                              <span class="error-icon"></span> Question is
+                              required.
+                            </small>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row" formArrayName="options">
+                    <div
+                      class="form-group"
+                      *ngIf="
+                        questions.at(i).get('input_type')?.value.input_type !==
+                        'text'
+                      "
+                    >
+                      <div
+                        class="row mt-2 d-flex align-items-center"
+                        *ngFor="
+                          let option of getOptions(question).controls;
+                          let j = index
+                        "
+                        [formGroupName]="j"
+                      >
+                        <div class="col-auto col-md-auto">
+                          <div class="form-group">
+                            <input
+                              [type]="
+                                questionForm.get(['questions', i, 'input_type'])
+                                  ?.value.input_type || 'radio'
+                              "
+                              [name]="
+                                questionForm.get(['questions', i, 'input_type'])
+                                  ?.value.input_type
+                              "
+                              [id]="
+                                questionForm.get(['questions', i, 'input_type'])
+                                  ?.value.input_type
+                              "
+                            />
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-9">
+                          <div class="form-group">
+                            <label for="name" class=""
+                              >Option {{ j + 1 }}</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              formControlName="option"
+                              [ngClass]="{
+                                'is-invalid':
+                                  getOptions(question).at(j).get('option')
+                                    ?.invalid &&
+                                  (getOptions(question).at(j).get('option')
+                                    ?.dirty ||
+                                    getOptions(question).at(j).get('option')
+                                      ?.touched)
+                              }"
+                              placeholder="Enter an Answer Choice"
+                              id="floatingInput"
+                              (keydown.enter)="addOption(question)"
+                            />
+                            <div class="error-message">
+                              <span
+                                *ngIf="
+                                  getOptions(question).at(j).get('option')
+                                    ?.invalid &&
+                                  (getOptions(question).at(j).get('option')
+                                    ?.dirty ||
+                                    getOptions(question).at(j).get('option')
+                                      ?.touched)
+                                "
+                              >
+                                <small
+                                  class="text-danger p-2 w-100 d-flex justify-content-start"
+                                >
+                                  <span class="error-icon"></span> Option
+                                  {{ j + 1 }} is required.
+                                </small>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-12 col-md-2 d-flex">
+                          <img
+                            class="mx-2"
+                            src="../../../../../assets/plus.svg"
+                            alt=""
+                            (click)="addOption(question)"
+                          />
+                          <img
+                            class="mx-2"
+                            src="../../../../../assets/minus.svg"
+                            alt=""
+                            *ngIf="getOptions(question).length > 1"
+                            (click)="removeOption(question, j)"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                      <button
+                        class="btn text-primary fs-6 fw-bold"
+                        (click)="
+                          this.questions.at(currentQuestionIndex).valid
+                            ? this.addQuestion()
+                            : this.addQuestionInvalid(currentQuestionIndex)
+                        "
+                      >
+                        <small>Add Question</small>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12 my-3 gap-3 d-flex">
+                    <button class="btn-sm-pink" (click)="changeTab('Filters')">
+                      <i class="material-icons fs-6 w-20">arrow_backward</i>
+                      Previous
+                    </button>
+                    <button
+                      class="btn-sm-gold"
+                      (click)="changeTab('Make Live')"
+                    >
+                      Next <i class="material-icons fs-6 w-20">arrow_forward</i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab label="Make Live">
+            <div class="dashboard-card-pink">
+              <div class="row card-body p-2 pb-0 mb-0 mx-0">
+                <div class="row">
+                  <div class="col-md-auto">
+                    <p class="filter">Questions {{ questions.length }}</p>
+                  </div>
+                  <div class="col-md-auto">
+                    <p class="filter">
+                      Deadline
+                      {{ control["endDate"].value | date : "dd-MM-YYYY" }}
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="row mb-3"
+                  *ngFor="let item of questionList; let i = index"
+                >
+                  <div class="col-md-auto" *ngIf="item.question">
+                    <p class="fw-bold">{{ i + 1 }}.</p>
+                  </div>
+                  <div class="col-md-6" *ngIf="item.question">
+                    <p class="fw-bold mb-0">{{ item.question }}</p>
+                    <div
+                      class="col-md-12"
+                      *ngFor="let option of item.options; let j = index"
+                    >
+                      <div class="row">
+                        <div class="col-md-auto pt-2">
+                          <p class="text-muted">{{ j + 1 }}</p>
+                        </div>
+                        <div class="col-md-auto">
+                          <input
+                            class=""
+                            [type]="item.input_type.input_type || 'radio'"
+                            [name]="item.input_type.input_type"
+                            [id]="item.input_type.input_type"
+                          />
+                        </div>
+                        <div class="col-md-auto pt-2">
+                          <p class="text-muted">{{ option.option }}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="dashboard-card m-0">
+                <div class="row card-body p-2 mx-0">
+                  <div class="col-md-12">
+                    <h2 class="text-success fw-bold">
+                      Survey is ready to make live!
+                    </h2>
+                  </div>
+                  <div class="col-md-12">
+                    <p class="text-muted">
+                      {{ deductedPoint || 0 }}
+                      <img
+                        src="../../.././../../assets/user/karma-point.svg"
+                        alt=""
+                      />
+                      will be used to make survey live
+                    </p>
+                  </div>
+                </div>
+                <div class="d-flex m-3">
+                  <div class="col-md-12 my-3 gap-3 d-flex">
+                    <button
+                      class="btn-sm-pink"
+                      (click)="changeTab('Questions')"
+                    >
+                      <i class="material-icons fs-6 w-20">arrow_backward</i>
+                      Previous
+                    </button>
+                    <button class="btn-sm-gold" (click)="endSurvey()">
+                      Make Live
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+    <div class="row m-0">
+      <div class="col-md-12 m-0">
+        <div class="instruction row m-0">
+          <h5 class="fs-6">
+            <img src="../../../../assets/user/dashboard/icon-faq.svg" alt="" />
+            What are levels?
+          </h5>
+          <div class="col-3">
+            <div class="dashboard-card rounded-3 p-1">
+              <div class="card-body p-2">
+                <small>Your Karma points decide the level you are in</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-auto d-flex align-items-center p-0 m-0">
+            <i class="material-icons fs-6 w-20">arrow_forward</i>
+          </div>
+          <div class="col-3">
+            <div class="dashboard-card rounded-3 p-1">
+              <div class="card-body p-2">
+                <small
+                  >Upgrade to higher levels by earning more Karma points</small
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-auto d-flex align-items-center p-0 m-0">
+            <i class="material-icons fs-6 w-20">arrow_forward</i>
+          </div>
+          <div class="col-3">
+            <div class="dashboard-card rounded-3 p-1">
+              <div class="card-body p-2">
+                <small
+                  >In Higher levels surveys will have better completion
+                  rate</small
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

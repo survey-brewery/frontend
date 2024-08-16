@@ -4,49 +4,56 @@
             <div class="dashboard-card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between">
-                        <h4>Your Level</h4> <i class="material-icons">arrow_forward</i>
+                        <h4 class="fw-bold">Your Level</h4>
+                        <i class="material-icons fw-bold">arrow_forward</i>
                     </div>
                     <p>Level is decided based on Karma points</p>
                 </div>
                 <div class="row card-body">
                     <div class="col-md-1">
-                        <img src="../../../../assets/user/level/level-beginner.svg" alt="Level">
+                        <img src="../../../../assets/user/level/level-beginner.svg" alt="Level" />
                     </div>
                     <div class="col-md-6">
-                        <h5 class="fw-bold">{{(userDetails.level||'BEGINNER'|titlecase)}}</h5>
+                        <h5 class="fw-bold fs-5">
+                            {{ userDetails.level || 'BEGINNER' | titlecase }}
+                        </h5>
                     </div>
                 </div>
-                
             </div>
             <div class="dashboard-card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between">
-                        <h4>Karma points</h4> <i class="material-icons">arrow_forward</i>
+                        <h4 class="fw-bold">Karma points</h4>
+                        <i class="material-icons fw-bold">arrow_forward</i>
                     </div>
                     <p>Points are rewarded after filling surveys</p>
                 </div>
                 <div class="row card-body">
                     <div class="col-md-1">
-                        <img src="../../../../assets/user/karma-point.svg" alt="Level">
+                        <img src="../../../../assets/user/karma-point.svg" alt="Level" />
                     </div>
                     <div class="col-md-6">
-                        <h5 class="fw-bold">{{userDetails.karma_points}}</h5>
+                        <h5 class="fw-bold fs-5">{{ userDetails.karma_points }}</h5>
                     </div>
                 </div>
             </div>
             <div class="dashboard-card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between">
-                        <h4>Filled surveys</h4> <i class="material-icons">arrow_forward</i>
+                        <h4 class="fw-bold">Filled surveys</h4>
+                        <i class="material-icons fw-bold">arrow_forward</i>
                     </div>
                     <p>Community surveys where you contributed</p>
                 </div>
                 <div class="row card-body">
                     <div class="col-md-12">
-                        <h5 class="fw-bold">{{userDetails.surveyFillCount}}</h5>
+                        <h5 class="fw-bold fs-5">{{ userDetails.surveyFillCount }}</h5>
                     </div>
                     <div class="col-md-11">
-                        <p>You have earned <img src="../../../../assets/user/karma-point.svg" alt="Level"> 700 so far
+                        <p>
+                            You have earned
+                            <img src="../../../../assets/user/karma-point.svg" alt="Level" />
+                            700 so far
                         </p>
                     </div>
                 </div>
@@ -54,52 +61,59 @@
             <div class="dashboard-card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between">
-                        <h4>Past surveys</h4> <i class="material-icons">arrow_forward</i>
+                        <h4 class="fw-bold">Past surveys</h4>
+                        <i class="material-icons fw-bold">arrow_forward</i>
                     </div>
                     <p>Your surveys which are completed</p>
                 </div>
                 <div class="row card-body">
                     <div class="col-md-12">
-                        <h5 class="fw-bold">{{userDetails.surveyCreateCountClose}}</h5>
+                        <h5 class="fw-bold fs-5">
+                            {{ userDetails.surveyCreateCountClose }}
+                        </h5>
                     </div>
                     <div class="col-md-11">
-                        <p>You have used <img src="../../../../assets/user/karma-point.svg" alt="Level"> 400 so far</p>
+                        <p>
+                            You have used
+                            <img src="../../../../assets/user/karma-point.svg" alt="Level" />
+                            400 so far
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-md-7">
             <div class="dashboard-card">
-                <div class="card-header">
-                    <h4>Live surveys ({{allSurveyList.length}})</h4>
+                <div class="card-header ">
+                    <h4>Live surveys ({{ allSurveyList.length }})</h4>
                     <p>Track your surveys which are currently live</p>
                 </div>
                 <div class="card-body">
-                    <div class="row mb-3 d-flex justify-content-between" *ngFor="let item of allSurveyList; let i = index">
-                        <div class="col-md-1 ">
-                            <h6>{{i+1}}</h6>
+                    <div class="row mb-3 d-flex "
+                        *ngFor="let item of allSurveyList; let i = index">
+                        <div class="col-md-auto col-sm-auto col-auto">
+                            <h6 class="fs-6">{{ i + 1 }}</h6>
                         </div>
                         <div class="col-md-7">
-                            <p>{{item.survey_title}}</p>
+                            <p>{{ item.survey_title }}</p>
                         </div>
                         <div class="col-md-3 d-flex justify-content-end">
-                            <p class="text-primary">Analyze</p> &nbsp; <i
-                                class="material-icons text-primary fs-5">arrow_forward</i>
+                            <p class="text-primary">Analyze</p>
+                            &nbsp;
+                            <i class="material-icons text-primary fs-5 fw-bold">arrow_forward</i>
                         </div>
                         <div class="row">
-                            <div class=" col-md-4 p-0">
-                                <p class="filter">{{item.level|titlecase}} level</p>
+                            <div class="col-md-4 p-0">
+                                <p class="filter">{{ item.level | titlecase }} level</p>
                             </div>
-                            <div class="col-md-4  p-0">
+                            <div class="col-md-4 p-0">
                                 <p class="filter">Responses 150/200</p>
                             </div>
-                            <div class="col-md-4  p-0">
-                                <p class="filter">Deadline {{item.end_date|date}}</p>
+                            <div class="col-md-4 p-0">
+                                <p class="filter">Deadline {{ item.end_date | date }}</p>
                             </div>
                         </div>
                     </div>
-                   
-
                 </div>
                 <div class="card-footer">
                     <button class="btn-gold">View More</button>
@@ -110,36 +124,41 @@
     <div class="row">
         <div class="col-md-12">
             <div class="instruction row">
-                <h5> <img src="../../../../assets/user/dashboard/icon-faq.svg" alt=""> How to brew a survey?</h5>
+                <h5 class="fs-6">
+                    <img src="../../../../assets/user/dashboard/icon-faq.svg" alt="" />
+                    How to brew a survey?
+                </h5>
                 <div class="col-3">
                     <div class="dashboard-card rounded-3 p-1">
                         <div class="card-body p-2">
-                            <small>Earn Karma points by filling the surveys of community in any level</small>
+                            <small>Earn Karma points by filling the surveys of community in any
+                                level</small>
                         </div>
                     </div>
                 </div>
-                <div class="col-auto d-flex align-items-center p-0 m-0"><i class="material-icons">arrow_forward</i>
+                <div class="col-auto d-flex align-items-center p-0 m-0">
+                    <i class="material-icons">arrow_forward</i>
                 </div>
                 <div class="col-3">
                     <div class="dashboard-card rounded-3 p-1">
                         <div class="card-body p-2">
-                            <small>Earn Karma points by filling the surveys of community in any level</small>
+                            <small>Use earned Karma points to create your survey</small>
                         </div>
                     </div>
                 </div>
-                <div class="col-auto d-flex align-items-center p-0 m-0"><i class="material-icons">arrow_forward</i>
+                <div class="col-auto d-flex align-items-center p-0 m-0">
+                    <i class="material-icons">arrow_forward</i>
                 </div>
 
                 <div class="col-3">
                     <div class="dashboard-card rounded-3 p-1">
                         <div class="card-body p-2">
-                            <small>Earn Karma points by filling the surveys of community in any level</small>
+                            <small>Upgrade to higher levels by earning more Karma points</small>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <img src="../../../../assets/user/dashboard/dashboard-image1.svg" alt="" class="dashboard-right-bottom">
-
+    <img src="../../../../assets/user/dashboard/dashboard-image1.svg" alt="" class="dashboard-right-bottom" />
 </div>

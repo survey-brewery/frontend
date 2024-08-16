@@ -35,7 +35,7 @@ export class UsersComponent {
     });
   }
   getUsersList() {
-    this._adminService.allUserList().subscribe({
+    this._adminService.allUserList('','').subscribe({
       next: (res: any) => {
         if (res.data.length > 0) {
           this.allUsersList = res.data

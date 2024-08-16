@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   longitude!: number;
   auth2: any;
   ngZone: any;
+  passwordVisible:boolean = false
   constructor(private fb: FormBuilder, 
     private router: Router, 
     private surveyService: SurveyService, 
@@ -24,7 +25,7 @@ export class LoginComponent implements OnInit {
     private _dataSharedService:DataSharedService) { }
   ngOnInit(): void {
  
-    
+    localStorage.clear()
     this.createForm();
   }
   createForm() {
@@ -97,7 +98,6 @@ export class LoginComponent implements OnInit {
   
   ngAfterViewInit(): void {
     const self = this;
-  
     google.accounts.id.initialize({
       client_id: "209541354842-gtq7tnt9hrcms0viudkdknoncbtpnt00.apps.googleusercontent.com",
       callback: function(response: any) {
@@ -105,7 +105,6 @@ export class LoginComponent implements OnInit {
         
       }
     });
-  
     google.accounts.id.renderButton(
       document.getElementById("buttonDiv"),
       {
@@ -141,7 +140,7 @@ export class LoginComponent implements OnInit {
           if (res.data.category==1) {
             this.router.navigate(['/admin', { outlets: { sub_menu: ['admin']}}]);
           } else {
-          this.router.navigate(['/user', { outlets: { user_menu: ['user-dashboard']}}])
+          this.router.navigate(['/user', { outlets: { user_menu: ['dashboard']}}])
           }
           this.toastrService.clear();
           this.toastrService.success(res.message);
@@ -174,4 +173,8 @@ export class LoginComponent implements OnInit {
       alert("Geolocation is not supported by this browser.");
     }
   }
+    // Method to toggle password visibility
+togglePasswordVisibility() {
+  this.passwordVisible = !this.passwordVisible;
+}
 }

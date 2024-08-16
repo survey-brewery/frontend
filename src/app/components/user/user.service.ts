@@ -1,16 +1,13 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
- baseUrl = 'http://localhost/PHPworkspace/survey-brewery/';
-//  baseUrl = 'https://www.surveybrewery.com/survey-brewery/';
- httpHeaders = new HttpHeaders({
-  'Content-Type': 'application/json'
-});
+  baseUrl = environment.baseUrl;
 user_id:any
 
 constructor(private http: HttpClient) {
@@ -19,18 +16,16 @@ constructor(private http: HttpClient) {
 
  //create survey...
  createSurvey(data: any) {
-   return this.http.post(this.baseUrl+'user/survey/create-survey.php', data, {
-     headers:this.httpHeaders
-   });
+   return this.http.post(this.baseUrl+'user/survey/create-survey.php', data);
  }
  //for user dashboard survey list  
  getAllSurveyBasicDetailsList(user_id:any,page:any,perPage:any):Observable<any>{
-  // let params =new HttpParams().set('user_id',user_id);
   let params={
-    'user_id':user_id, 
+    'user_id':user_id,    
     'page':page,
     'perPage':perPage
-  }
+  };
+
   if(page==''||perPage==''){
     delete params['page'];
     delete params['perPage'];
@@ -40,7 +35,6 @@ constructor(private http: HttpClient) {
     params:params
   });
  }
-
  //get survey by survey id...
  getSurveyById(id:any,user_id:any):Observable<any>{
   let params =new HttpParams().set('user_id',user_id)
@@ -51,9 +45,7 @@ constructor(private http: HttpClient) {
  
  //fill survey 
  fillSurvey(data:any):Observable<any>{
-  return this.http.post(this.baseUrl+'user/fill-survey/fill-survey.php',data,{
-    headers:this.httpHeaders
-  });
+  return this.http.post(this.baseUrl+'user/fill-survey/fill-survey.php',data);
  }
 
  //get survey list for fill survey...

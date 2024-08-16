@@ -12,7 +12,7 @@
           <li class=" nav-item accordion-header" id="headingOne"><span><img
                 src="../../../assets/images/icon/icon-dashboard.svg" alt="Dashboard"></span>
             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-              aria-expanded="false" aria-controls="collapseOne">
+              aria-expanded="false" aria-controls="collapseOne" (click)="handleMasterAccordionClick()">
               Masters
             </button>
           </li>
@@ -36,18 +36,18 @@
           <!-- <li class="nav-item"><span><img src="../../../assets/images/icon/icon-dashboard.svg" alt="Dashboard"></span>
             Create survey</li> -->
             <li class="nav-item"><span><img src="../../../assets/images/icon/icon-dashboard.svg"
-              alt="Dashboard"></span><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour"
-            aria-expanded="false" aria-controls="collapseFour" >
-            Create survey
+              alt="Dashboard"></span><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+            aria-expanded="false" aria-controls="collapseTwo" (click)="handleSurveyAccordionClick()" >
+             Survey
           </button></li>
-          <ul id="collapseFour" class="accordion-collapse collapse ">
+          <ul id="collapseTwo" class="accordion-collapse collapse ">
             <li class="nav-item" [routerLink]="['/admin', { outlets: { sub_menu: 'create-survey-list' } }]"><span><img
             src="../../../assets/images/icon/icon-dashboard.svg" alt="create"></span> Create </li>
           
          </ul>
           <li class="nav-item"><span><img src="../../../assets/images/icon/icon-dashboard.svg"
                 alt="Dashboard"></span><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"
-              aria-expanded="false" aria-controls="collapseThree" >
+              aria-expanded="false" aria-controls="collapseThree" (click)="handleReportsAccordionClick()" >
               Reports
             </button></li>
             <ul id="collapseThree" class="accordion-collapse collapse ">
