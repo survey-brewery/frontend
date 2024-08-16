@@ -1,1 +1,102 @@
-<p>add-update-sub-profession works!</p>
+<section class="bg-theme-admin m-0">
+  <div class="row m-0">
+    <div class="col-md-12 d-flex justify-content-center">
+      <h4 class="header pt-4">
+        {{ isEdit ? "Update" : "Add" }} Sub-Profession
+      </h4>
+    </div>
+  </div>
+  <div class="row justify-content-center m-0">
+    <div class="col-md-10 mb-3">
+      <form [formGroup]="form">
+        <div class="form-group col-md-12">
+          <label for="profession">Profession</label>
+
+          <select
+            class="form-select"
+            formControlName="profession_id"
+            [ngClass]="{
+              'is-invalid':
+                control['profession_id'].invalid &&
+                (control['profession_id'].dirty ||
+                  control['profession_id'].touched)
+            }"
+          >
+            <option value="" selected>Select profession</option>
+            <option
+              [value]="item.profession_id"
+              *ngFor="let item of allProfessionList"
+            >
+              {{ item.profession }}
+            </option>
+          </select>
+          <span
+            *ngIf="
+              control['profession_id'].invalid &&
+              (control['profession_id'].dirty ||
+                control['profession_id'].touched)
+            "
+            class="text-danger p-1"
+            >Profession is required.</span
+          >
+        </div>
+        <div class="form-group col-md-12">
+          <label for="sub_profession">Sub-Profession</label>
+          <input
+            type="text"
+            class="form-control"
+            id="sub_profession"
+            formControlName="sub_profession"
+            [ngClass]="{
+              'is-invalid':
+                control['sub_profession'].invalid &&
+                (control['sub_profession'].dirty ||
+                  control['sub_profession'].touched)
+            }"
+          />
+          <span
+            *ngIf="
+              control['sub_profession'].invalid &&
+              (control['sub_profession'].dirty ||
+                control['sub_profession'].touched)
+            "
+            class="text-danger p-1"
+            >Sub-Profession is required.</span
+          >
+        </div>
+
+        <div class="form-group col-md-12">
+          <label for="region">Description</label>
+          <textarea
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="3"
+            formControlName="description"
+            [ngClass]="{'is-invalid':control['description'].errors?.['maxlength']}"
+          ></textarea>
+          <span
+            *ngIf="
+              control['description'].invalid &&
+              (control['description'].dirty || control['description'].touched)
+            "
+            class="text-danger p-1"
+          >
+            <span *ngIf="control['description'].errors?.['maxlength']">
+              Description should have at most
+              {{
+                            control['description'].errors?.['maxlength'].requiredLength }}
+              characters.
+            </span>
+          </span>
+        </div>
+
+        <div class="d-flex justify-content-center bg-theme-admin gap-3 p-3">
+          <button class="btn btn-dark" (click)="onSubmit()">
+            {{ isEdit ? "Update" : "Add" }}
+          </button>
+          <button class="btn btn-light" (click)="closeDialog()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

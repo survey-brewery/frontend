@@ -13,21 +13,21 @@
                         <h4 class="fw-bold">Surveys live</h4>
                         <i class="material-icons fw-bold">arrow_forward</i>
                     </div>
-                    <p>Community surveys which are active</p>
+                    <p>Your surveys which are active</p>
                 </div>
                 <div class="row card-body">
                     <div class="col-md-12 ">
                         <h5 class="fw-bold fs-5">
                             {{userDetails.karma_points}}
                         </h5>
-                        <p>Earn <img src="../../../../assets/user/karma-point.svg" alt="karma-points"> 10 for each
-                            survey filled</p>
+                             
+                        <p>Need <img src="../../../../assets/user/karma-point.svg" alt="karma-points">40 to create a survey</p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-md-4  d-flex align-self-end pb-3">
-            <button class="btn-gold" [routerLink]="['/user', { outlets: { user_menu: ['create-survey']}}]">Create New
+            <button class="btn-gold fw-bold" [routerLink]="['/user', { outlets: { user_menu: ['create-survey']}}]">+ Create New
                 Survey</button>
         </div>
     </div>
@@ -62,11 +62,6 @@
                         </tr>
                     </tbody>
                 </table>
-                <!-- <div class="paginator-p">
-                    <mat-paginator [length]="total" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]"
-                        aria-label="Select page" [showFirstLastButtons]="true" (page)="onPageChange($event)">
-                    </mat-paginator>
-                </div> -->
                 <div class="paginator-p">
                     <mat-paginator [hidePageSize]="true" [length]="total" [pageSize]="pageSize" 
                          (page)="onPageChange($event)">

@@ -1,1 +1,49 @@
-<p>users works!</p>
+<section>
+    <div class="container">
+      <div class="row m-0 ">
+        <div class="col-md-4 px-5 pt-5">
+          <h4 class="header">Users</h4>
+        </div>
+      </div>
+      <div class="row m-0 d-flex justify-content-center ">
+        <div class="col-md-10 card p-0 my-5">
+          <div class="d-flex justify-content-end table-header">
+            
+            <button class="btn btn-dark" >Add</button>
+          </div>
+          <div class=" table-container p-3">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col" class="text-center">Sr.no</th>
+                  <th scope="col" class="text-start">User name</th>
+                  <th scope="col" class="text-start">Full name</th>
+                  <th scope="col" class="text-start">Email </th>
+                  <th scope="col" class="text-center">Gender</th>
+                  <th scope="col" class="text-center">View</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor = "let item of allUsersList;let i=index">
+                  <th scope="row" class="text-center">{{i+1}}</th>
+                  <td class="text-start">{{item.user_name | titlecase }}</td>
+                  <td class="text-start">{{item.full_name}}</td>
+                  <td class="text-start">{{item.email_id}}</td>
+                  <td class="text-center"*ngIf="item.gender==1">Male</td>
+                  <td class="text-center"*ngIf="item.gender==2">Female</td>
+                  <td class="text-center"*ngIf="item.gender==3">Other</td>
+                  <td class="text-center"><a [routerLink]="['/admin', {outlets: { sub_menu:['view-user',item.user_id]}}]"><img src="../../../../../assets/eye.svg" alt="" >
+                </a> </td> 
+                </tr>
+                <tr *ngIf="allUsersList.length==0">
+                  <td colspan="10" class="text-danger fw-bold text-center">No Data Available</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+

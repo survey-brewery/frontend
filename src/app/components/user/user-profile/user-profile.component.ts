@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AdminService } from '../../admin/admin.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
@@ -20,6 +20,20 @@ export class UserProfileComponent  implements OnInit {
   allSubProfessionList:Array<any>=[];
   allRegionsList:Array<any>=[];
   filteredRegionList:Array<any>=[];
+  allGenderList: Array<any> = [
+    {
+      gender_id: 1,
+      gender: 'Male'
+    },
+    {
+      gender_id: 2,
+      gender: 'Female'
+    },
+    {
+      gender_id: 3,
+      gender: 'Other'
+    }
+  ]
   searchRegionValue=''
   profession='';
   user_id:any;
@@ -42,12 +56,12 @@ export class UserProfileComponent  implements OnInit {
   }
   createForm(){
     this.form=this.fb.group({
-    user_name:[],
-    full_name:[],
-    email_id:[],
-    gender:[],
-    region_id:[],
-    profession_id:[],
+    user_name:[null,Validators.required],
+    full_name:[null,Validators.required],
+    email_id:[null,Validators.required],
+    gender:[null,Validators.required],
+    region_id:[null,Validators.required],
+    profession_id:[null,Validators.required],
     sub_profession_id:[]
     });
   }

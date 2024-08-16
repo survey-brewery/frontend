@@ -9,19 +9,22 @@ body {
 .fw-bold {
     font-weight: 500 !important;
 }
-
+$text-primary: #007AFF;
 //background...
 .bg-theme-admin {
     background: #efda92;
 }
 
 .bg-gold {
-    background: #fbc108;
+    background: #FCD96C;
+}
+.bg-pink{
+    background: #FCF1CF!important;
 }
 
 //text
 .text-primary {
-    color: #5c80bc !important;
+    color: $text-primary !important;
 }
 
 .btn {
@@ -42,7 +45,7 @@ body {
 .btn-light-cancel {
     background: #dcdcdc;
     color: #0f0f0f;
-    border-radius: 44.5px;
+    border-radius: 5px;
     font-size: 0.9rem !important;
     padding: 0.5rem 1rem !important;
     display: flex;
@@ -63,8 +66,8 @@ body {
 }
 
 .btn-pink {
-    background: rgba(226, 87, 76, 0.5);
-    border-radius: 44.5px;
+    background: #FCF1CF;
+    border-radius: 5px;
     padding: 0.5rem 1rem !important;
     font-size: 0.9rem !important;
     text-align: center;
@@ -75,7 +78,7 @@ body {
 
 .btn-gold {
     background: #fcd96c;
-    border-radius: 44.5px;
+    border-radius: 5px;
     padding: 0.5rem 1rem !important;
     font-size: 0.9rem !important;
     text-align: center;
@@ -86,7 +89,7 @@ body {
 
 .btn-sm-gold {
     background: #fcd96c;
-    border-radius: 15.5px;
+    border-radius:5px;
     padding: 0.3rem 0.5rem !important;
     font-size: 0.9rem !important;
     text-align: center;
@@ -95,8 +98,8 @@ body {
     align-items: center;
 }
 .btn-sm-pink {
-    background: rgba(226, 87, 76, 0.5);
-    border-radius: 15.5px;
+    background: #FCF1CF;
+    border-radius: 5px;
     padding: 0.3rem 0.5rem !important;
     font-size: 0.9rem !important;
     text-align: center;
@@ -160,13 +163,13 @@ label {
     padding: 20px 15px;
 }
 
-//login page
-.login-backgroud {
-    background-image: url('../src/assets/images/background/login-background.svg');
-    background-size: 50%;
-    // height: 100vh;
-    background-color: #c1b99f;
-}
+// //login page
+// .login-backgroud {
+//     background-image: url('../src/assets/images/background/login-background.svg');
+//     background-size: 50%;
+//     // height: 100vh;
+//     background-color: #c1b99f;
+// }
 
 .example-form mat-slide-toggle {
     margin: 8px 0;
@@ -241,29 +244,47 @@ textarea:focus {
         }
     }
 }
+.dashboard-card-pink{
+    border-radius: 15px;
+    background-color: #FCF1CF !important;
+    border: 1px solid #757575;
+    margin: 1rem 0rem;
 
-.form-group-user {
-    label {
-        position: relative;
-        top: 15px;
-        left: 15px;
-        background: #f9fbff;
-        padding: 0px 5px;
-        font-size: 0.8rem;
-    }
-    .form-control{
-        font-size: 0.9rem!important;
+    // font-family: 'Inter, sans-serif';
+    .card-header {
+        padding: 1rem 1rem 0rem 1rem;
+
+        border-bottom: 0.5px solid #e3e3e3;
+
+        h4 {
+            font-size: 1.2rem;
+        }
+
+        p {
+            color: #9e9e9e;
+            font-size: 0.8rem;
+        }
     }
 
-    input,
-    mat-select {
-        background-color: #f9fbff;
-        border-radius: 4px !important;
-        height: 37px;
-        padding-left: 20px;
+    .card-body,
+    .card-footer {
+        padding: 1rem;
+
+        p {
+            font-size: 0.9rem;
+        }
+
+        .filter {
+            border: 1px solid #fbc108;
+            border-radius: 100px;
+            padding: 0.3rem 1rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            background: #fef9ec;
+            margin-left: 0.4rem;
+        }
     }
 }
-
 //user profile
 .btn-group {
     width: 60%;
@@ -303,3 +324,64 @@ textarea:focus {
 //     position: absolute;
 //     bottom: 0px;
 // }
+
+// --------------------------------------------------
+.fit-to-screen {
+    height: 100vh;
+    overflow: hidden;
+}
+.form-group {
+    margin-bottom: 10px;
+    position: relative;
+    input, mat-select {
+        border-radius: 10px;
+        background: #FAFAFB;
+        font-size: 0.9rem;
+        position: relative;
+    }
+
+    input:hover, mat-select:hover {
+        background: #ECEDEE;
+    }
+
+    input:focus,mat-select:focus {
+        border: 1px solid #49454F;
+    }
+
+    input:invalid,mat-select:invalid {
+        border: 1px solid #F33950;
+    }
+
+    label {
+        color: #111A28;
+        font-weight: 500;
+    }
+
+    .text-danger {
+        color: #F33950;
+        ;
+    }
+
+    small .error-icon {
+        content: url(./assets/images/icon/icon-warning-error.svg);
+    }
+
+    .eye {
+        position: absolute;
+        top: 30px;
+        right: 10px;
+    }
+    .h-0{
+        height: 0px;
+    }
+
+}
+
+.btn-register{
+    background: #FCD96C;
+    border-radius: 100px;
+    border: 1px solid #242424;
+    padding: 0.7rem 0rem;
+    font-size: 1rem;
+    font-weight: 500;
+}

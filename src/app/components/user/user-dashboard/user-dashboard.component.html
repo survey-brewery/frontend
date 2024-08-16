@@ -84,14 +84,14 @@
         </div>
         <div class="col-md-7">
             <div class="dashboard-card">
-                <div class="card-header">
+                <div class="card-header ">
                     <h4>Live surveys ({{ allSurveyList.length }})</h4>
                     <p>Track your surveys which are currently live</p>
                 </div>
                 <div class="card-body">
-                    <div class="row mb-3 d-flex justify-content-between"
+                    <div class="row mb-3 d-flex "
                         *ngFor="let item of allSurveyList; let i = index">
-                        <div class="col-md-1">
+                        <div class="col-md-auto col-sm-auto col-auto">
                             <h6 class="fs-6">{{ i + 1 }}</h6>
                         </div>
                         <div class="col-md-7">
@@ -142,8 +142,7 @@
                 <div class="col-3">
                     <div class="dashboard-card rounded-3 p-1">
                         <div class="card-body p-2">
-                            <small>Earn Karma points by filling the surveys of community in any
-                                level</small>
+                            <small>Use earned Karma points to create your survey</small>
                         </div>
                     </div>
                 </div>
@@ -154,8 +153,7 @@
                 <div class="col-3">
                     <div class="dashboard-card rounded-3 p-1">
                         <div class="card-body p-2">
-                            <small>Earn Karma points by filling the surveys of community in any
-                                level</small>
+                            <small>Upgrade to higher levels by earning more Karma points</small>
                         </div>
                     </div>
                 </div>

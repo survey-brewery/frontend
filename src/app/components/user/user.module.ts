@@ -12,6 +12,7 @@ import { UserSurveyComponent } from './user-survey/user-survey.component';
 import { UserCreateSurveryListComponent } from './user-survey/user-create-survery-list/user-create-survery-list.component';
 import { UserFillSurveyListComponent } from './user-fill-survey/user-fill-survey-list/user-fill-survey-list.component';
 import { UserCreateSurveyComponent } from './user-survey/user-create-survey/user-create-survey.component';
+import { UserFillSurveyStartComponent } from './user-fill-survey/user-fill-survey-start/user-fill-survey-start.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { UserCreateSurveyComponent } from './user-survey/user-create-survey/user
     UserSurveyComponent,
     UserCreateSurveryListComponent,
     UserFillSurveyListComponent,
-    UserCreateSurveyComponent
+    UserCreateSurveyComponent,
+    UserFillSurveyStartComponent
   ],
   imports: [
     CommonModule,

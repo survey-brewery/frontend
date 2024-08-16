@@ -35,7 +35,6 @@ getAllSurveyBasicDetailsList(){
       if (res.data.length > 0) {
         this.allSurveyList = res.data;
         this.total=res.pagination.total;
-        this.total=100;
       } else {
         this.allSurveyList=[];
         this.total=0;

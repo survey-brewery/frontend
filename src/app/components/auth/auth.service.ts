@@ -1,14 +1,13 @@
 import { Observable, catchError, throwError } from 'rxjs';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SurveyService {
-  baseUrl = 'http://localhost/PHPworkspace/survey-brewery/';
-  // baseUrl = 'https://www.surveybrewery.com/survey-brewery/';
-  
+  baseUrl = environment.baseUrl;
    httpHeaders = new HttpHeaders({
     'Content-Type': 'application/json'
   });
@@ -19,9 +18,7 @@ export class SurveyService {
     });
   }
   updateUser(data:any,id:any):Observable<any>{
-    return this.http.put(this.baseUrl+'user-registration/update-user.php/'+id,data, {
-      headers:this.httpHeaders
-    })
+    return this.http.put(this.baseUrl+'user-registration/update-user.php/'+id,data)
   }
   login(data:any):Observable<any>{
     return this.http.post(this.baseUrl+'user-registration/login.php',data, {

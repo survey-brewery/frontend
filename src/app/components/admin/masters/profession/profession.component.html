@@ -24,7 +24,7 @@
               <tbody>
                 <tr *ngFor = "let item of allProfessionList;let i=index">
                   <th scope="row" class="text-center">{{i+1}}</th>
-                  <td class="text-center">{{item.profession}}</td>
+                  <td class="text-center">{{item.profession | titlecase }}</td>
                   <td class="text-center">{{item.user_name}}</td>
                   <td class="text-center"><img src="../../../../../assets/edit.svg" alt="" (click)="openDialog(item)">
                   </td>
