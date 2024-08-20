@@ -1,88 +1,90 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
-import { UserFillSurveyComponent } from './user-fill-survey/user-fill-survey.component';
+import { UserFillSurveyComponent } from './user-fill-survey/user-fill-survey/user-fill-survey.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserLevelComponent } from './user-level/user-level.component';
 import { UserKarmaPointComponent } from './user-karma-point/user-karma-point.component';
 import { UserSurveyComponent } from './user-survey/user-survey.component';
 import { UserCreateSurveryListComponent } from './user-survey/user-create-survery-list/user-create-survery-list.component';
-import { UserFillSurveyListComponent } from './user-fill-survey/user-fill-survey-list/user-fill-survey-list.component';
 import { UserCreateSurveyComponent } from './user-survey/user-create-survey/user-create-survey.component';
+import { UserFillSurveyStartComponent } from './user-fill-survey/user-fill-survey-start/user-fill-survey-start.component';
+import { HowItWorksComponent } from './how-it-works/how-it-works.component';
+import { UserFillSurveyListComponent } from './user-fill-survey/user-fill-survey-list/user-fill-survey-list.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "dashboard", pathMatch: "full" },
-  // {
-  //   path: "",
-  //   component: UserDashboardComponent,
-  //   // canActivate:[AuthGuard]
-  // },
+
   {
     path: "dashboard",
     component: UserDashboardComponent,
-    pathMatch: "full",
     outlet: "user_menu",
-    // canActivate:[AuthGuard]
-    title:'Dashboard',
-    data: { title: 'Dahboard' }
+    data: { title: 'Dashboard' }
+  },
+
+  {
+    path: "my-profile",
+    component: UserProfileComponent,
+    outlet: "user_menu",
+    data: { title: 'My Account' }
+  },
+  {
+    path: "user-level",
+    component: UserLevelComponent,
+    outlet: "user_menu",
+    data: { title: 'Level' }
+  },
+  {
+    path: "karma-point",
+    component: UserKarmaPointComponent,
+    outlet: "user_menu",
+    data: { title: 'Karma Points' }
+  },
+  {
+    path: "survey",
+    component: UserSurveyComponent,
+    outlet: "user_menu",
+    data: { title: 'Create Survey' }
+  },
+  {
+    path: "create-survey-list",
+    component: UserCreateSurveryListComponent,
+    outlet: "user_menu",
+    data: { title: 'Create Survey List' }
+  },
+  {
+    path: "create-survey",
+    component: UserCreateSurveyComponent,
+    outlet: "user_menu",
+    data: { title: 'Create Survey' }
   },
   {
     path: "fill-survey",
-    component: UserFillSurveyListComponent,
-    pathMatch: "full",
+    component: UserFillSurveyComponent,
     outlet: "user_menu",
-    // canActivate:[AuthGuard]
-    data: { title: 'Fill survey' }
+    data: { title: 'Fill Survey' },
   },
-    {
-      path: "my-profile",  
-      component: UserProfileComponent,
-      pathMatch: "full",
+   {
+      path: "fill-survey-list",
+      component: UserFillSurveyListComponent,
       outlet: "user_menu",
-      // canActivate:[AuthGuard]
-      data: { title: 'My Profile' }
+      data: { title: 'Fill Survey List' }
     },
-    {
-      path: "user-level",  
-      component: UserLevelComponent,
-      pathMatch: "full",
-      outlet: "user_menu",
-      // canActivate:[AuthGuard]
-      data: { title: 'Level' }
-    },
-    {
-      path: "karma-point",  
-      component: UserKarmaPointComponent,
-      pathMatch: "full",
-      outlet: "user_menu",
-      // canActivate:[AuthGuard]
-      data: { title: 'Karma Point' }
-    },
-    {
-      path: "survey",  
-      component: UserSurveyComponent,
-      pathMatch: "full",
-      outlet: "user_menu",
-      // canActivate:[AuthGuard]
-      data: { title: 'Survey' }
-    },
-    {
-      path: "create-survey-list",  
-      component: UserCreateSurveryListComponent,
-      pathMatch: "full",
-      outlet: "user_menu",
-      // canActivate:[AuthGuard]
-      data: { title: 'Create survey list' }
-    },
-    {
-      path: "create-survey",  
-      component: UserCreateSurveyComponent,
-      pathMatch: "full",
-      outlet: "user_menu",
-      // canActivate:[AuthGuard]
-      data: { title: 'Create survey' }
-    },
+  {
+    path: "fill-survey-start/:id",
+    component: UserFillSurveyStartComponent,
+    outlet: "user_menu",
+    data: { title: 'Fill Survey Start' }
+  },
+  {
+    path: "how-it-works",
+    component: HowItWorksComponent,
+    outlet: "user_menu",
+    data: { title: 'How to ?' }
+  }
 ];
+
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

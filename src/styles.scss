@@ -10,6 +10,7 @@ body {
     font-weight: 500 !important;
 }
 $text-primary: #007AFF;
+$text-success: #00B086;
 //background...
 .bg-theme-admin {
     background: #efda92;
@@ -25,6 +26,9 @@ $text-primary: #007AFF;
 //text
 .text-primary {
     color: $text-primary !important;
+}
+.text-success{
+    color:$text-success!important
 }
 
 .btn {
@@ -55,7 +59,7 @@ $text-primary: #007AFF;
 
 
 .btn-success {
-    background: #008323;
+    background: #00B086;
     border-radius: 44.5px;
     padding: 0.5rem 1rem !important;
     font-size: 0.9rem !important;
@@ -208,15 +212,18 @@ textarea:focus {
     background-color: #fff !important;
     border: 1px solid #757575;
     margin: 1rem 0rem;
+    overflow: hidden;
+    z-index: 1;
 
     // font-family: 'Inter, sans-serif';
     .card-header {
-        padding: 1rem 1rem 0rem 1rem;
+        padding: 0.9rem 0.9rem 0rem 0.9rem;
 
         border-bottom: 0.5px solid #e3e3e3;
 
         h4 {
             font-size: 1.2rem;
+            line-height: 20px!important;
         }
 
         p {
@@ -230,7 +237,8 @@ textarea:focus {
         padding: 1rem;
 
         p {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
+            color: #757575;
         }
 
         .filter {
@@ -384,4 +392,18 @@ textarea:focus {
     padding: 0.7rem 0rem;
     font-size: 1rem;
     font-weight: 500;
+}
+.w-20{
+    width: 20px!important;
+}
+::-webkit-scrollbar {
+    width: 7px;
+    overflow-y: scroll;
+    background: #FFF;
+    box-shadow: inset 0 0 4px #707070;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #161616;
+    border-radius: 10px;
 }

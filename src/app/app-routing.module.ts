@@ -17,11 +17,12 @@ const routes: Routes = [
       import("../app/components/admin/admin.module").then((m) => m.AdminModule),
   },
   {
-    path:"user",
-    loadChildren: ()=>
-      import("../app/components/user/user.module").then((m) => m.UserModule )
+    path: "user",
+    loadChildren: () =>
+      import("../app/components/user/user.module").then((m) => m.UserModule)
   }
 ];
+
 
 @NgModule({
   imports: [ RouterModule.forRoot(routes)
