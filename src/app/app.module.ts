@@ -15,6 +15,7 @@ const APP_CONTAINERS = [
   AdminSidebarComponent,
   UserSidebarComponent,
 ];
+
 @NgModule({
   declarations: [
     AppComponent, ...APP_CONTAINERS

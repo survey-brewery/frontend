@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { UserRoutingModule } from './user-routing.module';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
-import { UserFillSurveyComponent } from './user-fill-survey/user-fill-survey.component';
+import { UserFillSurveyComponent } from './user-fill-survey/user-fill-survey/user-fill-survey.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserLevelComponent } from './user-level/user-level.component';
@@ -13,6 +13,8 @@ import { UserCreateSurveryListComponent } from './user-survey/user-create-surver
 import { UserFillSurveyListComponent } from './user-fill-survey/user-fill-survey-list/user-fill-survey-list.component';
 import { UserCreateSurveyComponent } from './user-survey/user-create-survey/user-create-survey.component';
 import { UserFillSurveyStartComponent } from './user-fill-survey/user-fill-survey-start/user-fill-survey-start.component';
+import { HowItWorksComponent } from './how-it-works/how-it-works.component';
+// import { UserFillSurveyModule } from './user-fill-survey/user-fill-survey.module';
 
 
 @NgModule({
@@ -26,12 +28,13 @@ import { UserFillSurveyStartComponent } from './user-fill-survey/user-fill-surve
     UserCreateSurveryListComponent,
     UserFillSurveyListComponent,
     UserCreateSurveyComponent,
-    UserFillSurveyStartComponent
+    UserFillSurveyStartComponent,
+    HowItWorksComponent
   ],
   imports: [
     CommonModule,
     UserRoutingModule,
-    SharedModule
+    SharedModule,
   ]
 })
 export class UserModule { }

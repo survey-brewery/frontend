@@ -1,4 +1,4 @@
-<div class="container-fuild">
+<!-- <div class="container-fuild">
     <div class="row h-100   m-0">
         <div class="side-bar">
             <div class="logo p-3">
@@ -44,4 +44,93 @@
     </div>
 </div>
 
+ -->
+<div class="container-fuild">
+    <div class="row h-100   m-0">
+        <div class="side-bar">
+            <div class="logo p-3">
+                <img src="../../../assets/images/logo/logo-white.svg" alt="SurveyBrewery">
+            </div>
+            <div class="menu">
+                <ul class="nav">
+                    <li class="nav-item" routerLinkActive='active' [routerLink]="['/user', { outlets: { user_menu: ['dashboard']}}]"><span><img
+                                src="../../../assets/images/icon/icon-dashboard.svg" alt="Dashboard"></span>
+                                Dashboard
+                    </li>
+                    <li class="nav-item"routerLinkActive='active' [routerLink]="['/user', { outlets: { user_menu: ['survey']}}]"><span><img
+                                src="../../../assets/images/icon/icon-create-survey.svg" alt="Dashboard"></span>
+                                Survey
+                    </li>
+                    <li class="nav-item"routerLinkActive='active' [routerLink]="['/user', { outlets: { user_menu: ['fill-survey']}}]"><span><img
+                                src="../../../assets/images/icon/icon-fill-survey.svg" alt="Dashboard"></span>
+                                Fill survey
+                    </li>
+                    <li class="nav-item"routerLinkActive='active' [routerLink]="['/user', { outlets: { user_menu: ['how-it-works']}}]"><span><img
+                                src="../../../assets/images/icon/icon-how-it-work.svg" alt="Dashboard"></span>
+                                How to ?
+                    </li>
+                    <li class=" nav-item accordion-header" id="headingOne"><span><img
+                                src="../../../assets/images/icon/icon-user-accout.svg" alt="Dashboard"></span>
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"
+                            (click)="handleProfileAccordionClick()">
+                            Profile
+                        </button>
+                    </li>
+                    <ul id="collapseOne" class="accordion-collapse collapse sub-menu ">
+                        <li class="nav-item sub-nav-item" routerLinkActive='active'
+                            [routerLink]="['/user', { outlets: { user_menu: ['my-profile']}}]">
+                            My account
+                        </li>
+                        <li class="nav-item sub-nav-item" routerLinkActive='active'
+                            [routerLink]="['/user', { outlets: { user_menu: ['user-level']}}]">
+                            Level
+                        </li>
+                        <li class="nav-item sub-nav-item" routerLinkActive='active'
+                            [routerLink]="['/user', { outlets: { user_menu: ['karma-point']}}]">
+                            Karma points
+                        </li>
+                    </ul>
+                    <!--  <li class="nav-item" [routerLink]="['/admin', { outlets: { sub_menu: ['users']}}]"> <span><img
+                                src="../../../assets/images/icon/icon-dashboard.svg" alt="Dashboard"></span>Users</li>
 
+                    <li class="nav-item"><span><img src="../../../assets/images/icon/icon-dashboard.svg"
+                                alt="Dashboard"></span><button class="accordion-button" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
+                            aria-controls="collapseTwo" (click)="handleSurveyAccordionClick()">
+                            Survey
+                        </button></li>
+                    <ul id="collapseTwo" class="accordion-collapse collapse ">
+                        <li class="nav-item" [routerLink]="['/admin', { outlets: { sub_menu: 'create-survey-list' } }]">
+                            <span><img src="../../../assets/images/icon/icon-dashboard.svg" alt="create"></span> Create
+                        </li>
+
+                    </ul>
+                    <li class="nav-item"><span><img src="../../../assets/images/icon/icon-dashboard.svg"
+                                alt="Dashboard"></span><button class="accordion-button" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
+                            aria-controls="collapseThree" (click)="handleReportsAccordionClick()">
+                            Reports
+                        </button></li>
+                    <ul id="collapseThree" class="accordion-collapse collapse ">
+                        <li class="nav-item" [routerLink]="['/admin', { outlets: { sub_menu: 'create-survey' } }]">
+                            <span><img src="../../../assets/images/icon/icon-dashboard.svg" alt="create"></span> Create
+                            Survey
+                        </li>
+                        <li class="nav-item" [routerLink]="['/admin', { outlets: { sub_menu: 'fill-survey' } }]">
+                            <span><img src="../../../assets/images/icon/icon-dashboard.svg" alt="fill-survey"></span>
+                            Fill Survey
+                        </li>
+
+                    </ul> -->
+                    <li class="nav-item" routerLink="/" routerLinkActive='active' [routerLinkActiveOptions]="{exact:true}"><span><img src="../../../assets/images/icon/icon-dashboard.svg"
+                                alt="Dashboard"></span>Logout</li>
+                </ul>
+            </div>
+        </div>
+        <div class="body">
+            <div class="header"><app-user-header></app-user-header></div>
+            <div class="body-container "><router-outlet name="user_menu"></router-outlet></div>
+        </div>
+    </div>
+</div>

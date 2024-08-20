@@ -1,0 +1,144 @@
+<div class="container p-5 pt-0">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="dashboard-card"  >
+                <div class="card-header" (click)="(begginer.remainingCount>0)? this.selectLevel(begginer.level_id,begginer.level,'../../../../assets/user/level/level-beginner.svg',begginer.points_after_fill):this.notAllowed()">
+                    <div class="d-flex justify-content-between">
+                        <h4 class="fw-bold">{{begginer.level|titlecase}} level</h4>
+                        <i class="material-icons fw-bold">arrow_forward</i>
+                    </div>
+                    <p>Earn  <img src="../../../../assets/user/karma-point.svg" height="18px" alt="karma-point" />   {{begginer.points_after_fill}} per survey filled</p>
+                </div>
+                <div class="row card-body">
+                    <div class="col-md-12 ">
+                        <h4 class="fs-3 fw-bold p-0 m-0">{{(begginer.remainingCount>0)?begginer.remainingCount:0}}</h4>
+                    </div>
+                    <div class="col-md-12">
+                        <p>surveys are currently live in this level</p>
+                    </div>
+                </div>
+                <img class="dashboard-card-image" src="../../../../assets/user/level/level-beginner.svg" alt="">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="dashboard-card"  >
+                <div class="card-header" (click)="(expert.remainingCount>0)? this.selectLevel(expert.level_id,begginer.level,'../../../../assets/user/level/level-expert.svg',expert.points_after_fill):this.notAllowed()">
+                    <div class="d-flex justify-content-between">
+                        <h4 class="fw-bold">{{expert.level|titlecase}} level</h4>
+                        <i class="material-icons fw-bold">arrow_forward</i>
+                    </div>
+                    <p>Earn  <img src="../../../../assets/user/karma-point.svg" height="18px" alt="karma-point" />   {{expert.points_after_fill}} per survey filled</p>
+                </div>
+                <div class="row card-body">
+                    <div class="col-md-12 ">
+                        <h4 class="fs-3 fw-bold p-0 m-0">{{(expert.remainingCount>0)?expert.remainingCount:0}}</h4>
+                    </div>
+                    <div class="col-md-12">
+                        <p>surveys are currently live in this level</p>
+                    </div>
+                </div>
+                <img class="dashboard-card-image" src="../../../../assets/user/level/level-expert.svg" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="dashboard-card"  >
+                <div class="card-header" (click)="(master.remainingCount>0)? this.selectLevel(master.level_id,master.level,'../../../../assets/user/level/level-master.svg',master.points_after_fill):this.notAllowed()">
+                    <div class="d-flex justify-content-between">
+                        <h4 class="fw-bold">{{master.level|titlecase}} level</h4>
+                        <i class="material-icons fw-bold">arrow_forward</i>
+                    </div>
+                    <p>Earn  <img src="../../../../assets/user/karma-point.svg" height="18px" alt="karma-point" />   {{master.points_after_fill}} per survey filled</p>
+                </div>
+                <div class="row card-body">
+                    <div class="col-md-12 ">
+                        <h4 class="fs-3 fw-bold p-0 m-0">{{(master.remainingCount>0)?master.remainingCount:0}}</h4>
+                    </div>
+                    <div class="col-md-12">
+                        <p>surveys are currently live in this level</p>
+                    </div>
+                </div>
+                <img class="dashboard-card-image" src="../../../../assets/user/level/level-master.svg" alt="">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="dashboard-card"  >
+                <div class="card-header" (click)="(grandMaster.remainingCount>0)? this.selectLevel(grandMaster.level_id,grandMaster.level,'../../../../assets/user/level/level-grand-master.svg',grandMaster.points_after_fill):this.notAllowed()">
+                    <div class="d-flex justify-content-between">
+                        <h4 class="fw-bold">{{grandMaster.level|titlecase}} level</h4>
+                        <i class="material-icons fw-bold">arrow_forward</i>
+                    </div>
+                    <p>Earn  <img src="../../../../assets/user/karma-point.svg" height="18px" alt="karma-point" />   {{grandMaster.points_after_fill}} per survey filled</p>
+                </div>
+                <div class="row card-body">
+                    <div class="col-md-12 ">
+                        <h4 class="fs-3 fw-bold p-0 m-0">{{(grandMaster.remainingCount>0)?grandMaster.remainingCount:0}}</h4>
+                    </div>
+                    <div class="col-md-12">
+                        <p>surveys are currently live in this level</p>
+                    </div>
+                </div>
+                <img class="dashboard-card-image" src="../../../../assets/user/level/level-grand-master.svg" alt="">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="dashboard-card"  >
+                <div class="card-header" (click)="(legend.remainingCount>0)? this.selectLevel(legend.level_id,legend.level,'../../../../assets/user/level/level-legend.svg',legend.points_after_fill):this.notAllowed()">
+                    <div class="d-flex justify-content-between">
+                        <h4 class="fw-bold">{{legend.level|titlecase}} level</h4>
+                        <i class="material-icons fw-bold">arrow_forward</i>
+                    </div>
+                    <p>Earn  <img src="../../../../assets/user/karma-point.svg" height="18px" alt="karma-point" />   {{legend.points_after_fill}} per survey filled</p>
+                </div>
+                <div class="row card-body">
+                    <div class="col-md-12 ">
+                        <h4 class="fs-3 fw-bold p-0 m-0">{{(legend.remainingCount>0)?legend.remainingCount:0}}</h4>
+                    </div>
+                    <div class="col-md-12">
+                        <p>surveys are currently live in this level</p>
+                    </div>
+                </div>
+                <img class="dashboard-card-image" src="../../../../assets/user/level/level-legend.svg" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="row m-0">
+        <div class="col-md-12 m-0">
+            <div class="instruction row m-0">
+                <h5 class="fs-6">
+                    <img src="../../../../assets/user/dashboard/icon-faq.svg" alt="" />
+                    What are levels?
+                </h5>
+                <div class="col-3">
+                    <div class="dashboard-card rounded-3 p-1">
+                        <div class="card-body p-2">
+                            <small>Your Karma points decide the level you are in</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-auto d-flex align-items-center p-0 m-0">
+                    <i class="material-icons ">arrow_forward</i>
+                </div>
+                <div class="col-3">
+                    <div class="dashboard-card rounded-3 p-1">
+                        <div class="card-body p-2">
+                            <small>Surveys in higher levels give more Karma points per survey filled</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-auto d-flex align-items-center p-0 m-0">
+                    <i class="material-icons">arrow_forward</i>
+                </div>
+                <div class="col-3">
+                    <div class="dashboard-card rounded-3 p-1">
+                        <div class="card-body p-2">
+                            <small>But, surveys in higher levels get exhausted quickly, so hurry!</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <img src="../../../../assets/user/fill-survey/fill-survey.svg" alt="" height="250px" class="dashboard-right-bottom" />
+</div>
