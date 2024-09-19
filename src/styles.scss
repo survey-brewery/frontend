@@ -31,12 +31,17 @@ $text-success: #00B086;
     color:$text-success!important
 }
 
+// .btn {
+//     padding: 0.2rem 1.5rem;
+//     display: flex;
+//     align-items: center;
+// }
 .btn {
-    padding: 0.2rem 1.5rem;
-    display: flex;
-    align-items: center;
-}
+    padding: 3px 20px!important;
+    display: unset!important;
+    border-radius: 6px!important;
 
+}
 .btn-sm {
     padding: 0.1rem 1rem;
 }
@@ -401,6 +406,7 @@ textarea:focus {
     overflow-y: scroll;
     background: #FFF;
     box-shadow: inset 0 0 4px #707070;
+    height: 7px;
 }
 
 ::-webkit-scrollbar-thumb {

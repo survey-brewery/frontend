@@ -22,6 +22,8 @@ import { CreateSurveyComponent } from './reports/create-survey/create-survey.com
 import { FillSurveyComponent } from './reports/fill-survey/fill-survey.component';
 import { CreateComponent } from './create-survey/create/create.component';
 import { UserAnalyticsComponent } from './users/user-analytics/user-analytics.component';
+import { AdminCreateSurveyListComponent } from './admin-create-survey-list/admin-create-survey-list.component';
+import { AdminCreateSurveyComponent } from './admin-create-survey-list/admin-create-survey/admin-create-survey.component';
 
 
 
@@ -46,6 +48,8 @@ import { UserAnalyticsComponent } from './users/user-analytics/user-analytics.co
     FillSurveyComponent,
     CreateComponent,
     UserAnalyticsComponent,
+    AdminCreateSurveyListComponent,
+    AdminCreateSurveyComponent,
     
   ],
   imports: [

@@ -1,29 +1,29 @@
 <section class="bg-theme-admin m-0 ">
     <div class="row m-0">
         <div class="col-md-12 d-flex justify-content-center">
-            <h4 class="header pt-4">{{isEdit?'Update':'Add'}} Question-type</h4>
+            <h4 class="header pt-4">{{isEdit?'Update':'Add'}} Question type</h4>
         </div>
     </div>
     <div class="row justify-content-center  m-0">
         <div class="col-md-10 mb-3">
             <form [formGroup]="form">
                 <div class="form-group col-md-12 ">
-                    <label for="question_type">Question-type</label>
+                    <label for="question_type">Question type</label>
                     <input type="text" class="form-control" id="question_type
                     " formControlName="question_type">
                         <span
                             *ngIf="control['question_type'].invalid &&(control['question_type'].dirty || control['question_type'].touched)"
-                            class="text-danger p-1">Question-type is required.</span>
+                            class="text-danger p-1">Question type is required.</span>
                 </div>
                 <div class="form-group col-md-12 ">
-                    <label for="input_type">Input-type</label>
+                    <label for="input_type">Input type</label>
                     <select class="form-select"   formControlName="input_type" [ngClass]="{'is-invalid': control['input_type'].invalid && (control['input_type'].dirty || control['input_type'].touched)}">
-                        <option value="" selected> select Input type</option>
+                        <option value="" selected> Select Input type</option>
                         <option [value]="item.key" *ngFor="let item of inputTypeList">{{item.label}}</option>
                       </select>
                         <span
                             *ngIf="control['input_type'].invalid &&(control['input_type'].dirty || control['input_type'].touched)"
-                            class="text-danger p-1">Input-type is required.</span>
+                            class="text-danger p-1">Input type is required.</span>
                 </div>
                 <div class="form-group col-md-12">
                     <label for="region">Description</label>

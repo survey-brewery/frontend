@@ -1,8 +1,8 @@
 <div class="header d-flex justify-content-between">
     <div class="header-title">{{title}}</div>
     <ul class="sub-header-menu">
-        <li class="filter"><img src="../../../../assets/user/karma-point.svg" alt="karma-point"> &nbsp;&nbsp;150</li>
-        <li class="filter"><img src="../../../../assets/user/level/level-beginner.svg" alt="karma-point"> &nbsp;&nbsp;Begginer</li>
+        <li class="filter"><img src="../../../../assets/user/karma-point.svg" alt="karma-point"> &nbsp;&nbsp;{{userDetails.karma_points||0}}</li>{{userDetails.value|json}}
+        <li class="filter"><img src="../../../../assets/user/level/level-beginner.svg" alt="karma-point"> &nbsp;&nbsp;{{(userDetails.level||'Begginer')|titlecase}}</li>
         <li><img src="../../../../assets/images/icon/icon-notification.svg" height="20px"  alt="notification"></li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -38,7 +38,7 @@ export class AddUpdateQuestionsTypeComponent {
   createForm() {
     this.form = this.fb.group({
       question_type: [null, Validators.required],
-      input_type: [null, Validators.required],
+      input_type: ['', Validators.required],
       description:[null,Validators.maxLength(250)],
       user_id: [this.user_id, Validators.required],
 

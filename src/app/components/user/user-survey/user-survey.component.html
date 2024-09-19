@@ -1,23 +1,28 @@
 <div class="container p-5 pt-0">
     <div class="row">
-        <div class="col-md-4">
-            <div class="dashboard-card" [routerLink]="['/user', { outlets: { user_menu: ['create-survey-list']}}]">
-                <div class="card-header">
+        <div class="col-md-4" *ngFor="let item of allLevelsList">
+            <div class="dashboard-card" (click)="userDetails?.karma_points <
+                            convertString(item.points_after_create)?onYourKarmaPointLow():onClickSurveyCard()" >
+                <div class="card-header" >
                     <div class="d-flex justify-content-between">
-                        <h4 class="fw-bold">Beginner level</h4>
-                        <i class="material-icons fw-bold">arrow_forward</i>
+                        <h4 class="fw-bold">{{(item.level+' level')|titlecase}} </h4>
+                        <i class="material-icons fw-bold" >arrow_forward</i>
                     </div>
-                    <p>Use  <img src="../../../../assets/user/karma-point.svg" height="18px" alt="karma-point" />   20 per survey created</p>
+                    <p>Use  <img src="../../../../assets/user/karma-point.svg" height="18px" alt="karma-point" />   {{item.points_after_create}} per survey created</p>
                 </div>
                 <div class="row card-body">
                     <div class="col-md-12 ">
-                        <h4 class="fs-3 fw-bold p-0 m-0">2</h4>
+                        <h4 class="fs-3 fw-bold p-0 m-0">{{item.surveyCount}}</h4>
                     </div>
                     <div class="col-md-12">
                         <p>surveys are currently live in this level</p>
                     </div>
                 </div>
-                <img class="dashboard-card-image" src="../../../../assets/user/level/level-beginner.svg" alt="">
+                <img class="dashboard-card-image" src="{{item.level_id==1?'../../../../assets/user/level/level-beginner.svg':''}}" alt="">
+                <img class="dashboard-card-image" src="{{item.level_id==2?'../../../../assets/user/level/level-expert.svg':''}}" alt="">
+                <img class="dashboard-card-image" src="{{item.level_id==3?'../../../../assets/user/level/level-master.svg':''}}" alt="">
+                <img class="dashboard-card-image" src="{{item.level_id==4?'../../../../assets/user/level/level-grand-master.svg':''}}" alt="">
+                <img class="dashboard-card-image" src="{{item.level_id==5?'../../../../assets/user/level/level-legend.svg':''}}" alt="">
             </div>
         </div>
     </div>

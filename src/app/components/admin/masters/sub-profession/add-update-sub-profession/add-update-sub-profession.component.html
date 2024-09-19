@@ -2,7 +2,7 @@
   <div class="row m-0">
     <div class="col-md-12 d-flex justify-content-center">
       <h4 class="header pt-4">
-        {{ isEdit ? "Update" : "Add" }} Sub-Profession
+        {{ isEdit ? "Update" : "Add" }} Sub Profession
       </h4>
     </div>
   </div>
@@ -22,7 +22,7 @@
                   control['profession_id'].touched)
             }"
           >
-            <option value="" selected>Select profession</option>
+            <option value="null" selected>Select profession</option>
             <option
               [value]="item.profession_id"
               *ngFor="let item of allProfessionList"
