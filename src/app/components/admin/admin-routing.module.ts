@@ -13,6 +13,8 @@ import { CreateSurveyComponent } from './reports/create-survey/create-survey.com
 import { FillSurveyComponent } from './reports/fill-survey/fill-survey.component';
 import { CreateComponent } from './create-survey/create/create.component';
 import { UserAnalyticsComponent } from './users/user-analytics/user-analytics.component';
+import { AdminCreateSurveyListComponent } from './admin-create-survey-list/admin-create-survey-list.component';
+import { AdminCreateSurveyComponent } from './admin-create-survey-list/admin-create-survey/admin-create-survey.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "admin", pathMatch: "full" },
@@ -93,7 +95,7 @@ const routes: Routes = [
     // canActivate:[AuthGuard]
   },
   {
-    path: "create-survey",
+    path: "create-survey-report",
     component: CreateSurveyComponent,
     pathMatch: "full",
     outlet: "sub_menu",
@@ -108,7 +110,14 @@ const routes: Routes = [
   },
   {
     path: "create-survey-list",
-    component: CreateComponent,
+    component: AdminCreateSurveyListComponent,
+    pathMatch: "full",
+    outlet: "sub_menu",
+    // canActivate:[AuthGuard]
+  },
+  {
+    path: "create-survey",
+    component: AdminCreateSurveyComponent,
     pathMatch: "full",
     outlet: "sub_menu",
     // canActivate:[AuthGuard]

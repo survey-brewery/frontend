@@ -15,7 +15,7 @@
             <thead>
               <tr>
                 <th scope="col" class="text-center">Sr.no</th>
-                <th scope="col" class="text-center">Region</th>
+                <th scope="col" class="text-start">Region</th>
                 <th scope="col" class="text-center">User</th>
                 <th scope="col" class="text-center">Edit</th>
                 <th scope="col" class="text-center">Delete</th>
@@ -24,7 +24,7 @@
             <tbody>
               <tr *ngFor="let item of allRegionsList; let i = index">
                 <th scope="row" class="text-center">{{ i + 1 }}</th>
-                <td class="text-center">{{ item.region | titlecase }}</td>
+                <td class="text-start">{{ item.region | titlecase }}</td>
                 <td class="text-center">{{ item.user_name }}</td>
                 <td class="text-center">
                   <img src="../../../../../assets/edit.svg" alt="" (click)="openDialog(item)" />

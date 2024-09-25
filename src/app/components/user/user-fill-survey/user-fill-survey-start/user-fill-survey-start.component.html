@@ -6,7 +6,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-9 col-sm-12">
             <div class="dashboard-card-pink">
                 <div class="card-footer">
                     <div class="row">
@@ -30,7 +30,8 @@
                                             [name]="option.input_type" [id]="option.option">
                                     </div>
                                     <div class="col-md-11 d-flex align-items-end">
-                                        <p class="text-start"><label [for]="option.option"> {{option.option}}</label></p>
+                                        <p class="text-start"><label [for]="option.option"> {{option.option}}</label>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -40,9 +41,8 @@
                                         <!-- <input [type]="item.input_type" (change)="selectOption($event,option,i,j,item)" [name]="option.input_type" [id]="option.option"> -->
                                     </div>
                                     <div class="col-md-10 d-flex align-items-end">
-                                    <textarea 
-                                                (input)="selectEnter($event,'',i,'')" class="form-control"
-                                                placeholder="Enter your Answer"></textarea>
+                                        <textarea (input)="selectEnter($event,'',i,'')" class="form-control"
+                                            placeholder="Enter your Answer"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -54,8 +54,9 @@
                                 <i class="material-icons fs-6 w-20">arrow_backward</i>
                                 Pre
                             </button>
-                            <button class="btn-sm-gold"(click)="nextQuestion()" >
-                                {{( this.questionList.length >this.currentQuestionIndex+1 )?'Next':'Submit'}} <i class="material-icons fs-6 w-20">arrow_forward</i>
+                            <button class="btn-sm-gold" (click)="nextQuestion()">
+                                {{( this.questionList.length >this.currentQuestionIndex+1 )?'Next':'Submit'}} <i
+                                    class="material-icons fs-6 w-20">arrow_forward</i>
                             </button>
                         </div>
                     </div>
@@ -63,16 +64,18 @@
                 <div class="dashboard-card m-0" *ngIf="isSubmitted">
                     <div class="card-header">
                         <h4 class="card-title text-success fw-bold">Survey is submitted successfully!</h4>
-                        <h5 class="fs-6  text-muted "><small>Congrats! You have earned {{surveyDetails.level.points_after_fill
-                        }} karma points</small></h5>
-                         <div class="mb-3 ">
+                        <h5 class="fs-6  text-muted "><small>Congrats! You have earned
+                                {{surveyDetails.level.points_after_fill
+                                }} karma points</small></h5>
+                        <div class="mb-3 ">
                             <hr>
-                            <button class="btn-sm-gold" [routerLink]="['/user', { outlets: { user_menu: ['fill-survey-list']}}]">
+                            <button class="btn-sm-gold"
+                                [routerLink]="['/user', { outlets: { user_menu: ['fill-survey-list']}}]">
                                 Return to main page
                             </button>
+                        </div>
                     </div>
-                    </div>
-                   
+
                 </div>
             </div>
         </div>

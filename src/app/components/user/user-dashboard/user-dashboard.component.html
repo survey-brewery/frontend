@@ -98,9 +98,10 @@
                             <p>{{ item.survey_title }}</p>
                         </div>
                         <div class="col-md-3 d-flex justify-content-end">
-                            <p class="text-primary">Analyze</p>
-                            &nbsp;
-                            <i class="material-icons text-primary fs-5 fw-bold">arrow_forward</i>
+                            <span class="d-flex" [routerLink]="['/user', { outlets: { user_menu: ['survey-analytic',item.survey_id]}}]" ><p class="text-primary">Analyze</p>
+                                &nbsp;
+                                <i class="material-icons text-primary fs-5 fw-bold">arrow_forward</i></span>
+                            
                         </div>
                         <div class="row">
                             <div class="col-md-4 p-0">
@@ -122,13 +123,13 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 col-sm-12">
             <div class="instruction row">
                 <h5 class="fs-6">
                     <img src="../../../../assets/user/dashboard/icon-faq.svg" alt="" />
                     How to brew a survey?
                 </h5>
-                <div class="col-3">
+                <div class="col-md-3 col-sm-10">
                     <div class="dashboard-card rounded-3 p-1">
                         <div class="card-body p-2">
                             <small>Earn Karma points by filling the surveys of community in any
@@ -136,21 +137,21 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-auto d-flex align-items-center p-0 m-0">
+                <div class="col-md-auto col-sm-auto d-flex align-items-center p-0 m-0">
                     <i class="material-icons">arrow_forward</i>
                 </div>
-                <div class="col-3">
+                <div class="col-md-3 col-sm-10">
                     <div class="dashboard-card rounded-3 p-1">
                         <div class="card-body p-2">
                             <small>Use earned Karma points to create your survey</small>
                         </div>
                     </div>
                 </div>
-                <div class="col-auto d-flex align-items-center p-0 m-0">
+                <div class="col-md-auto col-sm-auto d-flex align-items-center p-0 m-0">
                     <i class="material-icons">arrow_forward</i>
                 </div>
 
-                <div class="col-3">
+                <div class="col-md-3 col-sm-10">
                     <div class="dashboard-card rounded-3 p-1">
                         <div class="card-body p-2">
                             <small>Upgrade to higher levels by earning more Karma points</small>

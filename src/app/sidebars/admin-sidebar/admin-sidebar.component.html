@@ -6,7 +6,7 @@
       </div>
       <div class="menu">
         <ul class="nav">
-          <li class="nav-item" [routerLink]="['/admin', { outlets: { sub_menu: ['admin']}}]"><span><img
+          <li class="nav-item" routerLinkActive='active' [routerLink]="['/admin', { outlets: { sub_menu: ['admin']}}]"><span><img
                 src="../../../assets/images/icon/icon-dashboard.svg" alt="Dashboard"></span>Dashboard</li>
           <!-- <li class="nav-item">Masters</li> -->
           <li class=" nav-item accordion-header" id="headingOne"><span><img
@@ -16,33 +16,32 @@
               Masters
             </button>
           </li>
-          <ul id="collapseOne" class="accordion-collapse collapse ">
-            <li class="nav-item" [routerLink]="['/admin', { outlets: { sub_menu: 'level' } }]"><span><img
-                  src="../../../assets/images/icon/icon-dashboard.svg" alt="Dashboard"></span> Levels </li>
-            <li class="nav-item" [routerLink]="['/admin', { outlets: { sub_menu: 'percentage' } }]"><span><img
-                  src="../../../assets/images/icon/icon-dashboard.svg" alt="Dashboard"></span> Percentage </li>
-            <li class="nav-item" [routerLink]="['/admin', { outlets: { sub_menu: 'profession' } }]"><span><img
-                  src="../../../assets/images/icon/icon-dashboard.svg" alt="Dashboard"></span> Profession </li>
-            <li class="nav-item" [routerLink]="['/admin', { outlets: { sub_menu: 'question-type' } }]"><span><img
-                  src="../../../assets/images/icon/icon-dashboard.svg" alt="Dashboard"></span> Question Type </li>
-            <li class="nav-item" [routerLink]="['/admin', { outlets: { sub_menu: 'sub-profession' } }]"><span><img
-                    src="../../../assets/images/icon/icon-dashboard.svg" alt="Dashboard"></span> Sub Profession </li>
-            <li class="nav-item" [routerLink]="['/admin', { outlets: { sub_menu: 'regions' } }]"><span><img
-                      src="../../../assets/images/icon/icon-dashboard.svg" alt="Dashboard"></span> Regions </li>        
+          <ul id="collapseOne" class="accordion-collapse collapse sub-menu">
+            <li class="nav-item sub-nav-item" routerLinkActive='active' [routerLink]="['/admin', { outlets: { sub_menu: 'level' } }]">
+               Levels </li>
+            <li class="nav-item sub-nav-item" routerLinkActive='active' [routerLink]="['/admin', { outlets: { sub_menu: 'percentage' } }]">
+               Percentage </li>
+            <li class="nav-item sub-nav-item" routerLinkActive='active' [routerLink]="['/admin', { outlets: { sub_menu: 'profession' } }]">
+              Profession </li>
+            <li class="nav-item sub-nav-item"  routerLinkActive='active' [routerLink]="['/admin', { outlets: { sub_menu: 'question-type' } }]">
+              Question Type </li>
+                  <li class="nav-item sub-nav-item"routerLinkActive='active' [routerLink]="['/admin', { outlets: { sub_menu: 'regions' } }]">Regions </li> 
+            <li class="nav-item sub-nav-item"routerLinkActive='active' [routerLink]="['/admin', { outlets: { sub_menu: 'sub-profession' } }]">Sub Profession </li>
+                   
 
           </ul>
-          <li class="nav-item" [routerLink]="['/admin', { outlets: { sub_menu: ['users']}}]"> <span><img
-                src="../../../assets/images/icon/icon-dashboard.svg" alt="Dashboard"></span>Users</li>
+          <li class="nav-item"routerLinkActive='active' [routerLink]="['/admin', { outlets: { sub_menu: ['users']}}]"> <span><img
+                src="../../../assets/images/icon/icon-user-accout.svg" alt="Dashboard"></span>Users</li>
           <!-- <li class="nav-item"><span><img src="../../../assets/images/icon/icon-dashboard.svg" alt="Dashboard"></span>
             Create survey</li> -->
-            <li class="nav-item"><span><img src="../../../assets/images/icon/icon-dashboard.svg"
+            <li class="nav-item"><span><img src="../../../assets/images/icon/icon-create-survey.svg"
               alt="Dashboard"></span><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
             aria-expanded="false" aria-controls="collapseTwo" (click)="handleSurveyAccordionClick()" >
              Survey
           </button></li>
-          <ul id="collapseTwo" class="accordion-collapse collapse ">
-            <li class="nav-item" [routerLink]="['/admin', { outlets: { sub_menu: 'create-survey-list' } }]"><span><img
-            src="../../../assets/images/icon/icon-dashboard.svg" alt="create"></span> Create </li>
+          <ul id="collapseTwo" class="accordion-collapse collapse sub-menu">
+            <li class="nav-item sub-nav-item"routerLinkActive='active' [routerLink]="['/admin', { outlets: { sub_menu: 'create-survey-list' } }]">
+              Create </li>
           
          </ul>
           <li class="nav-item"><span><img src="../../../assets/images/icon/icon-dashboard.svg"
@@ -50,14 +49,12 @@
               aria-expanded="false" aria-controls="collapseThree" (click)="handleReportsAccordionClick()" >
               Reports
             </button></li>
-            <ul id="collapseThree" class="accordion-collapse collapse ">
-              <li class="nav-item" [routerLink]="['/admin', { outlets: { sub_menu: 'create-survey' } }]"><span><img
-              src="../../../assets/images/icon/icon-dashboard.svg" alt="create"></span> Create Survey </li>
-             <li class="nav-item" [routerLink]="['/admin', { outlets: { sub_menu: 'fill-survey' } }]"><span><img
-             src="../../../assets/images/icon/icon-dashboard.svg" alt="fill-survey"></span> Fill Survey </li>
+            <ul id="collapseThree" class="accordion-collapse collapse sub-menu">
+              <li class="nav-item sub-nav-item"routerLinkActive='active' [routerLink]="['/admin', { outlets: { sub_menu: 'create-survey-report' } }]">Create Survey </li>
+             <li class="nav-item sub-nav-item"routerLinkActive='active' [routerLink]="['/admin', { outlets: { sub_menu: 'fill-survey' } }]">Fill Survey </li>
 
            </ul>
-          <li class="nav-item" routerLink=""><span><img src="../../../assets/images/icon/icon-dashboard.svg"
+          <li class="nav-item" routerLink=""><span><img src="../../../assets/images/icon/icon-logout.svg"
                 alt="Dashboard"></span>Logout</li>
         </ul>
       </div>
