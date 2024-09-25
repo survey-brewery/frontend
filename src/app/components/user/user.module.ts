@@ -14,6 +14,7 @@ import { UserFillSurveyListComponent } from './user-fill-survey/user-fill-survey
 import { UserCreateSurveyComponent } from './user-survey/user-create-survey/user-create-survey.component';
 import { UserFillSurveyStartComponent } from './user-fill-survey/user-fill-survey-start/user-fill-survey-start.component';
 import { HowItWorksComponent } from './how-it-works/how-it-works.component';
+import { UserSurveyAnalyticComponent } from './user-survey-analytic/user-survey-analytic.component';
 // import { UserFillSurveyModule } from './user-fill-survey/user-fill-survey.module';
 
 
@@ -29,7 +30,8 @@ import { HowItWorksComponent } from './how-it-works/how-it-works.component';
     UserFillSurveyListComponent,
     UserCreateSurveyComponent,
     UserFillSurveyStartComponent,
-    HowItWorksComponent
+    HowItWorksComponent,
+    UserSurveyAnalyticComponent
   ],
   imports: [
     CommonModule,

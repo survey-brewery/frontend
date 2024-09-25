@@ -21,6 +21,7 @@
                   <th scope="col" class="text-center">Level </th>
                   <th scope="col" class="text-center">No of questions </th> 
                   <th scope="col" class="text-center">Status</th>
+                  <th scope="col" class="text-center">Analytic</th>
                   <th scope="col" class="text-center">Action</th>
                 </tr>
               </thead>
@@ -33,7 +34,11 @@
                   <td class="text-center">{{item.level}}</td>
                   <td class="text-center">{{item.questionsCount}}</td>
                   <td class="text-center">{{item.status==1 ? 'Live':'close'}}</td>
-
+                  <td class="text-center">
+                    <a [routerLink]="['/admin', {outlets: { sub_menu:['user-analytics',item.survey_id]}}]">
+                      <img src="../../../../../assets/eye.svg" alt="" />
+                    </a>
+                  </td>
                   <td class="text-center"> <mat-slide-toggle class="example-margin"
                     (change)="statusEnableDisable($event,item.survey_id)"
                      [checked]="(item.status==1)?true:false">

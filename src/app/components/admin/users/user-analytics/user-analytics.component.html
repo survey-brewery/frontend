@@ -1,134 +1,126 @@
 <section>
-    <div class="container mb-5">
-        <div class="row justify-content-center">
-            <div class="col-md-10">
-                <div class="d-flex justify-content-between pt-5">
-                    <h4 class="header">Analytics</h4>
-                    <button class="btn btn-dark " [routerLink]="['/admin', { outlets: { sub_menu: ['users'] } }]">
-                        Cancel
-                    </button>
-                 </div>
-                <div class="row m-0 mt-5 ">
-                    <div class="col-md-3 p-0 d-flex">
-                        <label for="user_name" class="fw-bold p">Survey title :</label>
-                        <p type="text" id="user_name" for="user_name">{{userDetails.survey_title}}
-                        </p>
-                    </div>
-                    <div class="col-md-3 d-flex">
-                        <label for="user_name" class="fw-bold">Start Date :</label>
-                        <p type="text" id="user_name" for="user_name">{{userDetails.start_date}}
-                        </p>
-                    </div>
-                    <div class="col-md-3 d-flex">
-                        <label for="user_name" class="fw-bold">End Date :</label>
-                        <p type="text" id="user_name" for="user_name">{{userDetails.end_date}}
-                        </p>
-                    </div>
-                    <div class="col-md-3 d-flex">
-                        <label for="user_name" class="fw-bold">Level :</label>
-                        <p type="text" id="user_name" for="user_name">{{userDetails.level}}
-                        </p>
-                    </div>
-                    <div class="col-md-3 p-0 d-flex">
-                        <label for="user_name" class="fw-bold">Total till survey :</label>
-                        <p type="text" id="user_name" for="user_name">{{totalFillSurvey}}
-                        </p>
-                    </div>
-                </div>
-                <hr>
-                <div class="row m-0">
-                <div class="col-8 my-4 d-flex justify-content-center">
-                    <canvas id="barChartCanvas">{{chart}}</canvas>
-                  </div>
-                  <div class="col-4">
-                    <canvas id="pieChartCanvas">{{chart}}</canvas>
-                  </div> 
-                  </div> 
-                  
-                  <div class="d-flex justify-content-between pt-5">
-                    <h4 class="header">Surveyor list</h4> 
-                 </div>
-                 <div class="row">
-                    <div class="table-container p-3 card mb-5">
-                      <table class="table table-bordered">
-                        <thead>
-                          <tr>
-                            <th scope="col" class="text-center">S.no</th>
-                            <th scope="col" class="text-center">Survey submitted date</th>
-                            <th scope="col" class="text-start">Name</th>
-                            <th scope="col" class="text-center">Profession</th>
-                            <th scope="col" class="text-center">Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let item of allUserList; let i = index">
-                                <th class="text-center">{{ i + 1 }}</th>
-                                <td class="text-center">{{ item.cts | date : "dd-MM-YYYY" }}</td>
-                                <td>{{ item.user_name }}</td>
-                                <td class="text-center">{{ item.profession }}</td>
-                                <td class="text-center"><img src="../../../../../assets/eye.svg" alt="" (click)="fillSurveyViewById(item.fill_survey_id)" data-toggle="modal"
-                                    data-target="#exampleModalLong"></td>
-                              </tr>
-                              <tr *ngIf="allUserList.length == 0" class="text-danger fw-bold text-center">
-                                <td colspan="10">No Data Available</td>
-                              </tr> 
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-            </div>
+  <div class="container mb-5">
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+        <div class="d-flex justify-content-between pt-5">
+          <h4 class="header">Analytics</h4>
+          <button class="btn btn-dark " (click)="goToBack()">
+            Cancel
+          </button>
         </div>
-    </div>
-</section>
-<!-- Model -->
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="row">
-          <div class="col-md-12 d-flex justify-content-end">
-            <button type="button" class="close mx-3" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+        <!-- <div class="row m-0 mt-5 ">
+          <div class="col-md-3 p-0 d-flex">
+            <label for="user_name" class="fw-bold p">Survey title :</label>
+            <p type="text" id="user_name" for="user_name">{{userDetails.survey_title}}
+            </p>
           </div>
-        </div>
-        <div class="modal-body">
-          <div class="container">
-            <div class="row d-flex justify-content-between sub-card table-header">
-              <div class="col-md-6 col-sm-12  label-group">
-                <label class="label">Survey Title</label>
-                <small><h6 class="label-value">{{userDetails?.survey_title}}</h6></small>
-              </div>
-              <div class="col-md-3 col-sm-12 label-group">
-                <label class="label">Submitted  date</label>
-                <small><h6 class="label-value">{{userDetails?.cts|date:'dd-MM-YYYY'}}</h6></small>
-              </div> 
-            </div>
-            <div class="card p-3 my-3">
-              <div class="row my-2 " *ngFor="let item of fillSurveyDetails.questions;let i=index">
-                <div class="col-md-2">
-                  <h6>{{i+1}}</h6>
-                </div>
-                <div class="col-md-10">
-                  <h6><small>{{item.question}}</small></h6> 
-                </div>
-                <div class="col-md-2">
-                  <p ><small>Answer</small></p> 
-                </div>
-                <div class="col-md-10" >
-                  <div *ngFor="let value of item.values;let j=index">
-                    <h6> <small><span *ngIf="item.values.length>1">{{ romanize(j+1) }} .</span> {{value.value}}</small></h6> 
-                  </div> 
-                </div>
-                <hr >
-              </div>
-            </div> 
+          <div class="col-md-3 d-flex">
+            <label for="user_name" class="fw-bold">Start Date :</label>
+            <p type="text" id="user_name" for="user_name">{{userDetails.start_date}}
+            </p>
           </div>
-        </div>
-        <!-- <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <div class="col-md-3 d-flex">
+            <label for="user_name" class="fw-bold">End Date :</label>
+            <p type="text" id="user_name" for="user_name">{{userDetails.end_date}}
+            </p>
+          </div>
+          <div class="col-md-3 d-flex">
+            <label for="user_name" class="fw-bold">Level :</label>
+            <p type="text" id="user_name" for="user_name">{{userDetails.level}}
+            </p>
+          </div>
+          <div class="col-md-3 p-0 d-flex">
+            <label for="user_name" class="fw-bold">Total till survey :</label>
+            <p type="text" id="user_name" for="user_name">{{totalFillSurvey}}
+            </p>
+          </div>
         </div> -->
+          <div class="row ">
+              <div class="col-md-6 col-sm-12">
+                  <div class="dashboard-card">
+                      <div class="row card-body">
+                          <div class="col-md-12 col-sm-12 d-flex">
+                              <h4>01 &nbsp;</h4>
+                              <p>{{surveyDetails.survey_title}}</p>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-auto p-0">
+                                  <p class="filter"><small>{{surveyDetails.level|titlecase}} level</small></p>
+                              </div>
+                              <div class="col-md-auto p-0">
+                                  <p class="filter"><small>Responses 150/200</small></p>
+                              </div>
+                              <div class="col-md-auto p-0">
+                                  <p class="filter"><small>Deadline {{surveyDetails.end_date|date}}</small></p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-10">
+                  <div class="dashboard-card   p-3">
+                      <div *ngFor="let question of surveyDetails.questions; let i = index" class="sub-card  p-3 my-3">
+                          <div class="col-md-12 question">
+                             <span class="fw-bold"> Q {{i+1}}</span>. {{ question.question}}
+                          </div>
+                          <div class="col-md-12 py-3">
+                              <span class="fw-bold">{{question.total_count}} responses</span>
+                          </div>
+                          <div *ngIf="question.input_type === 'text'">
+                              <ul class="text-value">
+                                  <li *ngFor="let option of question.options">
+      
+                                      {{ option.value }}
+                                  </li>
+                              </ul>
+                          </div>
+                          <div *ngIf="question.input_type !== 'text'">
+                              <div class="row">
+                                  <div [ngClass]="{'col-md-10': question.input_type === 'checkbox', 'col-md-5': question.input_type === 'radio', 'col-sm-12': true}">
+                                      <canvas [id]="'chartCanvas' + i"></canvas>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+        <div class="d-flex justify-content-between pt-5">
+          <h4 class="header">Surveyor list</h4>
+        </div>
+        <div class="row">
+          <div class="table-container p-3 card mb-5">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col" class="text-center">S.no</th>
+                  <th scope="col" class="text-center">Survey submitted date</th>
+                  <th scope="col" class="text-start">Name</th>
+                  <th scope="col" class="text-center">Profession</th>
+                  <th scope="col" class="text-center">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of allUserList; let i = index">
+                  <th class="text-center">{{ i + 1 }}</th>
+                  <td class="text-center">{{ item.cts | date : "dd-MM-YYYY" }}</td>
+                  <td>{{ item.user_name }}</td>
+                  <td class="text-center">{{ item.profession }}</td>
+                  <td class="text-center"><img src="../../../../../assets/eye.svg" alt=""
+                      (click)="openDialog(item)"
+                     ></td>
+                </tr>
+                <tr *ngIf="allUserList.length == 0" class="text-danger fw-bold text-center">
+                  <td colspan="10">No Data Available</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+</section>

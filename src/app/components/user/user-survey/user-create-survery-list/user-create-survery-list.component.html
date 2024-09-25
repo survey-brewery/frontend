@@ -54,7 +54,7 @@
                             <td>252/500</td>
                             <td class="" [ngClass]="item.status==1?'text-danger':'text-success'">
                                 {{(item.status==1)?'LIVE':'Completed'}}</td>
-                            <td class="d-flex align-content-center text-primary" > Analyze <i
+                            <td class="d-flex align-content-center text-primary"  [routerLink]="['/user', { outlets: { user_menu: ['survey-analytic',item.survey_id]}}]"> Analyze <i
                                     class="material-icons fs-6">arrow_forward</i></td>
                         </tr>
                         <tr *ngIf="allSurveyList.length==0">

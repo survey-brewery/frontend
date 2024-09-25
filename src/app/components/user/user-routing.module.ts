@@ -11,6 +11,7 @@ import { UserCreateSurveyComponent } from './user-survey/user-create-survey/user
 import { UserFillSurveyStartComponent } from './user-fill-survey/user-fill-survey-start/user-fill-survey-start.component';
 import { HowItWorksComponent } from './how-it-works/how-it-works.component';
 import { UserFillSurveyListComponent } from './user-fill-survey/user-fill-survey-list/user-fill-survey-list.component';
+import { UserSurveyAnalyticComponent } from './user-survey-analytic/user-survey-analytic.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "dashboard", pathMatch: "full" },
@@ -75,6 +76,12 @@ const routes: Routes = [
     component: UserFillSurveyStartComponent,
     outlet: "user_menu",
     data: { title: 'Fill Survey Start' }
+  },
+  {
+    path: "survey-analytic/:id",
+    component: UserSurveyAnalyticComponent,
+    outlet: "user_menu",
+    data: { title: 'Create Survey- Analyze' }
   },
   {
     path: "how-it-works",

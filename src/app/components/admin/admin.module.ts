@@ -24,6 +24,7 @@ import { CreateComponent } from './create-survey/create/create.component';
 import { UserAnalyticsComponent } from './users/user-analytics/user-analytics.component';
 import { AdminCreateSurveyListComponent } from './admin-create-survey-list/admin-create-survey-list.component';
 import { AdminCreateSurveyComponent } from './admin-create-survey-list/admin-create-survey/admin-create-survey.component';
+import { ViewSurveyorAnswerComponent } from './view-surveyor-answer/view-surveyor-answer.component';
 
 
 
@@ -50,6 +51,7 @@ import { AdminCreateSurveyComponent } from './admin-create-survey-list/admin-cre
     UserAnalyticsComponent,
     AdminCreateSurveyListComponent,
     AdminCreateSurveyComponent,
+    ViewSurveyorAnswerComponent,
     
   ],
   imports: [

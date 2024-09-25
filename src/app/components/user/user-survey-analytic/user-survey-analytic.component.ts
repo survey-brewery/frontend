@@ -1,44 +1,29 @@
-import { Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { UserService } from '../user.service';
 import { ActivatedRoute } from '@angular/router';
 import { Chart } from 'chart.js';
-import { UserService } from 'src/app/components/user/user.service';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
-import { ViewSurveyorAnswerComponent } from '../../view-surveyor-answer/view-surveyor-answer.component';
-import { MatDialog } from '@angular/material/dialog';
 import { Location } from '@angular/common';
 @Component({
-  selector: 'app-user-analytics',
-  templateUrl: './user-analytics.component.html',
-  styleUrls: ['./user-analytics.component.scss'],
+  selector: 'app-user-survey-analytic',
+  templateUrl: './user-survey-analytic.component.html',
+  styleUrls: ['./user-survey-analytic.component.scss']
 })
-export class UserAnalyticsComponent {
-  survey_id: any;
-  userDetails: any = {};
-  page: number = 1;
-  pageSize: number = 10;
-  total: any;
-  allUserList: Array<any> = [];
-  fillSurveyDetails: any = {};
-  totalFillSurvey=0
-  
+export class UserSurveyAnalyticComponent implements OnInit {
   public chart!: Chart<"bar" | "pie", number[], unknown>;
   public chart2!: Chart<"bar" | "pie", number[], unknown>;
   surveyDetails: any = {};
   @ViewChildren('answerContainer') answerContainers!: QueryList<ElementRef>;
   constructor(
-    private _userService: UserService,
-    private url: ActivatedRoute,
+    private _userService: UserService, 
     private route: ActivatedRoute,
-    private dialog:MatDialog,
-    private location:Location
-  ) { }
+    private location:Location) { }
   ngOnInit(): void {
-    this.survey_id = this.url.snapshot.params['id'];
     this.route.params.subscribe((res: any) => {
-      this.getUserListBySurveyId(res.id);
       this.getAllCounts(res.id);
     });
   }
+
   getAllCounts(id: any) {
     this._userService.getFillSurveyResponse(id).subscribe({
       next: (res: any) => {
@@ -135,40 +120,7 @@ export class UserAnalyticsComponent {
       }
     });
   }
-  getUserListBySurveyId(id: any) {
-    this._userService.getUserListSurveyId(id).subscribe({
-      next: (res: any) => {
-        if (res.data) {
-          this.allUserList = res.data;
-        }
-      }
-    })
-  }
-  fillSurveyViewById(id: any) {
-    this._userService.fillSurveyViewById(id).subscribe({
-      next: (res: any) => {
-        if (res.data) {
-          this.fillSurveyDetails = res.data;
-        }
-      },
-    });
-  }
-  openDialog(data?: any) {
-    const dialogRef = this.dialog.open(ViewSurveyorAnswerComponent, {
-      data: data,
-      width: '744px',
-      height: 'auto'
-    });
-
-    dialogRef.afterClosed().subscribe((message: string) => {
-      if (message == 'create' || message == 'update') {
-      } else {
-        console.log('nothing happen');
-      }
-    });
-  }
   goToBack(){
     this.location.back();
   }
 }
-
