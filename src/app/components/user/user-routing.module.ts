@@ -12,6 +12,7 @@ import { UserFillSurveyStartComponent } from './user-fill-survey/user-fill-surve
 import { HowItWorksComponent } from './how-it-works/how-it-works.component';
 import { UserFillSurveyListComponent } from './user-fill-survey/user-fill-survey-list/user-fill-survey-list.component';
 import { UserSurveyAnalyticComponent } from './user-survey-analytic/user-survey-analytic.component';
+import { AuthGuard } from 'src/app/shared/auth.guard';
 
 const routes: Routes = [
   { path: "", redirectTo: "dashboard", pathMatch: "full" },
@@ -20,6 +21,7 @@ const routes: Routes = [
     path: "dashboard",
     component: UserDashboardComponent,
     outlet: "user_menu",
+    canActivate:[AuthGuard],
     data: { title: 'Dashboard' }
   },
 
@@ -27,67 +29,78 @@ const routes: Routes = [
     path: "my-profile",
     component: UserProfileComponent,
     outlet: "user_menu",
+    canActivate:[AuthGuard],
     data: { title: 'My Account' }
   },
   {
     path: "user-level",
     component: UserLevelComponent,
     outlet: "user_menu",
+    canActivate:[AuthGuard],
     data: { title: 'Level' }
   },
   {
     path: "karma-point",
     component: UserKarmaPointComponent,
     outlet: "user_menu",
+    canActivate:[AuthGuard],
     data: { title: 'Karma Points' }
   },
   {
     path: "survey",
     component: UserSurveyComponent,
     outlet: "user_menu",
+    canActivate:[AuthGuard],
     data: { title: 'Create Survey' }
   },
   {
     path: "create-survey-list",
     component: UserCreateSurveryListComponent,
     outlet: "user_menu",
+    canActivate:[AuthGuard],
     data: { title: 'Create Survey List' }
   },
   {
     path: "create-survey",
     component: UserCreateSurveyComponent,
     outlet: "user_menu",
+    canActivate:[AuthGuard],
     data: { title: 'Create Survey' }
   },
   {
     path: "fill-survey",
     component: UserFillSurveyComponent,
     outlet: "user_menu",
+    canActivate:[AuthGuard],
     data: { title: 'Fill Survey' },
   },
    {
       path: "fill-survey-list",
       component: UserFillSurveyListComponent,
       outlet: "user_menu",
+      canActivate:[AuthGuard],
       data: { title: 'Fill Survey List' }
     },
   {
     path: "fill-survey-start/:id",
     component: UserFillSurveyStartComponent,
     outlet: "user_menu",
+    canActivate:[AuthGuard],
     data: { title: 'Fill Survey Start' }
   },
   {
     path: "survey-analytic/:id",
     component: UserSurveyAnalyticComponent,
     outlet: "user_menu",
+    canActivate:[AuthGuard],
     data: { title: 'Create Survey- Analyze' }
   },
   {
     path: "how-it-works",
     component: HowItWorksComponent,
     outlet: "user_menu",
-    data: { title: 'How to ?' }
+    canActivate:[AuthGuard],
+    data: { title: 'How to ?' },
   }
 ];
 

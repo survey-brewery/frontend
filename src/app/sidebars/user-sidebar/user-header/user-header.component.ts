@@ -1,6 +1,8 @@
-import { AfterContentChecked, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { filter, map, mergeMap } from 'rxjs';
+import { filter, map } from 'rxjs';
+import { UserContactComponent } from 'src/app/components/user/user-contact/user-contact.component';
 import { UserService } from 'src/app/components/user/user.service';
 import { DataSharedService } from 'src/app/shared/data-shared.service';
 
@@ -13,7 +15,11 @@ export class UserHeaderComponent implements OnInit {
   title = 'Dashboard';
   userDetails:any={};
   user_id:any;
-  constructor( private router: Router, private _userService: UserService,private _sharedService:DataSharedService) { }
+  constructor( private router: Router, 
+    private _userService: UserService,
+    private _sharedService:DataSharedService,
+    private dialog:MatDialog) { }
+
   ngOnInit(): void {
     this.user_id = localStorage.getItem('user_id') as string;
     // this.getDetails()
@@ -65,5 +71,19 @@ export class UserHeaderComponent implements OnInit {
       }
     });
   }
+  // open dialog
+  openDialog(data?: any) {
+    const dialogRef = this.dialog.open(UserContactComponent, {
+      data: data,
+      width: 'auto',
+      height: 'auto'
+    });
 
+    dialogRef.afterClosed().subscribe((message: string) => {
+      if (message == 'create' || message == 'update') {
+      } else {
+        console.log('nothing happen');
+      }
+    });
+  }
 }

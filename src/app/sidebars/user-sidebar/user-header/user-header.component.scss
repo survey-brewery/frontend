@@ -34,3 +34,35 @@
     top: 50px !important;
     transform: unset !important;
 }
+.navbar{
+    display: none!important;
+}
+@media only screen and (max-width: 600px) {
+    .small-logo{
+        display: unset;
+    }
+    .large-logo{
+        display: none;
+    }
+    .side-bar{
+       display: none;
+    }
+    .body{
+        width: 100%;
+        position: relative;
+        left: 0px;
+        z-index: 1;
+    }
+    .header{
+        display: none!important;
+    }
+    .navbar{
+        display: flex!important;
+    }
+}
+.res-nav{
+    background-color: #FFF;
+}
+.w-100{
+    width: 100vh!important;
+}

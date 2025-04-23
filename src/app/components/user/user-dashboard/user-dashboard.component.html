@@ -1,7 +1,7 @@
 <div class="container p-5 pt-0">
     <div class="row">
         <div class="col-md-4">
-            <div class="dashboard-card">
+            <div class="dashboard-card pointer" [routerLink]="['/user', { outlets: { user_menu: ['user-level']}}]">
                 <div class="card-header">
                     <div class="d-flex justify-content-between">
                         <h4 class="fw-bold">Your Level</h4>
@@ -20,7 +20,7 @@
                     </div>
                 </div>
             </div>
-            <div class="dashboard-card">
+            <div class="dashboard-card pointer" [routerLink]="['/user', { outlets: { user_menu: ['karma-point']}}]">
                 <div class="card-header">
                     <div class="d-flex justify-content-between">
                         <h4 class="fw-bold">Karma points</h4>
@@ -37,7 +37,7 @@
                     </div>
                 </div>
             </div>
-            <div class="dashboard-card">
+            <div class="dashboard-card pointer" [routerLink]="['/user', { outlets: { user_menu: ['fill-survey']}}]">
                 <div class="card-header">
                     <div class="d-flex justify-content-between">
                         <h4 class="fw-bold">Filled surveys</h4>
@@ -58,7 +58,8 @@
                     </div>
                 </div>
             </div>
-            <div class="dashboard-card">
+            <div class="dashboard-card pointer"
+                [routerLink]="['/user', { outlets: { user_menu: ['create-survey-list']}}]">
                 <div class="card-header">
                     <div class="d-flex justify-content-between">
                         <h4 class="fw-bold">Past surveys</h4>
@@ -89,21 +90,23 @@
                     <p>Track your surveys which are currently live</p>
                 </div>
                 <div class="card-body">
-                    <div class="row mb-3 d-flex "
-                        *ngFor="let item of allSurveyList; let i = index">
-                        <div class="col-md-auto col-sm-auto col-auto">
+                    <div class="row mb-3 d-flex " *ngFor="let item of allSurveyList; let i = index">
+                        <div class="col-md-auto col-sm-auto col-auto" [hidden]="i>=2?true:false">
                             <h6 class="fs-6">{{ i + 1 }}</h6>
                         </div>
-                        <div class="col-md-7">
+                        <div class="col-md-7" [hidden]="i>=2?true:false">
                             <p>{{ item.survey_title }}</p>
                         </div>
-                        <div class="col-md-3 d-flex justify-content-end">
-                            <span class="d-flex" [routerLink]="['/user', { outlets: { user_menu: ['survey-analytic',item.survey_id]}}]" ><p class="text-primary">Analyze</p>
+                        <div class="col-md-3 d-flex justify-content-end" [hidden]="i>=2?true:false">
+                            <span class="d-flex"
+                                [routerLink]="['/user', { outlets: { user_menu: ['survey-analytic',item.survey_id]}}]">
+                                <p class="text-primary">Analyze</p>
                                 &nbsp;
-                                <i class="material-icons text-primary fs-5 fw-bold">arrow_forward</i></span>
-                            
+                                <i class="material-icons text-primary fs-5 fw-bold">arrow_forward</i>
+                            </span>
+
                         </div>
-                        <div class="row">
+                        <div class="row" [hidden]="i>=2?true:false">
                             <div class="col-md-4 p-0">
                                 <p class="filter">{{ item.level | titlecase }} level</p>
                             </div>
@@ -117,7 +120,8 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <button class="btn-gold">View More</button>
+                    <button class="btn-gold pointer"
+                        [routerLink]="['/user', { outlets: { user_menu: ['create-survey-list']}}]">View More</button>
                 </div>
             </div>
         </div>

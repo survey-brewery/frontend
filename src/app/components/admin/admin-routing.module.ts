@@ -11,23 +11,23 @@ import { RegionsComponent } from './masters/regions/regions.component';
 import { ViewusersComponent } from './users/viewusers/viewusers.component';
 import { CreateSurveyComponent } from './reports/create-survey/create-survey.component';
 import { FillSurveyComponent } from './reports/fill-survey/fill-survey.component';
-import { CreateComponent } from './create-survey/create/create.component';
 import { UserAnalyticsComponent } from './users/user-analytics/user-analytics.component';
 import { AdminCreateSurveyListComponent } from './admin-create-survey-list/admin-create-survey-list.component';
 import { AdminCreateSurveyComponent } from './admin-create-survey-list/admin-create-survey/admin-create-survey.component';
+import { AuthGuard } from 'src/app/shared/auth.guard';
 
 const routes: Routes = [
   { path: "", redirectTo: "admin", pathMatch: "full" },
   { path: "", 
     component: AdminDashboardComponent,
-    // canActivate:[AuthGuard]
+    canActivate:[AuthGuard]
   },
   {
     path: "admin",
     component: AdminDashboardComponent,
     pathMatch: "full",
     outlet: "sub_menu",
-    // canActivate:[AuthGuard]
+    canActivate:[AuthGuard]
   },
   //masters
   {
@@ -35,42 +35,42 @@ const routes: Routes = [
     component: LevelsComponent,
     pathMatch: "full",
     outlet: "sub_menu",
-    // canActivate:[AuthGuard]
+    canActivate:[AuthGuard]
   },
   {
     path: "percentage",
     component: PercentageComponent,
     pathMatch: "full",
     outlet: "sub_menu",
-    // canActivate:[AuthGuard]
+    canActivate:[AuthGuard]
   },
   {
     path: "profession",
     component: ProfessionComponent,
     pathMatch: "full",
     outlet: "sub_menu",
-    // canActivate:[AuthGuard]
+    canActivate:[AuthGuard]
   },
   {
     path: "question-type",
     component: QuestionTypeComponent,
     pathMatch: "full",
     outlet: "sub_menu",
-    // canActivate:[AuthGuard]
+    canActivate:[AuthGuard]
   },
   {
     path: "sub-profession",
     component: SubProfessionComponent,
     pathMatch: "full",
     outlet: "sub_menu",
-    // canActivate:[AuthGuard]
+    canActivate:[AuthGuard]
   },
   {
     path: "regions",
     component: RegionsComponent,
     pathMatch: "full",
     outlet: "sub_menu",
-    // canActivate:[AuthGuard]
+    canActivate:[AuthGuard]
   },
 
   {
@@ -78,56 +78,56 @@ const routes: Routes = [
     component: UsersComponent,
     pathMatch: "full",
     outlet: "sub_menu",
-    // canActivate:[AuthGuard]
+    canActivate:[AuthGuard]
   },
   {
     path: "view-user",
     component: ViewusersComponent,
     pathMatch: "full",
     outlet: "sub_menu",
-    // canActivate:[AuthGuard]
+    canActivate:[AuthGuard]
   },
   {
     path: "view-user/:id",
     component: ViewusersComponent,
     pathMatch: "full",
     outlet: "sub_menu",
-    // canActivate:[AuthGuard]
+    canActivate:[AuthGuard]
   },
   {
     path: "create-survey-report",
     component: CreateSurveyComponent,
     pathMatch: "full",
     outlet: "sub_menu",
-    // canActivate:[AuthGuard]
+    canActivate:[AuthGuard]
   },
   {
     path: "fill-survey",
     component: FillSurveyComponent,
     pathMatch: "full",
     outlet: "sub_menu",
-    // canActivate:[AuthGuard]
+    canActivate:[AuthGuard]
   },
   {
     path: "create-survey-list",
     component: AdminCreateSurveyListComponent,
     pathMatch: "full",
     outlet: "sub_menu",
-    // canActivate:[AuthGuard]
+    canActivate:[AuthGuard]
   },
   {
     path: "create-survey",
     component: AdminCreateSurveyComponent,
     pathMatch: "full",
     outlet: "sub_menu",
-    // canActivate:[AuthGuard]
+    canActivate:[AuthGuard]
   },
   {
     path: "user-analytics/:id",
     component: UserAnalyticsComponent,
     pathMatch: "full",
     outlet: "sub_menu",
-    // canActivate:[AuthGuard]
+    canActivate:[AuthGuard]
   },
 
 ]

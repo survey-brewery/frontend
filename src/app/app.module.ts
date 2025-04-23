@@ -10,6 +10,8 @@ import { UserSidebarComponent } from './sidebars/user-sidebar/user-sidebar.compo
 import { UserHeaderComponent } from './sidebars/user-sidebar/user-header/user-header.component';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptor } from './shared/auth.interceptor';
+import { MatDialogModule } from '@angular/material/dialog';
+import { AuthGuard } from './shared/auth.guard';
 const APP_CONTAINERS = [
   UserHeaderComponent,
   AdminSidebarComponent,
@@ -24,6 +26,7 @@ const APP_CONTAINERS = [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    MatDialogModule,
     // SharedModule,
     ToastrModule.forRoot({
       timeOut: 6000,
@@ -33,7 +36,7 @@ const APP_CONTAINERS = [
     }), // ToastrModule added
     HttpClientModule,
   ],
-  providers: [{  
+  providers: [AuthGuard,{  
     provide: HTTP_INTERCEPTORS,  
     useClass: AuthInterceptor,  
     multi: true  

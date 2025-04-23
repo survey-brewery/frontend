@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../user.service';
 import { PageEvent } from '@angular/material/paginator';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-user-create-survery-list',
@@ -14,7 +15,10 @@ export class UserCreateSurveryListComponent  implements OnInit {
   page: number = 1;
   pageSize: number = 10;
   total:any;
-  constructor (private _userService:UserService){
+  constructor (
+    private _userService:UserService,
+    private location : Location
+  ){
     
   }
   ngOnInit():void{
@@ -50,5 +54,8 @@ onPageChange(event: PageEvent): void {
   this.page = event.pageIndex + 1;
   this.pageSize = event.pageSize;
   this.getAllSurveyBasicDetailsList();
+}
+goToBack(){
+  this.location.back();
 }
 }

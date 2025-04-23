@@ -1,19 +1,57 @@
 <div class="header d-flex justify-content-between">
-    <div class="header-title">{{title}}</div>
-    <ul class="sub-header-menu">
-        <li class="filter"><img src="../../../../assets/user/karma-point.svg" alt="karma-point"> &nbsp;&nbsp;{{userDetails.karma_points||0}}</li>{{userDetails.value|json}}
-        <li class="filter"><img src="../../../../assets/user/level/level-beginner.svg" alt="karma-point"> &nbsp;&nbsp;{{(userDetails.level||'Begginer')|titlecase}}</li>
-        <li><img src="../../../../assets/images/icon/icon-notification.svg" height="20px"  alt="notification"></li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img src="../../../../assets/images/icon/icon-user-profile.svg" height="25px" alt="profile">
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" [routerLink]="['/user', { outlets: { user_menu: ['my-profile']}}]"> <img src="../../../../assets/images/icon/icon-user.svg" alt="user">  &nbsp; <small>My Account</small></a>
-              <a class="dropdown-item" [routerLink]="['/user', { outlets: { user_menu: ['user-level']}}]"><img src="../../../../assets/images/icon/icon-level.svg" alt="level"> &nbsp; <small>Level</small></a>
-              <a class="dropdown-item" [routerLink]="['/user', { outlets: { user_menu: ['karma-point']}}]"><img src="../../../../assets/user/karma-point.svg" alt="user"> &nbsp; <small>Karma points</small></a>
-              <a class="dropdown-item" ><img src="../../../../assets/images/icon/icon-call.svg" alt="contact us"> &nbsp; <small>Contact Us</small> </a>
-            </div>
-          </li>
-    </ul>
+  <div class="header-title">{{title}}</div>
+  <ul class="sub-header-menu">
+    <li class="filter"><img src="../../../../assets/user/karma-point.svg" alt="karma-point">
+      &nbsp;&nbsp;{{userDetails.karma_points||0}}</li>{{userDetails.value|json}}
+    <li class="filter"><img src="../../../../assets/user/level/level-beginner.svg" alt="karma-point">
+      &nbsp;&nbsp;{{(userDetails.level||'Begginer')|titlecase}}</li>
+    <li><img src="../../../../assets/images/icon/icon-notification.svg" height="20px" alt="notification"></li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">
+        <img src="../../../../assets/images/icon/icon-user-profile.svg" height="25px" alt="profile">
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" [routerLink]="['/user', { outlets: { user_menu: ['my-profile']}}]"> <img
+            src="../../../../assets/images/icon/icon-user.svg" alt="user"> &nbsp; <small>My Account</small></a>
+        <a class="dropdown-item" [routerLink]="['/user', { outlets: { user_menu: ['user-level']}}]"><img
+            src="../../../../assets/images/icon/icon-level.svg" alt="level"> &nbsp; <small>Level</small></a>
+        <a class="dropdown-item" [routerLink]="['/user', { outlets: { user_menu: ['karma-point']}}]"><img
+            src="../../../../assets/user/karma-point.svg" alt="user"> &nbsp; <small>Karma points</small></a>
+        <a class="dropdown-item" (click)="openDialog()"><img src="../../../../assets/images/icon/icon-call.svg"
+            alt="contact us"> &nbsp; <small>Contact Us</small> </a>
+      </div>
+    </li>
+  </ul>
 </div>
+
+<nav class="navbar navbar-expand-lg navbar-light  d-flex justify-content-end w-100 row px-5">
+  <div class="col-md-12 col-sm-12 ">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  </div>
+  <div class="collapse navbar-collapse  res-nav mt-4" id="navbarNavDropdown">
+    <ul class="navbar-nav ">
+      <li class="nav-item active">
+        <a class="nav-link"  [routerLink]="['/user', { outlets: { user_menu: ['dashboard']}}]"> Dashboard </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/user', { outlets: { user_menu: ['survey']}}]">Survey</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/user', { outlets: { user_menu: ['fill-survey']}}]">Fill survey</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/user', { outlets: { user_menu: ['my-profile']}}]">Profile</a>
+      </li> 
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/user', { outlets: { user_menu: ['user-level']}}]">Level</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -46,9 +46,10 @@ export class PostSignUpComponent implements OnInit {
     private _dataSharedService: DataSharedService
   ) {}
   ngOnInit (): void {
-    this.createUserForm()
     this.getAllProfessionList()
     this.getAllRegionsList()
+    this.createUserForm()
+
     let userDataString: any = localStorage.getItem('userData')
     this.userData = JSON.parse(userDataString)
     this.control['email_id'].patchValue(this.userData.email_id)

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { AfterViewInit, Component, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
 import { ToastrService } from 'ngx-toastr'
@@ -11,7 +11,7 @@ declare var google: any
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, AfterViewInit {
   loginForm!: FormGroup
   auth2: any
   ngZone: any
@@ -61,14 +61,23 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('expiresin', res.data.expiresin)
           this._dataSharedService.sendUserData(res.data.userData)
           localStorage.setItem('userData', JSON.stringify(res.data.userData))
-          this.router.navigate(['/admin', { outlets: { sub_menu: ['admin'] } }])
-          // if (res.data.category==1) {
-          // this.router.navigate(['/admin', { outlets: { sub_menu: ['admin']}}]);
-          // } else {
-          // this.router.navigate(['/user'])
-          // }
+
+          if (res.data.category == 1) {
+            this.router.navigate([
+              '/admin',
+              { outlets: { sub_menu: ['admin'] } }
+            ])
+            this.toastrService.success(res.message)
+          } else {
+            this._dataSharedService.karmaPoint(true)
+            this.router.navigate([
+              '/user',
+              { outlets: { user_menu: ['dashboard'] } }
+            ])
+            this.toastrService.success(res.message)
+          }
           this.toastrService.clear()
-          this.toastrService.success(res.message)
+          
         },
         error: (err: any) => {
           if (err.error.status == 401 || err.error.status == 422) {
@@ -76,13 +85,12 @@ export class LoginComponent implements OnInit {
             let randomNumber = Math.floor(100000 + Math.random() * 900000)
             let Data = {
               email: userData.email,
-              setPassword: randomNumber,
               full_name: userData.name,
               user_name: userData.given_name
             }
             const userDataString = JSON.stringify(Data)
             localStorage.setItem('userData', userDataString)
-            // this.router.navigate(['/post-sign-up']);
+            this.router.navigate(['/post-sign-up']);
           } else {
             this.toastrService.clear()
             this.toastrService.error('Internal Server Error')
